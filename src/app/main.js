@@ -9,8 +9,6 @@ const Main = observer(({twitterStore}) => {
       <br/>
       <h2>" #missoulian #mtpol #ITMFA " :</h2>
       <p>« {twitterStore.getTweet.text} »</p>
-      <h2>supposed to stream twitter " #trump " :</h2>
-      <p>« {twitterStore.getTweet.text} »</p>
     </div>
   )
 });

@@ -13778,18 +13778,6 @@ var Main = (0, _mobxReact.observer)(function (_ref) {
       '\xAB ',
       twitterStore.getTweet.text,
       ' \xBB'
-    ),
-    _react2.default.createElement(
-      'h2',
-      null,
-      'supposed to stream twitter " #trump " :'
-    ),
-    _react2.default.createElement(
-      'p',
-      null,
-      '\xAB ',
-      twitterStore.getTweet.text,
-      ' \xBB'
     )
   );
 });
