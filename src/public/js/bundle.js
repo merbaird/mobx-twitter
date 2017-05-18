@@ -13761,8 +13761,24 @@ var Main = (0, _mobxReact.observer)(function (_ref) {
   return _react2.default.createElement(
     'div',
     null,
-    'Hello and: ',
-    twitterStore.getTweet.text
+    _react2.default.createElement(
+      'h1',
+      null,
+      'Currently streaming TWITTER :'
+    ),
+    _react2.default.createElement('br', null),
+    _react2.default.createElement(
+      'h2',
+      null,
+      '" #missoulian #mtpol #ITMFA " :'
+    ),
+    _react2.default.createElement(
+      'p',
+      null,
+      '\xAB ',
+      twitterStore.getTweet.text,
+      ' \xBB'
+    )
   );
 });
 
