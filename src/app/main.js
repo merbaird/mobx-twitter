@@ -4,7 +4,12 @@ import {observer} from 'mobx-react';
 
 const Main = observer(({twitterStore}) => {
   return (
-   <div>Hello and: {twitterStore.getTweet.text}</div>
+    <div>
+      <h1>Currently streaming TWITTER :</h1>
+      <br/>
+      <h2>" #missoulian #mtpol #ITMFA " :</h2>
+      <p>« {twitterStore.getTweet.text} »</p>
+    </div>
   )
 });
 
