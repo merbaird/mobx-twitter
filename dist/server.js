@@ -63,20 +63,20 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 168);
+/******/ 	return __webpack_require__(__webpack_require__.s = 165);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
 /***/ (function(module, exports) {
 
-module.exports = require("util");
+module.exports = require("crypto");
 
 /***/ }),
 /* 1 */
 /***/ (function(module, exports) {
 
-module.exports = require("crypto");
+module.exports = require("util");
 
 /***/ }),
 /* 2 */
@@ -85,9 +85,9 @@ module.exports = require("crypto");
 // Copyright (c) 2012, Mark Cavage. All rights reserved.
 // Copyright 2015 Joyent, Inc.
 
-var assert = __webpack_require__(18);
+var assert = __webpack_require__(22);
 var Stream = __webpack_require__(10).Stream;
-var util = __webpack_require__(0);
+var util = __webpack_require__(1);
 
 
 ///--- Globals
@@ -316,7 +316,7 @@ module.exports = {
 
 var assert = __webpack_require__(2);
 var PrivateKey = __webpack_require__(6);
-var crypto = __webpack_require__(1);
+var crypto = __webpack_require__(0);
 
 var MAX_CLASS_DEPTH = 3;
 
@@ -503,7 +503,7 @@ function calculateDSAPublic(g, p, x) {
 	assert.buffer(p);
 	assert.buffer(x);
 	try {
-		var bigInt = __webpack_require__(16).BigInteger;
+		var bigInt = __webpack_require__(15).BigInteger;
 	} catch (e) {
 		throw (new Error('To load a PKCS#8 format DSA private key, ' +
 		    'the node jsbn library is required.'));
@@ -520,7 +520,7 @@ function addRSAMissing(key) {
 	assert.object(key);
 	assertCompatible(key, PrivateKey, [1, 1]);
 	try {
-		var bigInt = __webpack_require__(16).BigInteger;
+		var bigInt = __webpack_require__(15).BigInteger;
 	} catch (e) {
 		throw (new Error('To write a PEM private key from ' +
 		    'this source, the node jsbn lib is required.'));
@@ -773,17 +773,17 @@ module.exports = Key;
 
 var assert = __webpack_require__(2);
 var algs = __webpack_require__(4);
-var crypto = __webpack_require__(1);
-var Fingerprint = __webpack_require__(27);
-var Signature = __webpack_require__(13);
-var DiffieHellman = __webpack_require__(110).DiffieHellman;
-var errs = __webpack_require__(12);
+var crypto = __webpack_require__(0);
+var Fingerprint = __webpack_require__(26);
+var Signature = __webpack_require__(12);
+var DiffieHellman = __webpack_require__(107).DiffieHellman;
+var errs = __webpack_require__(11);
 var utils = __webpack_require__(3);
 var PrivateKey = __webpack_require__(6);
 var edCompat;
 
 try {
-	edCompat = __webpack_require__(111);
+	edCompat = __webpack_require__(108);
 } catch (e) {
 	/* Just continue through, and bail out if we try to use it. */
 }
@@ -792,12 +792,12 @@ var InvalidAlgorithmError = errs.InvalidAlgorithmError;
 var KeyParseError = errs.KeyParseError;
 
 var formats = {};
-formats['auto'] = __webpack_require__(112);
-formats['pem'] = __webpack_require__(17);
+formats['auto'] = __webpack_require__(109);
+formats['pem'] = __webpack_require__(16);
 formats['pkcs1'] = __webpack_require__(63);
-formats['pkcs8'] = __webpack_require__(28);
+formats['pkcs8'] = __webpack_require__(27);
 formats['rfc4253'] = __webpack_require__(21);
-formats['ssh'] = __webpack_require__(113);
+formats['ssh'] = __webpack_require__(110);
 formats['ssh-private'] = __webpack_require__(46);
 formats['openssh'] = formats['ssh-private'];
 
@@ -1053,20 +1053,20 @@ module.exports = PrivateKey;
 
 var assert = __webpack_require__(2);
 var algs = __webpack_require__(4);
-var crypto = __webpack_require__(1);
-var Fingerprint = __webpack_require__(27);
-var Signature = __webpack_require__(13);
-var errs = __webpack_require__(12);
-var util = __webpack_require__(0);
+var crypto = __webpack_require__(0);
+var Fingerprint = __webpack_require__(26);
+var Signature = __webpack_require__(12);
+var errs = __webpack_require__(11);
+var util = __webpack_require__(1);
 var utils = __webpack_require__(3);
-var dhe = __webpack_require__(110);
+var dhe = __webpack_require__(107);
 var generateECDSA = dhe.generateECDSA;
 var generateED25519 = dhe.generateED25519;
 var edCompat;
 var ed;
 
 try {
-	edCompat = __webpack_require__(111);
+	edCompat = __webpack_require__(108);
 } catch (e) {
 	/* Just continue through, and bail out if we try to use it. */
 }
@@ -1078,10 +1078,10 @@ var KeyParseError = errs.KeyParseError;
 var KeyEncryptedError = errs.KeyEncryptedError;
 
 var formats = {};
-formats['auto'] = __webpack_require__(112);
-formats['pem'] = __webpack_require__(17);
+formats['auto'] = __webpack_require__(109);
+formats['pem'] = __webpack_require__(16);
 formats['pkcs1'] = __webpack_require__(63);
-formats['pkcs8'] = __webpack_require__(28);
+formats['pkcs8'] = __webpack_require__(27);
 formats['rfc4253'] = __webpack_require__(21);
 formats['ssh-private'] = __webpack_require__(46);
 formats['openssh'] = formats['ssh-private'];
@@ -1330,18 +1330,12 @@ module.exports = require("stream");
 
 /***/ }),
 /* 11 */
-/***/ (function(module, exports) {
-
-module.exports = require("fs");
-
-/***/ }),
-/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Copyright 2015 Joyent, Inc.
 
 var assert = __webpack_require__(2);
-var util = __webpack_require__(0);
+var util = __webpack_require__(1);
 
 function FingerprintFormatError(fp, format) {
 	if (Error.captureStackTrace)
@@ -1425,7 +1419,7 @@ module.exports = {
 
 
 /***/ }),
-/* 13 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Copyright 2015 Joyent, Inc.
@@ -1434,10 +1428,10 @@ module.exports = Signature;
 
 var assert = __webpack_require__(2);
 var algs = __webpack_require__(4);
-var crypto = __webpack_require__(1);
-var errs = __webpack_require__(12);
+var crypto = __webpack_require__(0);
+var errs = __webpack_require__(11);
 var utils = __webpack_require__(3);
-var asn1 = __webpack_require__(14);
+var asn1 = __webpack_require__(13);
 var SSHBuffer = __webpack_require__(47);
 
 var InvalidAlgorithmError = errs.InvalidAlgorithmError;
@@ -1744,7 +1738,7 @@ Signature._oldVersionDetect = function (obj) {
 
 
 /***/ }),
-/* 14 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Copyright 2011 Mark Cavage <mcavage@gmail.com> All rights reserved.
@@ -1752,7 +1746,7 @@ Signature._oldVersionDetect = function (obj) {
 // If you have no idea what ASN.1 or BER is, see this:
 // ftp://ftp.rsa.com/pub/pkcs/ascii/layman.asc
 
-var Ber = __webpack_require__(158);
+var Ber = __webpack_require__(155);
 
 
 
@@ -1770,7 +1764,7 @@ module.exports = {
 
 
 /***/ }),
-/* 15 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1788,14 +1782,14 @@ module.exports = {
  * @api private
  */
 
-var contentDisposition = __webpack_require__(88);
-var contentType = __webpack_require__(169);
+var contentDisposition = __webpack_require__(87);
+var contentType = __webpack_require__(166);
 var deprecate = __webpack_require__(20)('express');
 var flatten = __webpack_require__(32);
 var mime = __webpack_require__(62).mime;
 var basename = __webpack_require__(8).basename;
 var etag = __webpack_require__(92);
-var proxyaddr = __webpack_require__(102);
+var proxyaddr = __webpack_require__(101);
 var qs = __webpack_require__(44);
 var querystring = __webpack_require__(31);
 
@@ -2076,7 +2070,7 @@ function newObject() {
 
 
 /***/ }),
-/* 16 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 (function(){
@@ -3439,7 +3433,7 @@ function newObject() {
 
 
 /***/ }),
-/* 17 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Copyright 2015 Joyent, Inc.
@@ -3450,19 +3444,19 @@ module.exports = {
 };
 
 var assert = __webpack_require__(2);
-var asn1 = __webpack_require__(14);
-var crypto = __webpack_require__(1);
+var asn1 = __webpack_require__(13);
+var crypto = __webpack_require__(0);
 var algs = __webpack_require__(4);
 var utils = __webpack_require__(3);
 var Key = __webpack_require__(5);
 var PrivateKey = __webpack_require__(6);
 
 var pkcs1 = __webpack_require__(63);
-var pkcs8 = __webpack_require__(28);
+var pkcs8 = __webpack_require__(27);
 var sshpriv = __webpack_require__(46);
 var rfc4253 = __webpack_require__(21);
 
-var errors = __webpack_require__(12);
+var errors = __webpack_require__(11);
 
 /*
  * For reading we support both PKCS#1 and PKCS#8. If we find a private key,
@@ -3631,13 +3625,13 @@ function write(key, options, type) {
 
 
 /***/ }),
-/* 18 */
+/* 17 */
 /***/ (function(module, exports) {
 
-module.exports = require("assert");
+module.exports = require("fs");
 
 /***/ }),
-/* 19 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3652,7 +3646,7 @@ module.exports = {
   toHash: toHash,
   getProperty: getProperty,
   escapeQuotes: escapeQuotes,
-  ucs2length: __webpack_require__(134),
+  ucs2length: __webpack_require__(131),
   varOccurences: varOccurences,
   varReplace: varReplace,
   cleanUpCode: cleanUpCode,
@@ -3897,6 +3891,22 @@ function escapeJsonPointer(str) {
 
 function unescapeJsonPointer(str) {
   return str.replace(/~1/g, '/').replace(/~0/g, '~');
+}
+
+
+/***/ }),
+/* 19 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/**
+ * Detect Electron renderer process, which is node, but we should
+ * treat as a browser.
+ */
+
+if (typeof process !== 'undefined' && process.type === 'renderer') {
+  module.exports = __webpack_require__(169);
+} else {
+  module.exports = __webpack_require__(170);
 }
 
 
@@ -4583,26 +4593,10 @@ function write(key, options) {
 /* 22 */
 /***/ (function(module, exports) {
 
-module.exports = require("net");
+module.exports = require("assert");
 
 /***/ }),
 /* 23 */
-/***/ (function(module, exports, __webpack_require__) {
-
-/**
- * Detect Electron renderer process, which is node, but we should
- * treat as a browser.
- */
-
-if (typeof process !== 'undefined' && process.type === 'renderer') {
-  module.exports = __webpack_require__(187);
-} else {
-  module.exports = __webpack_require__(188);
-}
-
-
-/***/ }),
-/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4747,10 +4741,10 @@ function fresh(url, parsedUrl) {
 
 
 /***/ }),
-/* 25 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var buffer = __webpack_require__(121)
+var buffer = __webpack_require__(118)
 
 if (Buffer.from && Buffer.alloc && Buffer.allocUnsafe && Buffer.allocUnsafeSlow) {
   module.exports = buffer
@@ -4811,7 +4805,7 @@ SafeBuffer.allocUnsafeSlow = function (size) {
 
 
 /***/ }),
-/* 26 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Copyright 2016 Joyent, Inc.
@@ -4820,20 +4814,20 @@ module.exports = Certificate;
 
 var assert = __webpack_require__(2);
 var algs = __webpack_require__(4);
-var crypto = __webpack_require__(1);
-var Fingerprint = __webpack_require__(27);
-var Signature = __webpack_require__(13);
-var errs = __webpack_require__(12);
-var util = __webpack_require__(0);
+var crypto = __webpack_require__(0);
+var Fingerprint = __webpack_require__(26);
+var Signature = __webpack_require__(12);
+var errs = __webpack_require__(11);
+var util = __webpack_require__(1);
 var utils = __webpack_require__(3);
 var Key = __webpack_require__(5);
 var PrivateKey = __webpack_require__(6);
-var Identity = __webpack_require__(29);
+var Identity = __webpack_require__(28);
 
 var formats = {};
-formats['openssh'] = __webpack_require__(274);
-formats['x509'] = __webpack_require__(114);
-formats['pem'] = __webpack_require__(275);
+formats['openssh'] = __webpack_require__(262);
+formats['x509'] = __webpack_require__(111);
+formats['pem'] = __webpack_require__(263);
 
 var CertificateParseError = errs.CertificateParseError;
 var InvalidAlgorithmError = errs.InvalidAlgorithmError;
@@ -5194,7 +5188,7 @@ Certificate._oldVersionDetect = function (obj) {
 
 
 /***/ }),
-/* 27 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Copyright 2015 Joyent, Inc.
@@ -5203,10 +5197,10 @@ module.exports = Fingerprint;
 
 var assert = __webpack_require__(2);
 var algs = __webpack_require__(4);
-var crypto = __webpack_require__(1);
-var errs = __webpack_require__(12);
+var crypto = __webpack_require__(0);
+var errs = __webpack_require__(11);
 var Key = __webpack_require__(5);
-var Certificate = __webpack_require__(26);
+var Certificate = __webpack_require__(25);
 var utils = __webpack_require__(3);
 
 var FingerprintFormatError = errs.FingerprintFormatError;
@@ -5361,7 +5355,7 @@ Fingerprint._oldVersionDetect = function (obj) {
 
 
 /***/ }),
-/* 28 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Copyright 2015 Joyent, Inc.
@@ -5377,12 +5371,12 @@ module.exports = {
 };
 
 var assert = __webpack_require__(2);
-var asn1 = __webpack_require__(14);
+var asn1 = __webpack_require__(13);
 var algs = __webpack_require__(4);
 var utils = __webpack_require__(3);
 var Key = __webpack_require__(5);
 var PrivateKey = __webpack_require__(6);
-var pem = __webpack_require__(17);
+var pem = __webpack_require__(16);
 
 function read(buf, options) {
 	return (pem.read(buf, options, 'pkcs8'));
@@ -5872,7 +5866,7 @@ function writePkcs8ECDSAPrivate(key, der) {
 
 
 /***/ }),
-/* 29 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Copyright 2017 Joyent, Inc.
@@ -5881,13 +5875,13 @@ module.exports = Identity;
 
 var assert = __webpack_require__(2);
 var algs = __webpack_require__(4);
-var crypto = __webpack_require__(1);
-var Fingerprint = __webpack_require__(27);
-var Signature = __webpack_require__(13);
-var errs = __webpack_require__(12);
-var util = __webpack_require__(0);
+var crypto = __webpack_require__(0);
+var Fingerprint = __webpack_require__(26);
+var Signature = __webpack_require__(12);
+var errs = __webpack_require__(11);
+var util = __webpack_require__(1);
 var utils = __webpack_require__(3);
-var asn1 = __webpack_require__(14);
+var asn1 = __webpack_require__(13);
 
 /*JSSTYLED*/
 var DNS_NAME_RE = /^([*]|[a-z0-9][a-z0-9\-]{0,62})(?:\.([*]|[a-z0-9][a-z0-9\-]{0,62}))*$/i;
@@ -6155,10 +6149,16 @@ Identity._oldVersionDetect = function (obj) {
 
 
 /***/ }),
-/* 30 */
+/* 29 */
 /***/ (function(module, exports) {
 
 module.exports = require("events");
+
+/***/ }),
+/* 30 */
+/***/ (function(module, exports) {
+
+module.exports = require("net");
 
 /***/ }),
 /* 31 */
@@ -6241,222 +6241,10 @@ function arrayFlatten (array, depth) {
 /* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
-// Copyright (c) 2012, Mark Cavage. All rights reserved.
-// Copyright 2015 Joyent, Inc.
-
-var assert = __webpack_require__(18);
-var Stream = __webpack_require__(10).Stream;
-var util = __webpack_require__(0);
-
-
-///--- Globals
-
-/* JSSTYLED */
-var UUID_REGEXP = /^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$/;
-
-
-///--- Internal
-
-function _capitalize(str) {
-    return (str.charAt(0).toUpperCase() + str.slice(1));
-}
-
-function _toss(name, expected, oper, arg, actual) {
-    throw new assert.AssertionError({
-        message: util.format('%s (%s) is required', name, expected),
-        actual: (actual === undefined) ? typeof (arg) : actual(arg),
-        expected: expected,
-        operator: oper || '===',
-        stackStartFunction: _toss.caller
-    });
-}
-
-function _getClass(arg) {
-    return (Object.prototype.toString.call(arg).slice(8, -1));
-}
-
-function noop() {
-    // Why even bother with asserts?
-}
-
-
-///--- Exports
-
-var types = {
-    bool: {
-        check: function (arg) { return typeof (arg) === 'boolean'; }
-    },
-    func: {
-        check: function (arg) { return typeof (arg) === 'function'; }
-    },
-    string: {
-        check: function (arg) { return typeof (arg) === 'string'; }
-    },
-    object: {
-        check: function (arg) {
-            return typeof (arg) === 'object' && arg !== null;
-        }
-    },
-    number: {
-        check: function (arg) {
-            return typeof (arg) === 'number' && !isNaN(arg) && isFinite(arg);
-        }
-    },
-    buffer: {
-        check: function (arg) { return Buffer.isBuffer(arg); },
-        operator: 'Buffer.isBuffer'
-    },
-    array: {
-        check: function (arg) { return Array.isArray(arg); },
-        operator: 'Array.isArray'
-    },
-    stream: {
-        check: function (arg) { return arg instanceof Stream; },
-        operator: 'instanceof',
-        actual: _getClass
-    },
-    date: {
-        check: function (arg) { return arg instanceof Date; },
-        operator: 'instanceof',
-        actual: _getClass
-    },
-    regexp: {
-        check: function (arg) { return arg instanceof RegExp; },
-        operator: 'instanceof',
-        actual: _getClass
-    },
-    uuid: {
-        check: function (arg) {
-            return typeof (arg) === 'string' && UUID_REGEXP.test(arg);
-        },
-        operator: 'isUUID'
-    }
-};
-
-function _setExports(ndebug) {
-    var keys = Object.keys(types);
-    var out;
-
-    /* re-export standard assert */
-    if (process.env.NODE_NDEBUG) {
-        out = noop;
-    } else {
-        out = function (arg, msg) {
-            if (!arg) {
-                _toss(msg, 'true', arg);
-            }
-        };
-    }
-
-    /* standard checks */
-    keys.forEach(function (k) {
-        if (ndebug) {
-            out[k] = noop;
-            return;
-        }
-        var type = types[k];
-        out[k] = function (arg, msg) {
-            if (!type.check(arg)) {
-                _toss(msg, k, type.operator, arg, type.actual);
-            }
-        };
-    });
-
-    /* optional checks */
-    keys.forEach(function (k) {
-        var name = 'optional' + _capitalize(k);
-        if (ndebug) {
-            out[name] = noop;
-            return;
-        }
-        var type = types[k];
-        out[name] = function (arg, msg) {
-            if (arg === undefined || arg === null) {
-                return;
-            }
-            if (!type.check(arg)) {
-                _toss(msg, k, type.operator, arg, type.actual);
-            }
-        };
-    });
-
-    /* arrayOf checks */
-    keys.forEach(function (k) {
-        var name = 'arrayOf' + _capitalize(k);
-        if (ndebug) {
-            out[name] = noop;
-            return;
-        }
-        var type = types[k];
-        var expected = '[' + k + ']';
-        out[name] = function (arg, msg) {
-            if (!Array.isArray(arg)) {
-                _toss(msg, expected, type.operator, arg, type.actual);
-            }
-            var i;
-            for (i = 0; i < arg.length; i++) {
-                if (!type.check(arg[i])) {
-                    _toss(msg, expected, type.operator, arg, type.actual);
-                }
-            }
-        };
-    });
-
-    /* optionalArrayOf checks */
-    keys.forEach(function (k) {
-        var name = 'optionalArrayOf' + _capitalize(k);
-        if (ndebug) {
-            out[name] = noop;
-            return;
-        }
-        var type = types[k];
-        var expected = '[' + k + ']';
-        out[name] = function (arg, msg) {
-            if (arg === undefined || arg === null) {
-                return;
-            }
-            if (!Array.isArray(arg)) {
-                _toss(msg, expected, type.operator, arg, type.actual);
-            }
-            var i;
-            for (i = 0; i < arg.length; i++) {
-                if (!type.check(arg[i])) {
-                    _toss(msg, expected, type.operator, arg, type.actual);
-                }
-            }
-        };
-    });
-
-    /* re-export built-in assertions */
-    Object.keys(assert).forEach(function (k) {
-        if (k === 'AssertionError') {
-            out[k] = assert[k];
-            return;
-        }
-        if (ndebug) {
-            out[k] = noop;
-            return;
-        }
-        out[k] = assert[k];
-    });
-
-    /* export ourselves (for unit tests _only_) */
-    out._setExports = _setExports;
-
-    return out;
-}
-
-module.exports = _setExports(process.env.NODE_NDEBUG);
-
-
-/***/ }),
-/* 34 */
-/***/ (function(module, exports, __webpack_require__) {
-
 // Load modules
 
 var Http = __webpack_require__(9);
-var Hoek = __webpack_require__(39);
+var Hoek = __webpack_require__(38);
 
 
 // Declare internals
@@ -6774,7 +6562,7 @@ exports.badImplementation = function (message, data) {
 
 
 /***/ }),
-/* 35 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Basic Javascript Elliptic Curve implementation
@@ -6782,7 +6570,7 @@ exports.badImplementation = function (message, data) {
 // Only Fp curves implemented for now
 
 // Requires jsbn.js and jsbn2.js
-var BigInteger = __webpack_require__(16).BigInteger
+var BigInteger = __webpack_require__(15).BigInteger
 var Barrett = BigInteger.prototype.Barrett
 
 // ----------------
@@ -7341,7 +7129,7 @@ module.exports = exports
 
 
 /***/ }),
-/* 36 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7408,7 +7196,7 @@ function encodeUrl (url) {
 
 
 /***/ }),
-/* 37 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7493,13 +7281,13 @@ function escapeHtml(string) {
 
 
 /***/ }),
-/* 38 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Load modules
 
-var Sntp = __webpack_require__(109);
-var Boom = __webpack_require__(34);
+var Sntp = __webpack_require__(106);
+var Boom = __webpack_require__(33);
 
 
 // Declare internals
@@ -7509,7 +7297,7 @@ var internals = {};
 
 exports.version = function () {
 
-    return __webpack_require__(223).version;
+    return __webpack_require__(215).version;
 };
 
 
@@ -7683,15 +7471,15 @@ exports.unauthorized = function (message, attributes) {
 
 
 /***/ }),
-/* 39 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Load modules
 
-var Crypto = __webpack_require__(1);
+var Crypto = __webpack_require__(0);
 var Path = __webpack_require__(8);
-var Util = __webpack_require__(0);
-var Escape = __webpack_require__(224);
+var Util = __webpack_require__(1);
+var Escape = __webpack_require__(216);
 
 
 // Declare internals
@@ -8682,14 +8470,14 @@ exports.shallow = function (source) {
 
 
 /***/ }),
-/* 40 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Copyright 2012 Joyent, Inc.  All rights reserved.
 
-var assert = __webpack_require__(33);
+var assert = __webpack_require__(40);
 var sshpk = __webpack_require__(64);
-var util = __webpack_require__(0);
+var util = __webpack_require__(1);
 
 var HASH_ALGOS = {
   'sha1': true,
@@ -8800,6 +8588,218 @@ module.exports = {
 
 
 /***/ }),
+/* 40 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// Copyright (c) 2012, Mark Cavage. All rights reserved.
+// Copyright 2015 Joyent, Inc.
+
+var assert = __webpack_require__(22);
+var Stream = __webpack_require__(10).Stream;
+var util = __webpack_require__(1);
+
+
+///--- Globals
+
+/* JSSTYLED */
+var UUID_REGEXP = /^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$/;
+
+
+///--- Internal
+
+function _capitalize(str) {
+    return (str.charAt(0).toUpperCase() + str.slice(1));
+}
+
+function _toss(name, expected, oper, arg, actual) {
+    throw new assert.AssertionError({
+        message: util.format('%s (%s) is required', name, expected),
+        actual: (actual === undefined) ? typeof (arg) : actual(arg),
+        expected: expected,
+        operator: oper || '===',
+        stackStartFunction: _toss.caller
+    });
+}
+
+function _getClass(arg) {
+    return (Object.prototype.toString.call(arg).slice(8, -1));
+}
+
+function noop() {
+    // Why even bother with asserts?
+}
+
+
+///--- Exports
+
+var types = {
+    bool: {
+        check: function (arg) { return typeof (arg) === 'boolean'; }
+    },
+    func: {
+        check: function (arg) { return typeof (arg) === 'function'; }
+    },
+    string: {
+        check: function (arg) { return typeof (arg) === 'string'; }
+    },
+    object: {
+        check: function (arg) {
+            return typeof (arg) === 'object' && arg !== null;
+        }
+    },
+    number: {
+        check: function (arg) {
+            return typeof (arg) === 'number' && !isNaN(arg) && isFinite(arg);
+        }
+    },
+    buffer: {
+        check: function (arg) { return Buffer.isBuffer(arg); },
+        operator: 'Buffer.isBuffer'
+    },
+    array: {
+        check: function (arg) { return Array.isArray(arg); },
+        operator: 'Array.isArray'
+    },
+    stream: {
+        check: function (arg) { return arg instanceof Stream; },
+        operator: 'instanceof',
+        actual: _getClass
+    },
+    date: {
+        check: function (arg) { return arg instanceof Date; },
+        operator: 'instanceof',
+        actual: _getClass
+    },
+    regexp: {
+        check: function (arg) { return arg instanceof RegExp; },
+        operator: 'instanceof',
+        actual: _getClass
+    },
+    uuid: {
+        check: function (arg) {
+            return typeof (arg) === 'string' && UUID_REGEXP.test(arg);
+        },
+        operator: 'isUUID'
+    }
+};
+
+function _setExports(ndebug) {
+    var keys = Object.keys(types);
+    var out;
+
+    /* re-export standard assert */
+    if (process.env.NODE_NDEBUG) {
+        out = noop;
+    } else {
+        out = function (arg, msg) {
+            if (!arg) {
+                _toss(msg, 'true', arg);
+            }
+        };
+    }
+
+    /* standard checks */
+    keys.forEach(function (k) {
+        if (ndebug) {
+            out[k] = noop;
+            return;
+        }
+        var type = types[k];
+        out[k] = function (arg, msg) {
+            if (!type.check(arg)) {
+                _toss(msg, k, type.operator, arg, type.actual);
+            }
+        };
+    });
+
+    /* optional checks */
+    keys.forEach(function (k) {
+        var name = 'optional' + _capitalize(k);
+        if (ndebug) {
+            out[name] = noop;
+            return;
+        }
+        var type = types[k];
+        out[name] = function (arg, msg) {
+            if (arg === undefined || arg === null) {
+                return;
+            }
+            if (!type.check(arg)) {
+                _toss(msg, k, type.operator, arg, type.actual);
+            }
+        };
+    });
+
+    /* arrayOf checks */
+    keys.forEach(function (k) {
+        var name = 'arrayOf' + _capitalize(k);
+        if (ndebug) {
+            out[name] = noop;
+            return;
+        }
+        var type = types[k];
+        var expected = '[' + k + ']';
+        out[name] = function (arg, msg) {
+            if (!Array.isArray(arg)) {
+                _toss(msg, expected, type.operator, arg, type.actual);
+            }
+            var i;
+            for (i = 0; i < arg.length; i++) {
+                if (!type.check(arg[i])) {
+                    _toss(msg, expected, type.operator, arg, type.actual);
+                }
+            }
+        };
+    });
+
+    /* optionalArrayOf checks */
+    keys.forEach(function (k) {
+        var name = 'optionalArrayOf' + _capitalize(k);
+        if (ndebug) {
+            out[name] = noop;
+            return;
+        }
+        var type = types[k];
+        var expected = '[' + k + ']';
+        out[name] = function (arg, msg) {
+            if (arg === undefined || arg === null) {
+                return;
+            }
+            if (!Array.isArray(arg)) {
+                _toss(msg, expected, type.operator, arg, type.actual);
+            }
+            var i;
+            for (i = 0; i < arg.length; i++) {
+                if (!type.check(arg[i])) {
+                    _toss(msg, expected, type.operator, arg, type.actual);
+                }
+            }
+        };
+    });
+
+    /* re-export built-in assertions */
+    Object.keys(assert).forEach(function (k) {
+        if (k === 'AssertionError') {
+            out[k] = assert[k];
+            return;
+        }
+        if (ndebug) {
+            out[k] = noop;
+            return;
+        }
+        out[k] = assert[k];
+    });
+
+    /* export ourselves (for unit tests _only_) */
+    out._setExports = _setExports;
+
+    return out;
+}
+
+module.exports = _setExports(process.env.NODE_NDEBUG);
+
+
+/***/ }),
 /* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -8820,7 +8820,7 @@ module.exports = {
  * You should have received a copy of the license along with this program.
  */
 
-var crypto = __webpack_require__(1);
+var crypto = __webpack_require__(0);
 
     /**
      * @exports jodid25519/core
@@ -9511,7 +9511,7 @@ module.exports = ns;
  * @private
  */
 
-var db = __webpack_require__(246)
+var db = __webpack_require__(237)
 var extname = __webpack_require__(8).extname
 
 /**
@@ -9694,9 +9694,9 @@ function populateMaps (extensions, types) {
 "use strict";
 
 
-var stringify = __webpack_require__(258);
-var parse = __webpack_require__(257);
-var formats = __webpack_require__(103);
+var stringify = __webpack_require__(249);
+var parse = __webpack_require__(248);
+var formats = __webpack_require__(102);
 
 module.exports = {
     formats: formats,
@@ -9739,17 +9739,17 @@ module.exports = {
 };
 
 var assert = __webpack_require__(2);
-var asn1 = __webpack_require__(14);
+var asn1 = __webpack_require__(13);
 var algs = __webpack_require__(4);
 var utils = __webpack_require__(3);
-var crypto = __webpack_require__(1);
+var crypto = __webpack_require__(0);
 
 var Key = __webpack_require__(5);
 var PrivateKey = __webpack_require__(6);
-var pem = __webpack_require__(17);
+var pem = __webpack_require__(16);
 var rfc4253 = __webpack_require__(21);
 var SSHBuffer = __webpack_require__(47);
-var errors = __webpack_require__(12);
+var errors = __webpack_require__(11);
 
 var bcrypt;
 
@@ -9798,7 +9798,7 @@ function readSSHPrivate(type, buf, options) {
 		var rounds = kdfOptsBuf.readInt();
 		var cinf = utils.opensshCipherInfo(cipher);
 		if (bcrypt === undefined) {
-			bcrypt = __webpack_require__(85);
+			bcrypt = __webpack_require__(84);
 		}
 
 		if (typeof (options.passphrase) === 'string') {
@@ -9919,7 +9919,7 @@ function write(key, options) {
 		kdfopts = kdfssh.toBuffer();
 
 		if (bcrypt === undefined) {
-			bcrypt = __webpack_require__(85);
+			bcrypt = __webpack_require__(84);
 		}
 		var pass = new Uint8Array(passphrase);
 		var salti = new Uint8Array(salt);
@@ -10166,7 +10166,7 @@ SSHBuffer.prototype.write = function (buf) {
  * @private
  */
 
-var codes = __webpack_require__(276)
+var codes = __webpack_require__(264)
 
 /**
  * Module exports.
@@ -12644,7 +12644,7 @@ nacl.setPRNG = function(fn) {
     });
   } else if (true) {
     // Node.js.
-    crypto = __webpack_require__(1);
+    crypto = __webpack_require__(0);
     if (crypto && crypto.randomBytes) {
       nacl.setPRNG(function(x, n) {
         var i, v = crypto.randomBytes(n);
@@ -12897,9 +12897,9 @@ module.exports = function extend() {
 
 // Load modules
 
-var Crypto = __webpack_require__(1);
+var Crypto = __webpack_require__(0);
 var Url = __webpack_require__(7);
-var Utils = __webpack_require__(38);
+var Utils = __webpack_require__(37);
 
 
 // Declare internals
@@ -13039,8 +13039,8 @@ exports.timestampMessage = function (credentials, localtimeOffsetMsec) {
  * You should have received a copy of the license along with this program.
  */
 
-var dh = __webpack_require__(234);
-var eddsa = __webpack_require__(235);
+var dh = __webpack_require__(226);
+var eddsa = __webpack_require__(227);
 var curve255 = __webpack_require__(57);
 var utils = __webpack_require__(42);
     
@@ -13297,7 +13297,7 @@ module.exports = ns;
 /* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var json = typeof JSON !== 'undefined' ? JSON : __webpack_require__(238);
+var json = typeof JSON !== 'undefined' ? JSON : __webpack_require__(230);
 
 module.exports = function (obj, opts) {
     if (!opts) opts = {};
@@ -13486,7 +13486,7 @@ module.exports.isFinished = isFinished
  * @private
  */
 
-var first = __webpack_require__(179)
+var first = __webpack_require__(178)
 
 /**
  * Variables.
@@ -13669,9 +13669,9 @@ function patchAssignSocket(res, callback) {
 "use strict";
 
 
-var jsonSafeStringify = __webpack_require__(237)
-  , crypto = __webpack_require__(1)
-  , Buffer = __webpack_require__(25).Buffer
+var jsonSafeStringify = __webpack_require__(229)
+  , crypto = __webpack_require__(0)
+  , Buffer = __webpack_require__(24).Buffer
 
 var defer = typeof setImmediate === 'undefined'
   ? process.nextTick
@@ -13754,24 +13754,24 @@ exports.defer                 = defer
  * @private
  */
 
-var createError = __webpack_require__(225)
-var debug = __webpack_require__(270)('send')
+var createError = __webpack_require__(217)
+var debug = __webpack_require__(19)('send')
 var deprecate = __webpack_require__(20)('send')
-var destroy = __webpack_require__(177)
-var encodeUrl = __webpack_require__(36)
-var escapeHtml = __webpack_require__(37)
+var destroy = __webpack_require__(176)
+var encodeUrl = __webpack_require__(35)
+var escapeHtml = __webpack_require__(36)
 var etag = __webpack_require__(92)
-var EventEmitter = __webpack_require__(30).EventEmitter
-var fresh = __webpack_require__(100)
-var fs = __webpack_require__(11)
-var mime = __webpack_require__(247)
-var ms = __webpack_require__(108)
+var EventEmitter = __webpack_require__(29).EventEmitter
+var fresh = __webpack_require__(98)
+var fs = __webpack_require__(17)
+var mime = __webpack_require__(238)
+var ms = __webpack_require__(100)
 var onFinished = __webpack_require__(60)
-var parseRange = __webpack_require__(105)
+var parseRange = __webpack_require__(104)
 var path = __webpack_require__(8)
 var statuses = __webpack_require__(48)
 var Stream = __webpack_require__(10)
-var util = __webpack_require__(0)
+var util = __webpack_require__(1)
 
 /**
  * Path function references.
@@ -14830,15 +14830,15 @@ module.exports = {
 };
 
 var assert = __webpack_require__(2);
-var asn1 = __webpack_require__(14);
+var asn1 = __webpack_require__(13);
 var algs = __webpack_require__(4);
 var utils = __webpack_require__(3);
 
 var Key = __webpack_require__(5);
 var PrivateKey = __webpack_require__(6);
-var pem = __webpack_require__(17);
+var pem = __webpack_require__(16);
 
-var pkcs8 = __webpack_require__(28);
+var pkcs8 = __webpack_require__(27);
 var readECDSACurve = pkcs8.readECDSACurve;
 
 function read(buf, options) {
@@ -15149,12 +15149,12 @@ function writePkcs1ECDSAPrivate(der, key) {
 // Copyright 2015 Joyent, Inc.
 
 var Key = __webpack_require__(5);
-var Fingerprint = __webpack_require__(27);
-var Signature = __webpack_require__(13);
+var Fingerprint = __webpack_require__(26);
+var Signature = __webpack_require__(12);
 var PrivateKey = __webpack_require__(6);
-var Certificate = __webpack_require__(26);
-var Identity = __webpack_require__(29);
-var errs = __webpack_require__(12);
+var Certificate = __webpack_require__(25);
+var Identity = __webpack_require__(28);
+var errs = __webpack_require__(11);
 
 module.exports = {
 	/* top-level classes */
@@ -15220,8 +15220,8 @@ exports = module.exports = function(a, b){
 /* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var v1 = __webpack_require__(286);
-var v4 = __webpack_require__(287);
+var v1 = __webpack_require__(274);
+var v4 = __webpack_require__(275);
 
 var uuid = v4;
 uuid.v1 = v1;
@@ -15234,22 +15234,16 @@ module.exports = uuid;
 /* 67 */
 /***/ (function(module, exports) {
 
-module.exports = require("tty");
-
-/***/ }),
-/* 68 */
-/***/ (function(module, exports) {
-
 function webpackEmptyContext(req) {
 	throw new Error("Cannot find module '" + req + "'.");
 }
 webpackEmptyContext.keys = function() { return []; };
 webpackEmptyContext.resolve = webpackEmptyContext;
 module.exports = webpackEmptyContext;
-webpackEmptyContext.id = 68;
+webpackEmptyContext.id = 67;
 
 /***/ }),
-/* 69 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15261,7 +15255,7 @@ module.exports = {
 };
 
 
-var util = __webpack_require__(19);
+var util = __webpack_require__(18);
 
 var ASYNC = {
   '*': checkGenerators,
@@ -15474,7 +15468,7 @@ function compileAsync(schema, callback) {
 
 
 /***/ }),
-/* 70 */
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15526,16 +15520,16 @@ module.exports = function equal(a, b) {
 
 
 /***/ }),
-/* 71 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var url = __webpack_require__(7)
-  , equal = __webpack_require__(70)
-  , util = __webpack_require__(19)
-  , SchemaObject = __webpack_require__(72);
+  , equal = __webpack_require__(69)
+  , util = __webpack_require__(18)
+  , SchemaObject = __webpack_require__(71);
 
 module.exports = resolve;
 
@@ -15800,13 +15794,13 @@ function resolveIds(schema) {
 
 
 /***/ }),
-/* 72 */
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var util = __webpack_require__(19);
+var util = __webpack_require__(18);
 
 module.exports = SchemaObject;
 
@@ -15816,7 +15810,7 @@ function SchemaObject(obj) {
 
 
 /***/ }),
-/* 73 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15837,7 +15831,7 @@ ValidationError.prototype.constructor = ValidationError;
 
 
 /***/ }),
-/* 74 */
+/* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15968,7 +15962,7 @@ module.exports = function generate__limit(it, $keyword) {
 
 
 /***/ }),
-/* 75 */
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16051,7 +16045,7 @@ module.exports = function generate__limitItems(it, $keyword) {
 
 
 /***/ }),
-/* 76 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16139,7 +16133,7 @@ module.exports = function generate__limitLength(it, $keyword) {
 
 
 /***/ }),
-/* 77 */
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16222,7 +16216,7 @@ module.exports = function generate__limitProperties(it, $keyword) {
 
 
 /***/ }),
-/* 78 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16604,7 +16598,7 @@ module.exports = function generate_validate(it, $keyword) {
 
 
 /***/ }),
-/* 79 */
+/* 78 */
 /***/ (function(module, exports) {
 
 // API
@@ -16639,10 +16633,10 @@ function clean(key)
 
 
 /***/ }),
-/* 80 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var defer = __webpack_require__(162);
+var defer = __webpack_require__(159);
 
 // API
 module.exports = async;
@@ -16679,11 +16673,11 @@ function async(callback)
 
 
 /***/ }),
-/* 81 */
+/* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var async = __webpack_require__(80)
-  , abort = __webpack_require__(79)
+var async = __webpack_require__(79)
+  , abort = __webpack_require__(78)
   ;
 
 // API
@@ -16760,7 +16754,7 @@ function runJob(iterator, key, item, callback)
 
 
 /***/ }),
-/* 82 */
+/* 81 */
 /***/ (function(module, exports) {
 
 // API
@@ -16803,11 +16797,11 @@ function state(list, sortMethod)
 
 
 /***/ }),
-/* 83 */
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var abort = __webpack_require__(79)
-  , async = __webpack_require__(80)
+var abort = __webpack_require__(78)
+  , async = __webpack_require__(79)
   ;
 
 // API
@@ -16838,12 +16832,12 @@ function terminator(callback)
 
 
 /***/ }),
-/* 84 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var iterate    = __webpack_require__(81)
-  , initState  = __webpack_require__(82)
-  , terminator = __webpack_require__(83)
+var iterate    = __webpack_require__(80)
+  , initState  = __webpack_require__(81)
+  , terminator = __webpack_require__(82)
   ;
 
 // Public API
@@ -16919,7 +16913,7 @@ function descending(a, b)
 
 
 /***/ }),
-/* 85 */
+/* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17482,7 +17476,7 @@ module.exports = {
 
 
 /***/ }),
-/* 86 */
+/* 85 */
 /***/ (function(module, exports) {
 
 
@@ -17725,12 +17719,12 @@ function isObject(val) {
 
 
 /***/ }),
-/* 87 */
+/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var util = __webpack_require__(0);
+var util = __webpack_require__(1);
 var Stream = __webpack_require__(10).Stream;
-var DelayedStream = __webpack_require__(173);
+var DelayedStream = __webpack_require__(172);
 
 module.exports = CombinedStream;
 function CombinedStream() {
@@ -17919,7 +17913,7 @@ CombinedStream.prototype._emitError = function(err) {
 
 
 /***/ }),
-/* 88 */
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18371,13 +18365,13 @@ function ContentDisposition (type, parameters) {
 
 
 /***/ }),
-/* 89 */
+/* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Load modules
 
-var Crypto = __webpack_require__(1);
-var Boom = __webpack_require__(34);
+var Crypto = __webpack_require__(0);
+var Boom = __webpack_require__(33);
 
 
 // Declare internals
@@ -18445,6 +18439,214 @@ exports.fixedTimeComparison = function (a, b) {
 
 
 /***/ }),
+/* 89 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+/**
+ * This is the common logic for both the Node.js and web browser
+ * implementations of `debug()`.
+ *
+ * Expose `debug()` as the module.
+ */
+
+exports = module.exports = createDebug.debug = createDebug['default'] = createDebug;
+exports.coerce = coerce;
+exports.disable = disable;
+exports.enable = enable;
+exports.enabled = enabled;
+exports.humanize = __webpack_require__(100);
+
+/**
+ * The currently active debug mode names, and names to skip.
+ */
+
+exports.names = [];
+exports.skips = [];
+
+/**
+ * Map of special "%n" handling functions, for the debug "format" argument.
+ *
+ * Valid key names are a single, lower or upper-case letter, i.e. "n" and "N".
+ */
+
+exports.formatters = {};
+
+/**
+ * Previous log timestamp.
+ */
+
+var prevTime;
+
+/**
+ * Select a color.
+ * @param {String} namespace
+ * @return {Number}
+ * @api private
+ */
+
+function selectColor(namespace) {
+  var hash = 0, i;
+
+  for (i in namespace) {
+    hash  = ((hash << 5) - hash) + namespace.charCodeAt(i);
+    hash |= 0; // Convert to 32bit integer
+  }
+
+  return exports.colors[Math.abs(hash) % exports.colors.length];
+}
+
+/**
+ * Create a debugger with the given `namespace`.
+ *
+ * @param {String} namespace
+ * @return {Function}
+ * @api public
+ */
+
+function createDebug(namespace) {
+
+  function debug() {
+    // disabled?
+    if (!debug.enabled) return;
+
+    var self = debug;
+
+    // set `diff` timestamp
+    var curr = +new Date();
+    var ms = curr - (prevTime || curr);
+    self.diff = ms;
+    self.prev = prevTime;
+    self.curr = curr;
+    prevTime = curr;
+
+    // turn the `arguments` into a proper Array
+    var args = new Array(arguments.length);
+    for (var i = 0; i < args.length; i++) {
+      args[i] = arguments[i];
+    }
+
+    args[0] = exports.coerce(args[0]);
+
+    if ('string' !== typeof args[0]) {
+      // anything else let's inspect with %O
+      args.unshift('%O');
+    }
+
+    // apply any `formatters` transformations
+    var index = 0;
+    args[0] = args[0].replace(/%([a-zA-Z%])/g, function(match, format) {
+      // if we encounter an escaped % then don't increase the array index
+      if (match === '%%') return match;
+      index++;
+      var formatter = exports.formatters[format];
+      if ('function' === typeof formatter) {
+        var val = args[index];
+        match = formatter.call(self, val);
+
+        // now we need to remove `args[index]` since it's inlined in the `format`
+        args.splice(index, 1);
+        index--;
+      }
+      return match;
+    });
+
+    // apply env-specific formatting (colors, etc.)
+    exports.formatArgs.call(self, args);
+
+    var logFn = debug.log || exports.log || console.log.bind(console);
+    logFn.apply(self, args);
+  }
+
+  debug.namespace = namespace;
+  debug.enabled = exports.enabled(namespace);
+  debug.useColors = exports.useColors();
+  debug.color = selectColor(namespace);
+
+  // env-specific initialization logic for debug instances
+  if ('function' === typeof exports.init) {
+    exports.init(debug);
+  }
+
+  return debug;
+}
+
+/**
+ * Enables a debug mode by namespaces. This can include modes
+ * separated by a colon and wildcards.
+ *
+ * @param {String} namespaces
+ * @api public
+ */
+
+function enable(namespaces) {
+  exports.save(namespaces);
+
+  exports.names = [];
+  exports.skips = [];
+
+  var split = (typeof namespaces === 'string' ? namespaces : '').split(/[\s,]+/);
+  var len = split.length;
+
+  for (var i = 0; i < len; i++) {
+    if (!split[i]) continue; // ignore empty strings
+    namespaces = split[i].replace(/\*/g, '.*?');
+    if (namespaces[0] === '-') {
+      exports.skips.push(new RegExp('^' + namespaces.substr(1) + '$'));
+    } else {
+      exports.names.push(new RegExp('^' + namespaces + '$'));
+    }
+  }
+}
+
+/**
+ * Disable debug output.
+ *
+ * @api public
+ */
+
+function disable() {
+  exports.enable('');
+}
+
+/**
+ * Returns true if the given mode name is enabled, false otherwise.
+ *
+ * @param {String} name
+ * @return {Boolean}
+ * @api public
+ */
+
+function enabled(name) {
+  var i, len;
+  for (i = 0, len = exports.skips.length; i < len; i++) {
+    if (exports.skips[i].test(name)) {
+      return false;
+    }
+  }
+  for (i = 0, len = exports.names.length; i < len; i++) {
+    if (exports.names[i].test(name)) {
+      return true;
+    }
+  }
+  return false;
+}
+
+/**
+ * Coerce `val`.
+ *
+ * @param {Mixed} val
+ * @return {Mixed}
+ * @api private
+ */
+
+function coerce(val) {
+  if (val instanceof Error) return val.stack || val.message;
+  return val;
+}
+
+
+/***/ }),
 /* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18462,8 +18664,8 @@ exports.fixedTimeComparison = function (a, b) {
  * @private
  */
 
-var Buffer = __webpack_require__(121)
-var EventEmitter = __webpack_require__(30).EventEmitter
+var Buffer = __webpack_require__(118)
+var EventEmitter = __webpack_require__(29).EventEmitter
 
 /**
  * Module exports.
@@ -18471,7 +18673,7 @@ var EventEmitter = __webpack_require__(30).EventEmitter
  */
 
 lazyProperty(module.exports, 'bufferConcat', function bufferConcat() {
-  return Buffer.concat || __webpack_require__(174)
+  return Buffer.concat || __webpack_require__(173)
 })
 
 lazyProperty(module.exports, 'callSiteToString', function callSiteToString() {
@@ -18495,11 +18697,11 @@ lazyProperty(module.exports, 'callSiteToString', function callSiteToString() {
   Error.prepareStackTrace = prep
   Error.stackTraceLimit = limit
 
-  return stack[0].toString ? toString : __webpack_require__(175)
+  return stack[0].toString ? toString : __webpack_require__(174)
 })
 
 lazyProperty(module.exports, 'eventListenerCount', function eventListenerCount() {
-  return EventEmitter.listenerCount || __webpack_require__(176)
+  return EventEmitter.listenerCount || __webpack_require__(175)
 })
 
 /**
@@ -18539,10 +18741,10 @@ function toString(obj) {
 /* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var crypto = __webpack_require__(1);
-var BigInteger = __webpack_require__(16).BigInteger;
-var ECPointFp = __webpack_require__(35).ECPointFp;
-exports.ECCurves = __webpack_require__(178);
+var crypto = __webpack_require__(0);
+var BigInteger = __webpack_require__(15).BigInteger;
+var ECPointFp = __webpack_require__(34).ECPointFp;
+exports.ECCurves = __webpack_require__(177);
 
 // zero prepad
 function unstupid(hex,len)
@@ -18623,8 +18825,8 @@ module.exports = etag
  * @private
  */
 
-var crypto = __webpack_require__(1)
-var Stats = __webpack_require__(11).Stats
+var crypto = __webpack_require__(0)
+var Stats = __webpack_require__(17).Stats
 
 /**
  * Module variables.
@@ -18756,7 +18958,7 @@ function stattag (stat) {
  * Module dependencies.
  */
 
-var parseUrl = __webpack_require__(24);
+var parseUrl = __webpack_require__(23);
 var qs = __webpack_require__(44);
 
 /**
@@ -18814,10 +19016,10 @@ var Route = __webpack_require__(96);
 var Layer = __webpack_require__(95);
 var methods = __webpack_require__(59);
 var mixin = __webpack_require__(65);
-var debug = __webpack_require__(23)('express:router');
+var debug = __webpack_require__(19)('express:router');
 var deprecate = __webpack_require__(20)('express');
 var flatten = __webpack_require__(32);
-var parseUrl = __webpack_require__(24);
+var parseUrl = __webpack_require__(23);
 var setPrototypeOf = __webpack_require__(45)
 
 /**
@@ -19479,8 +19681,8 @@ function wrap(old, fn) {
  * @private
  */
 
-var pathRegexp = __webpack_require__(255);
-var debug = __webpack_require__(23)('express:router:layer');
+var pathRegexp = __webpack_require__(246);
+var debug = __webpack_require__(19)('express:router:layer');
 
 /**
  * Module variables.
@@ -19667,7 +19869,7 @@ function decode_param(val) {
  * @private
  */
 
-var debug = __webpack_require__(23)('express:router:route');
+var debug = __webpack_require__(19)('express:router:route');
 var flatten = __webpack_require__(32);
 var Layer = __webpack_require__(95);
 var methods = __webpack_require__(59);
@@ -19874,220 +20076,12 @@ methods.forEach(function(method){
 /* 97 */
 /***/ (function(module, exports, __webpack_require__) {
 
-
-/**
- * This is the common logic for both the Node.js and web browser
- * implementations of `debug()`.
- *
- * Expose `debug()` as the module.
- */
-
-exports = module.exports = createDebug.debug = createDebug['default'] = createDebug;
-exports.coerce = coerce;
-exports.disable = disable;
-exports.enable = enable;
-exports.enabled = enabled;
-exports.humanize = __webpack_require__(189);
-
-/**
- * The currently active debug mode names, and names to skip.
- */
-
-exports.names = [];
-exports.skips = [];
-
-/**
- * Map of special "%n" handling functions, for the debug "format" argument.
- *
- * Valid key names are a single, lower or upper-case letter, i.e. "n" and "N".
- */
-
-exports.formatters = {};
-
-/**
- * Previous log timestamp.
- */
-
-var prevTime;
-
-/**
- * Select a color.
- * @param {String} namespace
- * @return {Number}
- * @api private
- */
-
-function selectColor(namespace) {
-  var hash = 0, i;
-
-  for (i in namespace) {
-    hash  = ((hash << 5) - hash) + namespace.charCodeAt(i);
-    hash |= 0; // Convert to 32bit integer
-  }
-
-  return exports.colors[Math.abs(hash) % exports.colors.length];
-}
-
-/**
- * Create a debugger with the given `namespace`.
- *
- * @param {String} namespace
- * @return {Function}
- * @api public
- */
-
-function createDebug(namespace) {
-
-  function debug() {
-    // disabled?
-    if (!debug.enabled) return;
-
-    var self = debug;
-
-    // set `diff` timestamp
-    var curr = +new Date();
-    var ms = curr - (prevTime || curr);
-    self.diff = ms;
-    self.prev = prevTime;
-    self.curr = curr;
-    prevTime = curr;
-
-    // turn the `arguments` into a proper Array
-    var args = new Array(arguments.length);
-    for (var i = 0; i < args.length; i++) {
-      args[i] = arguments[i];
-    }
-
-    args[0] = exports.coerce(args[0]);
-
-    if ('string' !== typeof args[0]) {
-      // anything else let's inspect with %O
-      args.unshift('%O');
-    }
-
-    // apply any `formatters` transformations
-    var index = 0;
-    args[0] = args[0].replace(/%([a-zA-Z%])/g, function(match, format) {
-      // if we encounter an escaped % then don't increase the array index
-      if (match === '%%') return match;
-      index++;
-      var formatter = exports.formatters[format];
-      if ('function' === typeof formatter) {
-        var val = args[index];
-        match = formatter.call(self, val);
-
-        // now we need to remove `args[index]` since it's inlined in the `format`
-        args.splice(index, 1);
-        index--;
-      }
-      return match;
-    });
-
-    // apply env-specific formatting (colors, etc.)
-    exports.formatArgs.call(self, args);
-
-    var logFn = debug.log || exports.log || console.log.bind(console);
-    logFn.apply(self, args);
-  }
-
-  debug.namespace = namespace;
-  debug.enabled = exports.enabled(namespace);
-  debug.useColors = exports.useColors();
-  debug.color = selectColor(namespace);
-
-  // env-specific initialization logic for debug instances
-  if ('function' === typeof exports.init) {
-    exports.init(debug);
-  }
-
-  return debug;
-}
-
-/**
- * Enables a debug mode by namespaces. This can include modes
- * separated by a colon and wildcards.
- *
- * @param {String} namespaces
- * @api public
- */
-
-function enable(namespaces) {
-  exports.save(namespaces);
-
-  exports.names = [];
-  exports.skips = [];
-
-  var split = (namespaces || '').split(/[\s,]+/);
-  var len = split.length;
-
-  for (var i = 0; i < len; i++) {
-    if (!split[i]) continue; // ignore empty strings
-    namespaces = split[i].replace(/\*/g, '.*?');
-    if (namespaces[0] === '-') {
-      exports.skips.push(new RegExp('^' + namespaces.substr(1) + '$'));
-    } else {
-      exports.names.push(new RegExp('^' + namespaces + '$'));
-    }
-  }
-}
-
-/**
- * Disable debug output.
- *
- * @api public
- */
-
-function disable() {
-  exports.enable('');
-}
-
-/**
- * Returns true if the given mode name is enabled, false otherwise.
- *
- * @param {String} name
- * @return {Boolean}
- * @api public
- */
-
-function enabled(name) {
-  var i, len;
-  for (i = 0, len = exports.skips.length; i < len; i++) {
-    if (exports.skips[i].test(name)) {
-      return false;
-    }
-  }
-  for (i = 0, len = exports.names.length; i < len; i++) {
-    if (exports.names[i].test(name)) {
-      return true;
-    }
-  }
-  return false;
-}
-
-/**
- * Coerce `val`.
- *
- * @param {Mixed} val
- * @return {Mixed}
- * @api private
- */
-
-function coerce(val) {
-  if (val instanceof Error) return val.stack || val.message;
-  return val;
-}
-
-
-/***/ }),
-/* 98 */
-/***/ (function(module, exports, __webpack_require__) {
-
 /*
  * extsprintf.js: extended POSIX-style sprintf
  */
 
-var mod_assert = __webpack_require__(18);
-var mod_util = __webpack_require__(0);
+var mod_assert = __webpack_require__(22);
+var mod_util = __webpack_require__(1);
 
 /*
  * Public interface
@@ -20251,215 +20245,7 @@ function dumpException(ex)
 
 
 /***/ }),
-/* 99 */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-/**
- * This is the common logic for both the Node.js and web browser
- * implementations of `debug()`.
- *
- * Expose `debug()` as the module.
- */
-
-exports = module.exports = createDebug.debug = createDebug['default'] = createDebug;
-exports.coerce = coerce;
-exports.disable = disable;
-exports.enable = enable;
-exports.enabled = enabled;
-exports.humanize = __webpack_require__(194);
-
-/**
- * The currently active debug mode names, and names to skip.
- */
-
-exports.names = [];
-exports.skips = [];
-
-/**
- * Map of special "%n" handling functions, for the debug "format" argument.
- *
- * Valid key names are a single, lower or upper-case letter, i.e. "n" and "N".
- */
-
-exports.formatters = {};
-
-/**
- * Previous log timestamp.
- */
-
-var prevTime;
-
-/**
- * Select a color.
- * @param {String} namespace
- * @return {Number}
- * @api private
- */
-
-function selectColor(namespace) {
-  var hash = 0, i;
-
-  for (i in namespace) {
-    hash  = ((hash << 5) - hash) + namespace.charCodeAt(i);
-    hash |= 0; // Convert to 32bit integer
-  }
-
-  return exports.colors[Math.abs(hash) % exports.colors.length];
-}
-
-/**
- * Create a debugger with the given `namespace`.
- *
- * @param {String} namespace
- * @return {Function}
- * @api public
- */
-
-function createDebug(namespace) {
-
-  function debug() {
-    // disabled?
-    if (!debug.enabled) return;
-
-    var self = debug;
-
-    // set `diff` timestamp
-    var curr = +new Date();
-    var ms = curr - (prevTime || curr);
-    self.diff = ms;
-    self.prev = prevTime;
-    self.curr = curr;
-    prevTime = curr;
-
-    // turn the `arguments` into a proper Array
-    var args = new Array(arguments.length);
-    for (var i = 0; i < args.length; i++) {
-      args[i] = arguments[i];
-    }
-
-    args[0] = exports.coerce(args[0]);
-
-    if ('string' !== typeof args[0]) {
-      // anything else let's inspect with %O
-      args.unshift('%O');
-    }
-
-    // apply any `formatters` transformations
-    var index = 0;
-    args[0] = args[0].replace(/%([a-zA-Z%])/g, function(match, format) {
-      // if we encounter an escaped % then don't increase the array index
-      if (match === '%%') return match;
-      index++;
-      var formatter = exports.formatters[format];
-      if ('function' === typeof formatter) {
-        var val = args[index];
-        match = formatter.call(self, val);
-
-        // now we need to remove `args[index]` since it's inlined in the `format`
-        args.splice(index, 1);
-        index--;
-      }
-      return match;
-    });
-
-    // apply env-specific formatting (colors, etc.)
-    exports.formatArgs.call(self, args);
-
-    var logFn = debug.log || exports.log || console.log.bind(console);
-    logFn.apply(self, args);
-  }
-
-  debug.namespace = namespace;
-  debug.enabled = exports.enabled(namespace);
-  debug.useColors = exports.useColors();
-  debug.color = selectColor(namespace);
-
-  // env-specific initialization logic for debug instances
-  if ('function' === typeof exports.init) {
-    exports.init(debug);
-  }
-
-  return debug;
-}
-
-/**
- * Enables a debug mode by namespaces. This can include modes
- * separated by a colon and wildcards.
- *
- * @param {String} namespaces
- * @api public
- */
-
-function enable(namespaces) {
-  exports.save(namespaces);
-
-  exports.names = [];
-  exports.skips = [];
-
-  var split = (namespaces || '').split(/[\s,]+/);
-  var len = split.length;
-
-  for (var i = 0; i < len; i++) {
-    if (!split[i]) continue; // ignore empty strings
-    namespaces = split[i].replace(/\*/g, '.*?');
-    if (namespaces[0] === '-') {
-      exports.skips.push(new RegExp('^' + namespaces.substr(1) + '$'));
-    } else {
-      exports.names.push(new RegExp('^' + namespaces + '$'));
-    }
-  }
-}
-
-/**
- * Disable debug output.
- *
- * @api public
- */
-
-function disable() {
-  exports.enable('');
-}
-
-/**
- * Returns true if the given mode name is enabled, false otherwise.
- *
- * @param {String} name
- * @return {Boolean}
- * @api public
- */
-
-function enabled(name) {
-  var i, len;
-  for (i = 0, len = exports.skips.length; i < len; i++) {
-    if (exports.skips[i].test(name)) {
-      return false;
-    }
-  }
-  for (i = 0, len = exports.names.length; i < len; i++) {
-    if (exports.names[i].test(name)) {
-      return true;
-    }
-  }
-  return false;
-}
-
-/**
- * Coerce `val`.
- *
- * @param {Mixed} val
- * @return {Mixed}
- * @api private
- */
-
-function coerce(val) {
-  if (val instanceof Error) return val.stack || val.message;
-  return val;
-}
-
-
-/***/ }),
-/* 100 */
+/* 98 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20547,7 +20333,7 @@ function fresh (reqHeaders, resHeaders) {
 
 
 /***/ }),
-/* 101 */
+/* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var stream = __webpack_require__(10)
@@ -20580,7 +20366,165 @@ module.exports.isDuplex   = isDuplex
 
 
 /***/ }),
-/* 102 */
+/* 100 */
+/***/ (function(module, exports) {
+
+/**
+ * Helpers.
+ */
+
+var s = 1000;
+var m = s * 60;
+var h = m * 60;
+var d = h * 24;
+var y = d * 365.25;
+
+/**
+ * Parse or format the given `val`.
+ *
+ * Options:
+ *
+ *  - `long` verbose formatting [false]
+ *
+ * @param {String|Number} val
+ * @param {Object} [options]
+ * @throws {Error} throw an error if val is not a non-empty string or a number
+ * @return {String|Number}
+ * @api public
+ */
+
+module.exports = function(val, options) {
+  options = options || {};
+  var type = typeof val;
+  if (type === 'string' && val.length > 0) {
+    return parse(val);
+  } else if (type === 'number' && isNaN(val) === false) {
+    return options.long ? fmtLong(val) : fmtShort(val);
+  }
+  throw new Error(
+    'val is not a non-empty string or a valid number. val=' +
+      JSON.stringify(val)
+  );
+};
+
+/**
+ * Parse the given `str` and return milliseconds.
+ *
+ * @param {String} str
+ * @return {Number}
+ * @api private
+ */
+
+function parse(str) {
+  str = String(str);
+  if (str.length > 100) {
+    return;
+  }
+  var match = /^((?:\d+)?\.?\d+) *(milliseconds?|msecs?|ms|seconds?|secs?|s|minutes?|mins?|m|hours?|hrs?|h|days?|d|years?|yrs?|y)?$/i.exec(
+    str
+  );
+  if (!match) {
+    return;
+  }
+  var n = parseFloat(match[1]);
+  var type = (match[2] || 'ms').toLowerCase();
+  switch (type) {
+    case 'years':
+    case 'year':
+    case 'yrs':
+    case 'yr':
+    case 'y':
+      return n * y;
+    case 'days':
+    case 'day':
+    case 'd':
+      return n * d;
+    case 'hours':
+    case 'hour':
+    case 'hrs':
+    case 'hr':
+    case 'h':
+      return n * h;
+    case 'minutes':
+    case 'minute':
+    case 'mins':
+    case 'min':
+    case 'm':
+      return n * m;
+    case 'seconds':
+    case 'second':
+    case 'secs':
+    case 'sec':
+    case 's':
+      return n * s;
+    case 'milliseconds':
+    case 'millisecond':
+    case 'msecs':
+    case 'msec':
+    case 'ms':
+      return n;
+    default:
+      return undefined;
+  }
+}
+
+/**
+ * Short format for `ms`.
+ *
+ * @param {Number} ms
+ * @return {String}
+ * @api private
+ */
+
+function fmtShort(ms) {
+  if (ms >= d) {
+    return Math.round(ms / d) + 'd';
+  }
+  if (ms >= h) {
+    return Math.round(ms / h) + 'h';
+  }
+  if (ms >= m) {
+    return Math.round(ms / m) + 'm';
+  }
+  if (ms >= s) {
+    return Math.round(ms / s) + 's';
+  }
+  return ms + 'ms';
+}
+
+/**
+ * Long format for `ms`.
+ *
+ * @param {Number} ms
+ * @return {String}
+ * @api private
+ */
+
+function fmtLong(ms) {
+  return plural(ms, d, 'day') ||
+    plural(ms, h, 'hour') ||
+    plural(ms, m, 'minute') ||
+    plural(ms, s, 'second') ||
+    ms + ' ms';
+}
+
+/**
+ * Pluralization helper.
+ */
+
+function plural(ms, n, name) {
+  if (ms < n) {
+    return;
+  }
+  if (ms < n * 1.5) {
+    return Math.floor(ms / n) + ' ' + name;
+  }
+  return Math.ceil(ms / n) + ' ' + name + 's';
+}
+
+
+/***/ }),
+/* 101 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20606,8 +20550,8 @@ module.exports.compile = compile;
  * @private
  */
 
-var forwarded = __webpack_require__(198);
-var ipaddr = __webpack_require__(232);
+var forwarded = __webpack_require__(190);
+var ipaddr = __webpack_require__(224);
 
 /**
  * Variables.
@@ -20912,7 +20856,7 @@ function trustSingle(subnet) {
 
 
 /***/ }),
-/* 103 */
+/* 102 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20937,7 +20881,7 @@ module.exports = {
 
 
 /***/ }),
-/* 104 */
+/* 103 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21126,7 +21070,7 @@ exports.isBuffer = function (obj) {
 
 
 /***/ }),
-/* 105 */
+/* 104 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21291,13 +21235,13 @@ function sortByRangeStart (a, b) {
 
 
 /***/ }),
-/* 106 */
+/* 105 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var tough = __webpack_require__(278)
+var tough = __webpack_require__(266)
 
 var Cookie = tough.Cookie
   , CookieJar = tough.CookieJar
@@ -21337,376 +21281,13 @@ exports.jar = function(store) {
 
 
 /***/ }),
+/* 106 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(261);
+
+/***/ }),
 /* 107 */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-/**
- * This is the common logic for both the Node.js and web browser
- * implementations of `debug()`.
- *
- * Expose `debug()` as the module.
- */
-
-exports = module.exports = createDebug.debug = createDebug['default'] = createDebug;
-exports.coerce = coerce;
-exports.disable = disable;
-exports.enable = enable;
-exports.enabled = enabled;
-exports.humanize = __webpack_require__(108);
-
-/**
- * The currently active debug mode names, and names to skip.
- */
-
-exports.names = [];
-exports.skips = [];
-
-/**
- * Map of special "%n" handling functions, for the debug "format" argument.
- *
- * Valid key names are a single, lower or upper-case letter, i.e. "n" and "N".
- */
-
-exports.formatters = {};
-
-/**
- * Previous log timestamp.
- */
-
-var prevTime;
-
-/**
- * Select a color.
- * @param {String} namespace
- * @return {Number}
- * @api private
- */
-
-function selectColor(namespace) {
-  var hash = 0, i;
-
-  for (i in namespace) {
-    hash  = ((hash << 5) - hash) + namespace.charCodeAt(i);
-    hash |= 0; // Convert to 32bit integer
-  }
-
-  return exports.colors[Math.abs(hash) % exports.colors.length];
-}
-
-/**
- * Create a debugger with the given `namespace`.
- *
- * @param {String} namespace
- * @return {Function}
- * @api public
- */
-
-function createDebug(namespace) {
-
-  function debug() {
-    // disabled?
-    if (!debug.enabled) return;
-
-    var self = debug;
-
-    // set `diff` timestamp
-    var curr = +new Date();
-    var ms = curr - (prevTime || curr);
-    self.diff = ms;
-    self.prev = prevTime;
-    self.curr = curr;
-    prevTime = curr;
-
-    // turn the `arguments` into a proper Array
-    var args = new Array(arguments.length);
-    for (var i = 0; i < args.length; i++) {
-      args[i] = arguments[i];
-    }
-
-    args[0] = exports.coerce(args[0]);
-
-    if ('string' !== typeof args[0]) {
-      // anything else let's inspect with %O
-      args.unshift('%O');
-    }
-
-    // apply any `formatters` transformations
-    var index = 0;
-    args[0] = args[0].replace(/%([a-zA-Z%])/g, function(match, format) {
-      // if we encounter an escaped % then don't increase the array index
-      if (match === '%%') return match;
-      index++;
-      var formatter = exports.formatters[format];
-      if ('function' === typeof formatter) {
-        var val = args[index];
-        match = formatter.call(self, val);
-
-        // now we need to remove `args[index]` since it's inlined in the `format`
-        args.splice(index, 1);
-        index--;
-      }
-      return match;
-    });
-
-    // apply env-specific formatting (colors, etc.)
-    exports.formatArgs.call(self, args);
-
-    var logFn = debug.log || exports.log || console.log.bind(console);
-    logFn.apply(self, args);
-  }
-
-  debug.namespace = namespace;
-  debug.enabled = exports.enabled(namespace);
-  debug.useColors = exports.useColors();
-  debug.color = selectColor(namespace);
-
-  // env-specific initialization logic for debug instances
-  if ('function' === typeof exports.init) {
-    exports.init(debug);
-  }
-
-  return debug;
-}
-
-/**
- * Enables a debug mode by namespaces. This can include modes
- * separated by a colon and wildcards.
- *
- * @param {String} namespaces
- * @api public
- */
-
-function enable(namespaces) {
-  exports.save(namespaces);
-
-  exports.names = [];
-  exports.skips = [];
-
-  var split = (namespaces || '').split(/[\s,]+/);
-  var len = split.length;
-
-  for (var i = 0; i < len; i++) {
-    if (!split[i]) continue; // ignore empty strings
-    namespaces = split[i].replace(/\*/g, '.*?');
-    if (namespaces[0] === '-') {
-      exports.skips.push(new RegExp('^' + namespaces.substr(1) + '$'));
-    } else {
-      exports.names.push(new RegExp('^' + namespaces + '$'));
-    }
-  }
-}
-
-/**
- * Disable debug output.
- *
- * @api public
- */
-
-function disable() {
-  exports.enable('');
-}
-
-/**
- * Returns true if the given mode name is enabled, false otherwise.
- *
- * @param {String} name
- * @return {Boolean}
- * @api public
- */
-
-function enabled(name) {
-  var i, len;
-  for (i = 0, len = exports.skips.length; i < len; i++) {
-    if (exports.skips[i].test(name)) {
-      return false;
-    }
-  }
-  for (i = 0, len = exports.names.length; i < len; i++) {
-    if (exports.names[i].test(name)) {
-      return true;
-    }
-  }
-  return false;
-}
-
-/**
- * Coerce `val`.
- *
- * @param {Mixed} val
- * @return {Mixed}
- * @api private
- */
-
-function coerce(val) {
-  if (val instanceof Error) return val.stack || val.message;
-  return val;
-}
-
-
-/***/ }),
-/* 108 */
-/***/ (function(module, exports) {
-
-/**
- * Helpers.
- */
-
-var s = 1000
-var m = s * 60
-var h = m * 60
-var d = h * 24
-var y = d * 365.25
-
-/**
- * Parse or format the given `val`.
- *
- * Options:
- *
- *  - `long` verbose formatting [false]
- *
- * @param {String|Number} val
- * @param {Object} options
- * @throws {Error} throw an error if val is not a non-empty string or a number
- * @return {String|Number}
- * @api public
- */
-
-module.exports = function (val, options) {
-  options = options || {}
-  var type = typeof val
-  if (type === 'string' && val.length > 0) {
-    return parse(val)
-  } else if (type === 'number' && isNaN(val) === false) {
-    return options.long ?
-			fmtLong(val) :
-			fmtShort(val)
-  }
-  throw new Error('val is not a non-empty string or a valid number. val=' + JSON.stringify(val))
-}
-
-/**
- * Parse the given `str` and return milliseconds.
- *
- * @param {String} str
- * @return {Number}
- * @api private
- */
-
-function parse(str) {
-  str = String(str)
-  if (str.length > 10000) {
-    return
-  }
-  var match = /^((?:\d+)?\.?\d+) *(milliseconds?|msecs?|ms|seconds?|secs?|s|minutes?|mins?|m|hours?|hrs?|h|days?|d|years?|yrs?|y)?$/i.exec(str)
-  if (!match) {
-    return
-  }
-  var n = parseFloat(match[1])
-  var type = (match[2] || 'ms').toLowerCase()
-  switch (type) {
-    case 'years':
-    case 'year':
-    case 'yrs':
-    case 'yr':
-    case 'y':
-      return n * y
-    case 'days':
-    case 'day':
-    case 'd':
-      return n * d
-    case 'hours':
-    case 'hour':
-    case 'hrs':
-    case 'hr':
-    case 'h':
-      return n * h
-    case 'minutes':
-    case 'minute':
-    case 'mins':
-    case 'min':
-    case 'm':
-      return n * m
-    case 'seconds':
-    case 'second':
-    case 'secs':
-    case 'sec':
-    case 's':
-      return n * s
-    case 'milliseconds':
-    case 'millisecond':
-    case 'msecs':
-    case 'msec':
-    case 'ms':
-      return n
-    default:
-      return undefined
-  }
-}
-
-/**
- * Short format for `ms`.
- *
- * @param {Number} ms
- * @return {String}
- * @api private
- */
-
-function fmtShort(ms) {
-  if (ms >= d) {
-    return Math.round(ms / d) + 'd'
-  }
-  if (ms >= h) {
-    return Math.round(ms / h) + 'h'
-  }
-  if (ms >= m) {
-    return Math.round(ms / m) + 'm'
-  }
-  if (ms >= s) {
-    return Math.round(ms / s) + 's'
-  }
-  return ms + 'ms'
-}
-
-/**
- * Long format for `ms`.
- *
- * @param {Number} ms
- * @return {String}
- * @api private
- */
-
-function fmtLong(ms) {
-  return plural(ms, d, 'day') ||
-    plural(ms, h, 'hour') ||
-    plural(ms, m, 'minute') ||
-    plural(ms, s, 'second') ||
-    ms + ' ms'
-}
-
-/**
- * Pluralization helper.
- */
-
-function plural(ms, n, name) {
-  if (ms < n) {
-    return
-  }
-  if (ms < n * 1.5) {
-    return Math.floor(ms / n) + ' ' + name
-  }
-  return Math.ceil(ms / n) + ' ' + name + 's'
-}
-
-
-/***/ }),
-/* 109 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(273);
-
-/***/ }),
-/* 110 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Copyright 2017 Joyent, Inc.
@@ -21718,7 +21299,7 @@ module.exports = {
 };
 
 var assert = __webpack_require__(2);
-var crypto = __webpack_require__(1);
+var crypto = __webpack_require__(0);
 var algs = __webpack_require__(4);
 var utils = __webpack_require__(3);
 var ed;
@@ -21757,9 +21338,9 @@ function DiffieHellman(key) {
 			if (ecdh === undefined)
 				ecdh = __webpack_require__(91);
 			if (ec === undefined)
-				ec = __webpack_require__(35);
+				ec = __webpack_require__(34);
 			if (jsbn === undefined)
-				jsbn = __webpack_require__(16).BigInteger;
+				jsbn = __webpack_require__(15).BigInteger;
 
 			this._ecParams = new X9ECParameters(this._curve);
 
@@ -22084,9 +21665,9 @@ function generateECDSA(curve) {
 		if (ecdh === undefined)
 			ecdh = __webpack_require__(91);
 		if (ec === undefined)
-			ec = __webpack_require__(35);
+			ec = __webpack_require__(34);
 		if (jsbn === undefined)
-			jsbn = __webpack_require__(16).BigInteger;
+			jsbn = __webpack_require__(15).BigInteger;
 
 		var ecParams = new X9ECParameters(curve);
 
@@ -22122,7 +21703,7 @@ function generateECDSA(curve) {
 
 
 /***/ }),
-/* 111 */
+/* 108 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Copyright 2015 Joyent, Inc.
@@ -22134,9 +21715,9 @@ module.exports = {
 
 var nacl;
 var stream = __webpack_require__(10);
-var util = __webpack_require__(0);
+var util = __webpack_require__(1);
 var assert = __webpack_require__(2);
-var Signature = __webpack_require__(13);
+var Signature = __webpack_require__(12);
 
 function Verifier(key, hashAlgo) {
 	if (nacl === undefined)
@@ -22224,7 +21805,7 @@ Signer.prototype.sign = function () {
 
 
 /***/ }),
-/* 112 */
+/* 109 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Copyright 2015 Joyent, Inc.
@@ -22239,8 +21820,8 @@ var utils = __webpack_require__(3);
 var Key = __webpack_require__(5);
 var PrivateKey = __webpack_require__(6);
 
-var pem = __webpack_require__(17);
-var ssh = __webpack_require__(113);
+var pem = __webpack_require__(16);
+var ssh = __webpack_require__(110);
 var rfc4253 = __webpack_require__(21);
 
 function read(buf, options) {
@@ -22303,7 +21884,7 @@ function write(key, options) {
 
 
 /***/ }),
-/* 113 */
+/* 110 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Copyright 2015 Joyent, Inc.
@@ -22423,7 +22004,7 @@ function write(key, options) {
 
 
 /***/ }),
-/* 114 */
+/* 111 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Copyright 2017 Joyent, Inc.
@@ -22437,16 +22018,16 @@ module.exports = {
 };
 
 var assert = __webpack_require__(2);
-var asn1 = __webpack_require__(14);
+var asn1 = __webpack_require__(13);
 var algs = __webpack_require__(4);
 var utils = __webpack_require__(3);
 var Key = __webpack_require__(5);
 var PrivateKey = __webpack_require__(6);
-var pem = __webpack_require__(17);
-var Identity = __webpack_require__(29);
-var Signature = __webpack_require__(13);
-var Certificate = __webpack_require__(26);
-var pkcs8 = __webpack_require__(28);
+var pem = __webpack_require__(16);
+var Identity = __webpack_require__(28);
+var Signature = __webpack_require__(12);
+var Certificate = __webpack_require__(25);
+var pkcs8 = __webpack_require__(27);
 
 /*
  * This file is based on RFC5280 (X.509).
@@ -23155,7 +22736,7 @@ function writeBitField(setBits, bitIndex) {
 
 
 /***/ }),
-/* 115 */
+/* 112 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23223,7 +22804,7 @@ exports.pathMatch = pathMatch;
 
 
 /***/ }),
-/* 116 */
+/* 113 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23258,7 +22839,7 @@ exports.pathMatch = pathMatch;
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-var pubsuffix = __webpack_require__(117);
+var pubsuffix = __webpack_require__(114);
 
 // Gives the permutation of all possible domainMatch()es of a given domain. The
 // array is in shortest-to-longest order.  Handy for indexing.
@@ -23286,7 +22867,7 @@ exports.permuteDomain = permuteDomain;
 
 
 /***/ }),
-/* 117 */
+/* 114 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23297,7 +22878,7 @@ exports.permuteDomain = permuteDomain;
 
 
 
-var punycode = __webpack_require__(122);
+var punycode = __webpack_require__(119);
 
 module.exports.getPublicSuffix = function getPublicSuffix(domain) {
   /*!
@@ -23391,7 +22972,7 @@ var index = module.exports.index = Object.freeze(
 
 
 /***/ }),
-/* 118 */
+/* 115 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23469,7 +23050,7 @@ Store.prototype.getAllCookies = function(cb) {
 
 
 /***/ }),
-/* 119 */
+/* 116 */
 /***/ (function(module, exports) {
 
 /**
@@ -23498,13 +23079,13 @@ module.exports = bytesToUuid;
 
 
 /***/ }),
-/* 120 */
+/* 117 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Unique ID creation requires a high quality random # generator.  In node.js
 // this is prett straight-forward - we use the crypto API.
 
-var rb = __webpack_require__(1).randomBytes;
+var rb = __webpack_require__(0).randomBytes;
 
 function rng() {
   return rb(16);
@@ -23514,25 +23095,25 @@ module.exports = rng;
 
 
 /***/ }),
-/* 121 */
+/* 118 */
 /***/ (function(module, exports) {
 
 module.exports = require("buffer");
 
 /***/ }),
-/* 122 */
+/* 119 */
 /***/ (function(module, exports) {
 
 module.exports = require("punycode");
 
 /***/ }),
-/* 123 */
+/* 120 */
 /***/ (function(module, exports) {
 
 module.exports = require("tls");
 
 /***/ }),
-/* 124 */
+/* 121 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23546,11 +23127,11 @@ module.exports = require("tls");
 
 
 
-module.exports = __webpack_require__(182);
+module.exports = __webpack_require__(181);
 
 
 /***/ }),
-/* 125 */
+/* 122 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23561,12 +23142,12 @@ module.exports = __webpack_require__(182);
  */
 
 var url = __webpack_require__(7);
-var Streamparser = __webpack_require__(282);
-var request = __webpack_require__(259);
-var extend = __webpack_require__(172);
+var Streamparser = __webpack_require__(270);
+var request = __webpack_require__(250);
+var extend = __webpack_require__(171);
 
 // Package version
-var VERSION = __webpack_require__(283).version;
+var VERSION = __webpack_require__(271).version;
 
 function Twitter(options) {
   if (!(this instanceof Twitter)) { return new Twitter(options) }
@@ -23864,7 +23445,7 @@ module.exports = Twitter;
 
 
 /***/ }),
-/* 126 */
+/* 123 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23882,7 +23463,7 @@ module.exports = Twitter;
  * @private
  */
 
-var Negotiator = __webpack_require__(249)
+var Negotiator = __webpack_require__(240)
 var mime = __webpack_require__(43)
 
 /**
@@ -24102,33 +23683,33 @@ function validMime(type) {
 
 
 /***/ }),
-/* 127 */
+/* 124 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var compileSchema = __webpack_require__(132)
-  , resolve = __webpack_require__(71)
-  , Cache = __webpack_require__(128)
-  , SchemaObject = __webpack_require__(72)
+var compileSchema = __webpack_require__(129)
+  , resolve = __webpack_require__(70)
+  , Cache = __webpack_require__(125)
+  , SchemaObject = __webpack_require__(71)
   , stableStringify = __webpack_require__(58)
-  , formats = __webpack_require__(131)
-  , rules = __webpack_require__(133)
-  , v5 = __webpack_require__(157)
-  , util = __webpack_require__(19)
-  , async = __webpack_require__(69)
-  , co = __webpack_require__(86);
+  , formats = __webpack_require__(128)
+  , rules = __webpack_require__(130)
+  , v5 = __webpack_require__(154)
+  , util = __webpack_require__(18)
+  , async = __webpack_require__(68)
+  , co = __webpack_require__(85);
 
 module.exports = Ajv;
 
 Ajv.prototype.compileAsync = async.compile;
 
-var customKeyword = __webpack_require__(154);
+var customKeyword = __webpack_require__(151);
 Ajv.prototype.addKeyword = customKeyword.add;
 Ajv.prototype.getKeyword = customKeyword.get;
 Ajv.prototype.removeKeyword = customKeyword.remove;
-Ajv.ValidationError = __webpack_require__(73);
+Ajv.ValidationError = __webpack_require__(72);
 
 var META_SCHEMA_ID = 'http://json-schema.org/draft-04/schema';
 var SCHEMA_URI_FORMAT = /^(?:(?:[a-z][a-z0-9+-.]*:)?\/\/)?[^\s]*$/i;
@@ -24490,7 +24071,7 @@ function Ajv(opts) {
 
   function addDraft4MetaSchema() {
     if (self._opts.meta !== false) {
-      var metaSchema = __webpack_require__(155);
+      var metaSchema = __webpack_require__(152);
       addMetaSchema(metaSchema, META_SCHEMA_ID, true);
       self._refs['http://json-schema.org/schema'] = META_SCHEMA_ID;
     }
@@ -24529,7 +24110,7 @@ function Ajv(opts) {
 
 
 /***/ }),
-/* 128 */
+/* 125 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24562,7 +24143,7 @@ Cache.prototype.clear = function Cache_clear() {
 
 
 /***/ }),
-/* 129 */
+/* 126 */
 /***/ (function(module, exports) {
 
 function webpackEmptyContext(req) {
@@ -24571,10 +24152,10 @@ function webpackEmptyContext(req) {
 webpackEmptyContext.keys = function() { return []; };
 webpackEmptyContext.resolve = webpackEmptyContext;
 module.exports = webpackEmptyContext;
-webpackEmptyContext.id = 129;
+webpackEmptyContext.id = 126;
 
 /***/ }),
-/* 130 */
+/* 127 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24582,40 +24163,40 @@ webpackEmptyContext.id = 129;
 
 //all requires must be explicit because browserify won't work with dynamic requires
 module.exports = {
-  '$ref': __webpack_require__(150),
-  allOf: __webpack_require__(136),
-  anyOf: __webpack_require__(137),
-  dependencies: __webpack_require__(140),
-  'enum': __webpack_require__(141),
-  format: __webpack_require__(142),
-  items: __webpack_require__(143),
-  maximum: __webpack_require__(74),
-  minimum: __webpack_require__(74),
-  maxItems: __webpack_require__(75),
-  minItems: __webpack_require__(75),
-  maxLength: __webpack_require__(76),
-  minLength: __webpack_require__(76),
-  maxProperties: __webpack_require__(77),
-  minProperties: __webpack_require__(77),
-  multipleOf: __webpack_require__(144),
-  not: __webpack_require__(145),
-  oneOf: __webpack_require__(146),
-  pattern: __webpack_require__(147),
-  properties: __webpack_require__(149),
-  required: __webpack_require__(151),
-  uniqueItems: __webpack_require__(153),
-  validate: __webpack_require__(78)
+  '$ref': __webpack_require__(147),
+  allOf: __webpack_require__(133),
+  anyOf: __webpack_require__(134),
+  dependencies: __webpack_require__(137),
+  'enum': __webpack_require__(138),
+  format: __webpack_require__(139),
+  items: __webpack_require__(140),
+  maximum: __webpack_require__(73),
+  minimum: __webpack_require__(73),
+  maxItems: __webpack_require__(74),
+  minItems: __webpack_require__(74),
+  maxLength: __webpack_require__(75),
+  minLength: __webpack_require__(75),
+  maxProperties: __webpack_require__(76),
+  minProperties: __webpack_require__(76),
+  multipleOf: __webpack_require__(141),
+  not: __webpack_require__(142),
+  oneOf: __webpack_require__(143),
+  pattern: __webpack_require__(144),
+  properties: __webpack_require__(146),
+  required: __webpack_require__(148),
+  uniqueItems: __webpack_require__(150),
+  validate: __webpack_require__(77)
 };
 
 
 /***/ }),
-/* 131 */
+/* 128 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var util = __webpack_require__(19);
+var util = __webpack_require__(18);
 
 var DATE = /^\d\d\d\d-(\d\d)-(\d\d)$/;
 var DAYS = [0,31,29,31,30,31,30,31,31,30,31,30,31];
@@ -24780,16 +24361,16 @@ function compareDateTime(dt1, dt2) {
 
 
 /***/ }),
-/* 132 */
+/* 129 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var resolve = __webpack_require__(71)
-  , util = __webpack_require__(19)
+var resolve = __webpack_require__(70)
+  , util = __webpack_require__(18)
   , stableStringify = __webpack_require__(58)
-  , async = __webpack_require__(69);
+  , async = __webpack_require__(68);
 
 var beautify;
 
@@ -24801,18 +24382,18 @@ function loadBeautify(){
   }
 }
 
-var validateGenerator = __webpack_require__(78);
+var validateGenerator = __webpack_require__(77);
 
 /**
  * Functions below are used inside compiled validations function
  */
 
-var co = __webpack_require__(86);
+var co = __webpack_require__(85);
 var ucs2length = util.ucs2length;
-var equal = __webpack_require__(70);
+var equal = __webpack_require__(69);
 
 // this error is thrown by async schemas to return validation errors via exception
-var ValidationError = __webpack_require__(73);
+var ValidationError = __webpack_require__(72);
 
 module.exports = compile;
 
@@ -25177,14 +24758,14 @@ function vars(arr, statement) {
 
 
 /***/ }),
-/* 133 */
+/* 130 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var ruleModules = __webpack_require__(130)
-  , toHash = __webpack_require__(19).toHash;
+var ruleModules = __webpack_require__(127)
+  , toHash = __webpack_require__(18).toHash;
 
 module.exports = function rules() {
   var RULES = [
@@ -25224,7 +24805,7 @@ module.exports = function rules() {
 
 
 /***/ }),
-/* 134 */
+/* 131 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25251,7 +24832,7 @@ module.exports = function ucs2length(str) {
 
 
 /***/ }),
-/* 135 */
+/* 132 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25434,7 +25015,7 @@ module.exports = function generate__formatLimit(it, $keyword) {
 
 
 /***/ }),
-/* 136 */
+/* 133 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25484,7 +25065,7 @@ module.exports = function generate_allOf(it, $keyword) {
 
 
 /***/ }),
-/* 137 */
+/* 134 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25556,7 +25137,7 @@ module.exports = function generate_anyOf(it, $keyword) {
 
 
 /***/ }),
-/* 138 */
+/* 135 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25615,7 +25196,7 @@ module.exports = function generate_constant(it, $keyword) {
 
 
 /***/ }),
-/* 139 */
+/* 136 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25842,7 +25423,7 @@ module.exports = function generate_custom(it, $keyword) {
 
 
 /***/ }),
-/* 140 */
+/* 137 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25996,7 +25577,7 @@ module.exports = function generate_dependencies(it, $keyword) {
 
 
 /***/ }),
-/* 141 */
+/* 138 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26068,7 +25649,7 @@ module.exports = function generate_enum(it, $keyword) {
 
 
 /***/ }),
-/* 142 */
+/* 139 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26213,7 +25794,7 @@ module.exports = function generate_format(it, $keyword) {
 
 
 /***/ }),
-/* 143 */
+/* 140 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26364,7 +25945,7 @@ module.exports = function generate_items(it, $keyword) {
 
 
 /***/ }),
-/* 144 */
+/* 141 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26447,7 +26028,7 @@ module.exports = function generate_multipleOf(it, $keyword) {
 
 
 /***/ }),
-/* 145 */
+/* 142 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26537,7 +26118,7 @@ module.exports = function generate_not(it, $keyword) {
 
 
 /***/ }),
-/* 146 */
+/* 143 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26620,7 +26201,7 @@ module.exports = function generate_oneOf(it, $keyword) {
 
 
 /***/ }),
-/* 147 */
+/* 144 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26701,7 +26282,7 @@ module.exports = function generate_pattern(it, $keyword) {
 
 
 /***/ }),
-/* 148 */
+/* 145 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26759,7 +26340,7 @@ module.exports = function generate_patternRequired(it, $keyword) {
 
 
 /***/ }),
-/* 149 */
+/* 146 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27211,7 +26792,7 @@ module.exports = function generate_properties(it, $keyword) {
 
 
 /***/ }),
-/* 150 */
+/* 147 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27337,7 +26918,7 @@ module.exports = function generate_ref(it, $keyword) {
 
 
 /***/ }),
-/* 151 */
+/* 148 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27593,7 +27174,7 @@ module.exports = function generate_required(it, $keyword) {
 
 
 /***/ }),
-/* 152 */
+/* 149 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27728,7 +27309,7 @@ module.exports = function generate_switch(it, $keyword) {
 
 
 /***/ }),
-/* 153 */
+/* 150 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27806,14 +27387,14 @@ module.exports = function generate_uniqueItems(it, $keyword) {
 
 
 /***/ }),
-/* 154 */
+/* 151 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var IDENTIFIER = /^[a-z_$][a-z0-9_$\-]*$/i;
-var customRuleCode = __webpack_require__(139);
+var customRuleCode = __webpack_require__(136);
 
 module.exports = {
   add: addKeyword,
@@ -27942,7 +27523,7 @@ function removeKeyword(keyword) {
 
 
 /***/ }),
-/* 155 */
+/* 152 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -28168,7 +27749,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 156 */
+/* 153 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -28668,7 +28249,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 157 */
+/* 154 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28684,14 +28265,14 @@ module.exports = {
 
 function enableV5(ajv) {
   var inlineFunctions = {
-    'switch': __webpack_require__(152),
-    'constant': __webpack_require__(138),
-    '_formatLimit': __webpack_require__(135),
-    'patternRequired': __webpack_require__(148)
+    'switch': __webpack_require__(149),
+    'constant': __webpack_require__(135),
+    '_formatLimit': __webpack_require__(132),
+    'patternRequired': __webpack_require__(145)
   };
 
   if (ajv._opts.meta !== false) {
-    var metaSchema = __webpack_require__(156);
+    var metaSchema = __webpack_require__(153);
     ajv.addMetaSchema(metaSchema, META_SCHEMA_ID);
   }
   _addKeyword('constant');
@@ -28727,7 +28308,7 @@ function containsMacro(schema) {
 
 
 /***/ }),
-/* 158 */
+/* 155 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Copyright 2011 Mark Cavage <mcavage@gmail.com> All rights reserved.
@@ -28735,8 +28316,8 @@ function containsMacro(schema) {
 var errors = __webpack_require__(51);
 var types = __webpack_require__(52);
 
-var Reader = __webpack_require__(159);
-var Writer = __webpack_require__(160);
+var Reader = __webpack_require__(156);
+var Writer = __webpack_require__(157);
 
 
 ///--- Exports
@@ -28760,12 +28341,12 @@ for (var e in errors) {
 
 
 /***/ }),
-/* 159 */
+/* 156 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Copyright 2011 Mark Cavage <mcavage@gmail.com> All rights reserved.
 
-var assert = __webpack_require__(18);
+var assert = __webpack_require__(22);
 
 var ASN1 = __webpack_require__(52);
 var errors = __webpack_require__(51);
@@ -29027,12 +28608,12 @@ module.exports = Reader;
 
 
 /***/ }),
-/* 160 */
+/* 157 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Copyright 2011 Mark Cavage <mcavage@gmail.com> All rights reserved.
 
-var assert = __webpack_require__(18);
+var assert = __webpack_require__(22);
 var ASN1 = __webpack_require__(52);
 var errors = __webpack_require__(51);
 
@@ -29349,19 +28930,19 @@ module.exports = Writer;
 
 
 /***/ }),
-/* 161 */
+/* 158 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports =
 {
-  parallel      : __webpack_require__(163),
-  serial        : __webpack_require__(164),
-  serialOrdered : __webpack_require__(84)
+  parallel      : __webpack_require__(160),
+  serial        : __webpack_require__(161),
+  serialOrdered : __webpack_require__(83)
 };
 
 
 /***/ }),
-/* 162 */
+/* 159 */
 /***/ (function(module, exports) {
 
 module.exports = defer;
@@ -29393,12 +28974,12 @@ function defer(fn)
 
 
 /***/ }),
-/* 163 */
+/* 160 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var iterate    = __webpack_require__(81)
-  , initState  = __webpack_require__(82)
-  , terminator = __webpack_require__(83)
+var iterate    = __webpack_require__(80)
+  , initState  = __webpack_require__(81)
+  , terminator = __webpack_require__(82)
   ;
 
 // Public API
@@ -29442,10 +29023,10 @@ function parallel(list, iterator, callback)
 
 
 /***/ }),
-/* 164 */
+/* 161 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var serialOrdered = __webpack_require__(84);
+var serialOrdered = __webpack_require__(83);
 
 // Public API
 module.exports = serial;
@@ -29465,7 +29046,7 @@ function serial(list, iterator, callback)
 
 
 /***/ }),
-/* 165 */
+/* 162 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -29489,7 +29070,7 @@ function serial(list, iterator, callback)
  * Module dependencies.
  */
 
-var crypto = __webpack_require__(1)
+var crypto = __webpack_require__(0)
   , parse = __webpack_require__(7).parse
   ;
 
@@ -29683,14 +29264,14 @@ module.exports.canonicalizeResource = canonicalizeResource
 
 
 /***/ }),
-/* 166 */
+/* 163 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var aws4 = exports,
     url = __webpack_require__(7),
     querystring = __webpack_require__(31),
-    crypto = __webpack_require__(1),
-    lru = __webpack_require__(167),
+    crypto = __webpack_require__(0),
+    lru = __webpack_require__(164),
     credentialsCache = lru(1000)
 
 // http://docs.amazonwebservices.com/general/latest/gr/signature-version-4.html
@@ -30021,7 +29602,7 @@ aws4.sign = function(request, credentials) {
 
 
 /***/ }),
-/* 167 */
+/* 164 */
 /***/ (function(module, exports) {
 
 module.exports = function(size) {
@@ -30123,16 +29704,16 @@ function DoublyLinkedNode(key, val) {
 
 
 /***/ }),
-/* 168 */
+/* 165 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_express__ = __webpack_require__(124);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_express__ = __webpack_require__(121);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_express___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_express__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_path__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_path___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_path__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_twitter__ = __webpack_require__(125);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_twitter__ = __webpack_require__(122);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_twitter___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_twitter__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_http__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_http___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_http__);
@@ -30143,16 +29724,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 const app = __WEBPACK_IMPORTED_MODULE_0_express___default()();
 
-var client = new __WEBPACK_IMPORTED_MODULE_2_twitter___default.a({
-  consumer_key: 'Nf9Jc8lrw50lFAKC4Pll7FqMV',
-  consumer_secret: 'MYCyPWwaq2iFR7WhdO8vmQBIqzvJgxlB53IMP8ZMBPG7p4RM6O',
-  access_token_key: '3196956440-7GJs6uXamRVvJdogDYdCq9FBqD3FWRPLzv8HBjg',
-  access_token_secret: 'Z4J1FQg4bJbf9GKxz4oMgNceo0xmoBH5JJsergld3dUVH'
-});
+var client = new __WEBPACK_IMPORTED_MODULE_2_twitter___default.a({ consumer_key: 'Nf9Jc8lrw50lFAKC4Pll7FqMV', consumer_secret: 'MYCyPWwaq2iFR7WhdO8vmQBIqzvJgxlB53IMP8ZMBPG7p4RM6O', access_token_key: '3196956440-7GJs6uXamRVvJdogDYdCq9FBqD3FWRPLzv8HBjg', access_token_secret: 'Z4J1FQg4bJbf9GKxz4oMgNceo0xmoBH5JJsergld3dUVH' });
 
 var tweet;
 
-var stream = client.stream('statuses/filter', { track: 'missoulian,mtpol,ITMFA' }, function (stream) {
+var stream = client.stream('statuses/filter', {
+  track: 'missoulian,mtpol,ITMFA'
+}, function (stream) {
   stream.on('data', function (response) {
     tweet = response;
   });
@@ -30175,7 +29753,7 @@ app.get('/', (req, res) => {
 app.listen(3000, () => console.log("listening on port 3000"));
 
 /***/ }),
-/* 169 */
+/* 166 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30398,14 +29976,14 @@ function ContentType(type) {
 
 
 /***/ }),
-/* 170 */
+/* 167 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
  * Module dependencies.
  */
 
-var crypto = __webpack_require__(1);
+var crypto = __webpack_require__(0);
 
 /**
  * Sign the given `val` with `secret`.
@@ -30455,7 +30033,7 @@ function sha1(str){
 
 
 /***/ }),
-/* 171 */
+/* 168 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30657,7 +30235,450 @@ function tryDecode(str, decode) {
 
 
 /***/ }),
-/* 172 */
+/* 169 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/**
+ * This is the web browser implementation of `debug()`.
+ *
+ * Expose `debug()` as the module.
+ */
+
+exports = module.exports = __webpack_require__(89);
+exports.log = log;
+exports.formatArgs = formatArgs;
+exports.save = save;
+exports.load = load;
+exports.useColors = useColors;
+exports.storage = 'undefined' != typeof chrome
+               && 'undefined' != typeof chrome.storage
+                  ? chrome.storage.local
+                  : localstorage();
+
+/**
+ * Colors.
+ */
+
+exports.colors = [
+  'lightseagreen',
+  'forestgreen',
+  'goldenrod',
+  'dodgerblue',
+  'darkorchid',
+  'crimson'
+];
+
+/**
+ * Currently only WebKit-based Web Inspectors, Firefox >= v31,
+ * and the Firebug extension (any Firefox version) are known
+ * to support "%c" CSS customizations.
+ *
+ * TODO: add a `localStorage` variable to explicitly enable/disable colors
+ */
+
+function useColors() {
+  // NB: In an Electron preload script, document will be defined but not fully
+  // initialized. Since we know we're in Chrome, we'll just detect this case
+  // explicitly
+  if (window && window.process && window.process.type === 'renderer') {
+    return true;
+  }
+
+  // is webkit? http://stackoverflow.com/a/16459606/376773
+  // document is undefined in react-native: https://github.com/facebook/react-native/pull/1632
+  return (document && document.documentElement && document.documentElement.style && document.documentElement.style.WebkitAppearance) ||
+    // is firebug? http://stackoverflow.com/a/398120/376773
+    (window && window.console && (window.console.firebug || (window.console.exception && window.console.table))) ||
+    // is firefox >= v31?
+    // https://developer.mozilla.org/en-US/docs/Tools/Web_Console#Styling_messages
+    (navigator && navigator.userAgent && navigator.userAgent.toLowerCase().match(/firefox\/(\d+)/) && parseInt(RegExp.$1, 10) >= 31) ||
+    // double check webkit in userAgent just in case we are in a worker
+    (navigator && navigator.userAgent && navigator.userAgent.toLowerCase().match(/applewebkit\/(\d+)/));
+}
+
+/**
+ * Map %j to `JSON.stringify()`, since no Web Inspectors do that by default.
+ */
+
+exports.formatters.j = function(v) {
+  try {
+    return JSON.stringify(v);
+  } catch (err) {
+    return '[UnexpectedJSONParseError]: ' + err.message;
+  }
+};
+
+
+/**
+ * Colorize log arguments if enabled.
+ *
+ * @api public
+ */
+
+function formatArgs(args) {
+  var useColors = this.useColors;
+
+  args[0] = (useColors ? '%c' : '')
+    + this.namespace
+    + (useColors ? ' %c' : ' ')
+    + args[0]
+    + (useColors ? '%c ' : ' ')
+    + '+' + exports.humanize(this.diff);
+
+  if (!useColors) return;
+
+  var c = 'color: ' + this.color;
+  args.splice(1, 0, c, 'color: inherit')
+
+  // the final "%c" is somewhat tricky, because there could be other
+  // arguments passed either before or after the %c, so we need to
+  // figure out the correct index to insert the CSS into
+  var index = 0;
+  var lastC = 0;
+  args[0].replace(/%[a-zA-Z%]/g, function(match) {
+    if ('%%' === match) return;
+    index++;
+    if ('%c' === match) {
+      // we only are interested in the *last* %c
+      // (the user may have provided their own)
+      lastC = index;
+    }
+  });
+
+  args.splice(lastC, 0, c);
+}
+
+/**
+ * Invokes `console.log()` when available.
+ * No-op when `console.log` is not a "function".
+ *
+ * @api public
+ */
+
+function log() {
+  // this hackery is required for IE8/9, where
+  // the `console.log` function doesn't have 'apply'
+  return 'object' === typeof console
+    && console.log
+    && Function.prototype.apply.call(console.log, console, arguments);
+}
+
+/**
+ * Save `namespaces`.
+ *
+ * @param {String} namespaces
+ * @api private
+ */
+
+function save(namespaces) {
+  try {
+    if (null == namespaces) {
+      exports.storage.removeItem('debug');
+    } else {
+      exports.storage.debug = namespaces;
+    }
+  } catch(e) {}
+}
+
+/**
+ * Load `namespaces`.
+ *
+ * @return {String} returns the previously persisted debug modes
+ * @api private
+ */
+
+function load() {
+  var r;
+  try {
+    r = exports.storage.debug;
+  } catch(e) {}
+
+  // If debug isn't set in LS, and we're in Electron, try to load $DEBUG
+  if (!r && typeof process !== 'undefined' && 'env' in process) {
+    r = process.env.DEBUG;
+  }
+
+  return r;
+}
+
+/**
+ * Enable namespaces listed in `localStorage.debug` initially.
+ */
+
+exports.enable(load());
+
+/**
+ * Localstorage attempts to return the localstorage.
+ *
+ * This is necessary because safari throws
+ * when a user disables cookies/localstorage
+ * and you attempt to access it.
+ *
+ * @return {LocalStorage}
+ * @api private
+ */
+
+function localstorage() {
+  try {
+    return window.localStorage;
+  } catch (e) {}
+}
+
+
+/***/ }),
+/* 170 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/**
+ * Module dependencies.
+ */
+
+var tty = __webpack_require__(282);
+var util = __webpack_require__(1);
+
+/**
+ * This is the Node.js implementation of `debug()`.
+ *
+ * Expose `debug()` as the module.
+ */
+
+exports = module.exports = __webpack_require__(89);
+exports.init = init;
+exports.log = log;
+exports.formatArgs = formatArgs;
+exports.save = save;
+exports.load = load;
+exports.useColors = useColors;
+
+/**
+ * Colors.
+ */
+
+exports.colors = [6, 2, 3, 4, 5, 1];
+
+/**
+ * Build up the default `inspectOpts` object from the environment variables.
+ *
+ *   $ DEBUG_COLORS=no DEBUG_DEPTH=10 DEBUG_SHOW_HIDDEN=enabled node script.js
+ */
+
+exports.inspectOpts = Object.keys(process.env).filter(function (key) {
+  return /^debug_/i.test(key);
+}).reduce(function (obj, key) {
+  // camel-case
+  var prop = key
+    .substring(6)
+    .toLowerCase()
+    .replace(/_([a-z])/g, function (_, k) { return k.toUpperCase() });
+
+  // coerce string value into JS value
+  var val = process.env[key];
+  if (/^(yes|on|true|enabled)$/i.test(val)) val = true;
+  else if (/^(no|off|false|disabled)$/i.test(val)) val = false;
+  else if (val === 'null') val = null;
+  else val = Number(val);
+
+  obj[prop] = val;
+  return obj;
+}, {});
+
+/**
+ * The file descriptor to write the `debug()` calls to.
+ * Set the `DEBUG_FD` env variable to override with another value. i.e.:
+ *
+ *   $ DEBUG_FD=3 node script.js 3>debug.log
+ */
+
+var fd = parseInt(process.env.DEBUG_FD, 10) || 2;
+
+if (1 !== fd && 2 !== fd) {
+  util.deprecate(function(){}, 'except for stderr(2) and stdout(1), any other usage of DEBUG_FD is deprecated. Override debug.log if you want to use a different log function (https://git.io/debug_fd)')()
+}
+
+var stream = 1 === fd ? process.stdout :
+             2 === fd ? process.stderr :
+             createWritableStdioStream(fd);
+
+/**
+ * Is stdout a TTY? Colored output is enabled when `true`.
+ */
+
+function useColors() {
+  return 'colors' in exports.inspectOpts
+    ? Boolean(exports.inspectOpts.colors)
+    : tty.isatty(fd);
+}
+
+/**
+ * Map %o to `util.inspect()`, all on a single line.
+ */
+
+exports.formatters.o = function(v) {
+  this.inspectOpts.colors = this.useColors;
+  return util.inspect(v, this.inspectOpts)
+    .replace(/\s*\n\s*/g, ' ');
+};
+
+/**
+ * Map %o to `util.inspect()`, allowing multiple lines if needed.
+ */
+
+exports.formatters.O = function(v) {
+  this.inspectOpts.colors = this.useColors;
+  return util.inspect(v, this.inspectOpts);
+};
+
+/**
+ * Adds ANSI color escape codes if enabled.
+ *
+ * @api public
+ */
+
+function formatArgs(args) {
+  var name = this.namespace;
+  var useColors = this.useColors;
+
+  if (useColors) {
+    var c = this.color;
+    var prefix = '  \u001b[3' + c + ';1m' + name + ' ' + '\u001b[0m';
+
+    args[0] = prefix + args[0].split('\n').join('\n' + prefix);
+    args.push('\u001b[3' + c + 'm+' + exports.humanize(this.diff) + '\u001b[0m');
+  } else {
+    args[0] = new Date().toUTCString()
+      + ' ' + name + ' ' + args[0];
+  }
+}
+
+/**
+ * Invokes `util.format()` with the specified arguments and writes to `stream`.
+ */
+
+function log() {
+  return stream.write(util.format.apply(util, arguments) + '\n');
+}
+
+/**
+ * Save `namespaces`.
+ *
+ * @param {String} namespaces
+ * @api private
+ */
+
+function save(namespaces) {
+  if (null == namespaces) {
+    // If you set a process.env field to null or undefined, it gets cast to the
+    // string 'null' or 'undefined'. Just delete instead.
+    delete process.env.DEBUG;
+  } else {
+    process.env.DEBUG = namespaces;
+  }
+}
+
+/**
+ * Load `namespaces`.
+ *
+ * @return {String} returns the previously persisted debug modes
+ * @api private
+ */
+
+function load() {
+  return process.env.DEBUG;
+}
+
+/**
+ * Copied from `node/src/node.js`.
+ *
+ * XXX: It's lame that node doesn't expose this API out-of-the-box. It also
+ * relies on the undocumented `tty_wrap.guessHandleType()` which is also lame.
+ */
+
+function createWritableStdioStream (fd) {
+  var stream;
+  var tty_wrap = process.binding('tty_wrap');
+
+  // Note stream._type is used for test-module-load-list.js
+
+  switch (tty_wrap.guessHandleType(fd)) {
+    case 'TTY':
+      stream = new tty.WriteStream(fd);
+      stream._type = 'tty';
+
+      // Hack to have stream not keep the event loop alive.
+      // See https://github.com/joyent/node/issues/1726
+      if (stream._handle && stream._handle.unref) {
+        stream._handle.unref();
+      }
+      break;
+
+    case 'FILE':
+      var fs = __webpack_require__(17);
+      stream = new fs.SyncWriteStream(fd, { autoClose: false });
+      stream._type = 'fs';
+      break;
+
+    case 'PIPE':
+    case 'TCP':
+      var net = __webpack_require__(30);
+      stream = new net.Socket({
+        fd: fd,
+        readable: false,
+        writable: true
+      });
+
+      // FIXME Should probably have an option in net.Socket to create a
+      // stream from an existing fd which is writable only. But for now
+      // we'll just add this hack and set the `readable` member to false.
+      // Test: ./node test/fixtures/echo.js < /etc/passwd
+      stream.readable = false;
+      stream.read = null;
+      stream._type = 'pipe';
+
+      // FIXME Hack to have stream not keep the event loop alive.
+      // See https://github.com/joyent/node/issues/1726
+      if (stream._handle && stream._handle.unref) {
+        stream._handle.unref();
+      }
+      break;
+
+    default:
+      // Probably an error on in uv_guess_handle()
+      throw new Error('Implement me. Unknown stream file type!');
+  }
+
+  // For supporting legacy API we put the FD here.
+  stream.fd = fd;
+
+  stream._isStdio = true;
+
+  return stream;
+}
+
+/**
+ * Init logic for `debug` instances.
+ *
+ * Create a new `inspectOpts` object in case `useColors` is set
+ * differently for a particular `debug` instance.
+ */
+
+function init (debug) {
+  debug.inspectOpts = {};
+
+  var keys = Object.keys(exports.inspectOpts);
+  for (var i = 0; i < keys.length; i++) {
+    debug.inspectOpts[keys[i]] = exports.inspectOpts[keys[i]];
+  }
+}
+
+/**
+ * Enable namespaces listed in `process.env.DEBUG` initially.
+ */
+
+exports.enable(load());
+
+
+/***/ }),
+/* 171 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30808,11 +30829,11 @@ var deepExtend = module.exports = function (/*obj_1, [obj_2], [obj_N]*/) {
 
 
 /***/ }),
-/* 173 */
+/* 172 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Stream = __webpack_require__(10).Stream;
-var util = __webpack_require__(0);
+var util = __webpack_require__(1);
 
 module.exports = DelayedStream;
 function DelayedStream() {
@@ -30921,7 +30942,7 @@ DelayedStream.prototype._checkIfMaxDataSizeExceeded = function() {
 
 
 /***/ }),
-/* 174 */
+/* 173 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30963,7 +30984,7 @@ function bufferConcat(bufs) {
 
 
 /***/ }),
-/* 175 */
+/* 174 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31073,7 +31094,7 @@ function getConstructorName(obj) {
 
 
 /***/ }),
-/* 176 */
+/* 175 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31102,7 +31123,7 @@ function eventListenerCount(emitter, type) {
 
 
 /***/ }),
-/* 177 */
+/* 176 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31119,7 +31140,7 @@ function eventListenerCount(emitter, type) {
  * @private
  */
 
-var ReadStream = __webpack_require__(11).ReadStream
+var ReadStream = __webpack_require__(17).ReadStream
 var Stream = __webpack_require__(10)
 
 /**
@@ -31184,14 +31205,14 @@ function onOpenClose() {
 
 
 /***/ }),
-/* 178 */
+/* 177 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Named EC curves
 
 // Requires ec.js, jsbn.js, and jsbn2.js
-var BigInteger = __webpack_require__(16).BigInteger
-var ECCurveFp = __webpack_require__(35).ECCurveFp
+var BigInteger = __webpack_require__(15).BigInteger
+var ECCurveFp = __webpack_require__(34).ECCurveFp
 
 
 // ----------------
@@ -31360,7 +31381,7 @@ module.exports = {
 
 
 /***/ }),
-/* 179 */
+/* 178 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31462,7 +31483,7 @@ function listener(event, done) {
 
 
 /***/ }),
-/* 180 */
+/* 179 */
 /***/ (function(module, exports) {
 
 function webpackEmptyContext(req) {
@@ -31471,10 +31492,10 @@ function webpackEmptyContext(req) {
 webpackEmptyContext.keys = function() { return []; };
 webpackEmptyContext.resolve = webpackEmptyContext;
 module.exports = webpackEmptyContext;
-webpackEmptyContext.id = 180;
+webpackEmptyContext.id = 179;
 
 /***/ }),
-/* 181 */
+/* 180 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31493,22 +31514,22 @@ webpackEmptyContext.id = 180;
  * @private
  */
 
-var finalhandler = __webpack_require__(190);
+var finalhandler = __webpack_require__(186);
 var Router = __webpack_require__(94);
 var methods = __webpack_require__(59);
-var middleware = __webpack_require__(183);
+var middleware = __webpack_require__(182);
 var query = __webpack_require__(93);
-var debug = __webpack_require__(23)('express:application');
-var View = __webpack_require__(186);
+var debug = __webpack_require__(19)('express:application');
+var View = __webpack_require__(185);
 var http = __webpack_require__(9);
-var compileETag = __webpack_require__(15).compileETag;
-var compileQueryParser = __webpack_require__(15).compileQueryParser;
-var compileTrust = __webpack_require__(15).compileTrust;
+var compileETag = __webpack_require__(14).compileETag;
+var compileQueryParser = __webpack_require__(14).compileQueryParser;
+var compileTrust = __webpack_require__(14).compileTrust;
 var deprecate = __webpack_require__(20)('express');
 var flatten = __webpack_require__(32);
 var merge = __webpack_require__(65);
 var resolve = __webpack_require__(8).resolve;
-var setPrototyeOf = __webpack_require__(45)
+var setPrototypeOf = __webpack_require__(45)
 var slice = Array.prototype.slice;
 
 /**
@@ -31575,10 +31596,10 @@ app.defaultConfiguration = function defaultConfiguration() {
     }
 
     // inherit protos
-    setPrototyeOf(this.request, parent.request)
-    setPrototyeOf(this.response, parent.response)
-    setPrototyeOf(this.engines, parent.engines)
-    setPrototyeOf(this.settings, parent.settings)
+    setPrototypeOf(this.request, parent.request)
+    setPrototypeOf(this.response, parent.response)
+    setPrototypeOf(this.engines, parent.engines)
+    setPrototypeOf(this.settings, parent.settings)
   });
 
   // setup locals
@@ -31708,8 +31729,8 @@ app.use = function use(fn) {
     router.use(path, function mounted_app(req, res, next) {
       var orig = req.app;
       fn.handle(req, res, function (err) {
-        setPrototyeOf(req, orig.request)
-        setPrototyeOf(res, orig.response)
+        setPrototypeOf(req, orig.request)
+        setPrototypeOf(res, orig.response)
         next(err);
       });
     });
@@ -32125,7 +32146,7 @@ function tryRender(view, options, callback) {
 
 
 /***/ }),
-/* 182 */
+/* 181 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32143,13 +32164,13 @@ function tryRender(view, options, callback) {
  * Module dependencies.
  */
 
-var EventEmitter = __webpack_require__(30).EventEmitter;
-var mixin = __webpack_require__(244);
-var proto = __webpack_require__(181);
+var EventEmitter = __webpack_require__(29).EventEmitter;
+var mixin = __webpack_require__(235);
+var proto = __webpack_require__(180);
 var Route = __webpack_require__(96);
 var Router = __webpack_require__(94);
-var req = __webpack_require__(184);
-var res = __webpack_require__(185);
+var req = __webpack_require__(183);
+var res = __webpack_require__(184);
 
 /**
  * Expose `createApplication()`.
@@ -32206,7 +32227,7 @@ exports.Router = Router;
  */
 
 exports.query = __webpack_require__(93);
-exports.static = __webpack_require__(272);
+exports.static = __webpack_require__(260);
 
 /**
  * Replace removed middleware with an appropriate error message.
@@ -32243,6 +32264,56 @@ exports.static = __webpack_require__(272);
 
 
 /***/ }),
+/* 182 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/*!
+ * express
+ * Copyright(c) 2009-2013 TJ Holowaychuk
+ * Copyright(c) 2013 Roman Shtylman
+ * Copyright(c) 2014-2015 Douglas Christopher Wilson
+ * MIT Licensed
+ */
+
+
+
+/**
+ * Module dependencies.
+ * @private
+ */
+
+var setPrototypeOf = __webpack_require__(45)
+
+/**
+ * Initialization middleware, exposing the
+ * request and response to each other, as well
+ * as defaulting the X-Powered-By header field.
+ *
+ * @param {Function} app
+ * @return {Function}
+ * @api private
+ */
+
+exports.init = function(app){
+  return function expressInit(req, res, next){
+    if (app.enabled('x-powered-by')) res.setHeader('X-Powered-By', 'Express');
+    req.res = res;
+    res.req = req;
+    req.next = next;
+
+    setPrototypeOf(req, app.request)
+    setPrototypeOf(res, app.response)
+
+    res.locals = res.locals || Object.create(null);
+
+    next();
+  };
+};
+
+
+
+/***/ }),
 /* 183 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -32262,65 +32333,15 @@ exports.static = __webpack_require__(272);
  * @private
  */
 
-var setPrototyeOf = __webpack_require__(45)
-
-/**
- * Initialization middleware, exposing the
- * request and response to each other, as well
- * as defaulting the X-Powered-By header field.
- *
- * @param {Function} app
- * @return {Function}
- * @api private
- */
-
-exports.init = function(app){
-  return function expressInit(req, res, next){
-    if (app.enabled('x-powered-by')) res.setHeader('X-Powered-By', 'Express');
-    req.res = res;
-    res.req = req;
-    req.next = next;
-
-    setPrototyeOf(req, app.request)
-    setPrototyeOf(res, app.response)
-
-    res.locals = res.locals || Object.create(null);
-
-    next();
-  };
-};
-
-
-
-/***/ }),
-/* 184 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/*!
- * express
- * Copyright(c) 2009-2013 TJ Holowaychuk
- * Copyright(c) 2013 Roman Shtylman
- * Copyright(c) 2014-2015 Douglas Christopher Wilson
- * MIT Licensed
- */
-
-
-
-/**
- * Module dependencies.
- * @private
- */
-
-var accepts = __webpack_require__(126);
+var accepts = __webpack_require__(123);
 var deprecate = __webpack_require__(20)('express');
-var isIP = __webpack_require__(22).isIP;
-var typeis = __webpack_require__(284);
+var isIP = __webpack_require__(30).isIP;
+var typeis = __webpack_require__(272);
 var http = __webpack_require__(9);
-var fresh = __webpack_require__(100);
-var parseRange = __webpack_require__(105);
-var parse = __webpack_require__(24);
-var proxyaddr = __webpack_require__(102);
+var fresh = __webpack_require__(98);
+var parseRange = __webpack_require__(104);
+var parse = __webpack_require__(23);
+var proxyaddr = __webpack_require__(101);
 
 /**
  * Request prototype.
@@ -32817,7 +32838,7 @@ function defineGetter(obj, name, getter) {
 
 
 /***/ }),
-/* 185 */
+/* 184 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32835,26 +32856,26 @@ function defineGetter(obj, name, getter) {
  * @private
  */
 
-var contentDisposition = __webpack_require__(88);
+var contentDisposition = __webpack_require__(87);
 var deprecate = __webpack_require__(20)('express');
-var encodeUrl = __webpack_require__(36);
-var escapeHtml = __webpack_require__(37);
+var encodeUrl = __webpack_require__(35);
+var escapeHtml = __webpack_require__(36);
 var http = __webpack_require__(9);
-var isAbsolute = __webpack_require__(15).isAbsolute;
+var isAbsolute = __webpack_require__(14).isAbsolute;
 var onFinished = __webpack_require__(60);
 var path = __webpack_require__(8);
 var statuses = __webpack_require__(48)
 var merge = __webpack_require__(65);
-var sign = __webpack_require__(170).sign;
-var normalizeType = __webpack_require__(15).normalizeType;
-var normalizeTypes = __webpack_require__(15).normalizeTypes;
-var setCharset = __webpack_require__(15).setCharset;
-var cookie = __webpack_require__(171);
+var sign = __webpack_require__(167).sign;
+var normalizeType = __webpack_require__(14).normalizeType;
+var normalizeTypes = __webpack_require__(14).normalizeTypes;
+var setCharset = __webpack_require__(14).setCharset;
+var cookie = __webpack_require__(168);
 var send = __webpack_require__(62);
 var extname = path.extname;
 var mime = send.mime;
 var resolve = path.resolve;
-var vary = __webpack_require__(288);
+var vary = __webpack_require__(276);
 
 /**
  * Response prototype.
@@ -33540,9 +33561,14 @@ res.header = function header(field, val) {
       : String(val);
 
     // add charset to content-type
-    if (field.toLowerCase() === 'content-type' && !charsetRegExp.test(value)) {
-      var charset = mime.charsets.lookup(value.split(';')[0]);
-      if (charset) value += '; charset=' + charset.toLowerCase();
+    if (field.toLowerCase() === 'content-type') {
+      if (Array.isArray(value)) {
+        throw new TypeError('Content-Type cannot be set to an Array');
+      }
+      if (!charsetRegExp.test(value)) {
+        var charset = mime.charsets.lookup(value.split(';')[0]);
+        if (charset) value += '; charset=' + charset.toLowerCase();
+      }
     }
 
     this.setHeader(field, value);
@@ -33600,7 +33626,7 @@ res.clearCookie = function clearCookie(name, options) {
  *
  * @param {String} name
  * @param {String|Object} value
- * @param {Options} options
+ * @param {Object} [options]
  * @return {ServerResponse} for chaining
  * @public
  */
@@ -33895,7 +33921,7 @@ function stringify(value, replacer, spaces) {
 
 
 /***/ }),
-/* 186 */
+/* 185 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33914,10 +33940,10 @@ function stringify(value, replacer, spaces) {
  * @private
  */
 
-var debug = __webpack_require__(23)('express:view');
+var debug = __webpack_require__(19)('express:view');
 var path = __webpack_require__(8);
-var fs = __webpack_require__(11);
-var utils = __webpack_require__(15);
+var fs = __webpack_require__(17);
+var utils = __webpack_require__(14);
 
 /**
  * Module variables.
@@ -34077,597 +34103,7 @@ function tryStat(path) {
 
 
 /***/ }),
-/* 187 */
-/***/ (function(module, exports, __webpack_require__) {
-
-/**
- * This is the web browser implementation of `debug()`.
- *
- * Expose `debug()` as the module.
- */
-
-exports = module.exports = __webpack_require__(97);
-exports.log = log;
-exports.formatArgs = formatArgs;
-exports.save = save;
-exports.load = load;
-exports.useColors = useColors;
-exports.storage = 'undefined' != typeof chrome
-               && 'undefined' != typeof chrome.storage
-                  ? chrome.storage.local
-                  : localstorage();
-
-/**
- * Colors.
- */
-
-exports.colors = [
-  'lightseagreen',
-  'forestgreen',
-  'goldenrod',
-  'dodgerblue',
-  'darkorchid',
-  'crimson'
-];
-
-/**
- * Currently only WebKit-based Web Inspectors, Firefox >= v31,
- * and the Firebug extension (any Firefox version) are known
- * to support "%c" CSS customizations.
- *
- * TODO: add a `localStorage` variable to explicitly enable/disable colors
- */
-
-function useColors() {
-  // NB: In an Electron preload script, document will be defined but not fully
-  // initialized. Since we know we're in Chrome, we'll just detect this case
-  // explicitly
-  if (typeof window !== 'undefined' && window && typeof window.process !== 'undefined' && window.process.type === 'renderer') {
-    return true;
-  }
-
-  // is webkit? http://stackoverflow.com/a/16459606/376773
-  // document is undefined in react-native: https://github.com/facebook/react-native/pull/1632
-  return (typeof document !== 'undefined' && document && 'WebkitAppearance' in document.documentElement.style) ||
-    // is firebug? http://stackoverflow.com/a/398120/376773
-    (typeof window !== 'undefined' && window && window.console && (console.firebug || (console.exception && console.table))) ||
-    // is firefox >= v31?
-    // https://developer.mozilla.org/en-US/docs/Tools/Web_Console#Styling_messages
-    (typeof navigator !== 'undefined' && navigator && navigator.userAgent && navigator.userAgent.toLowerCase().match(/firefox\/(\d+)/) && parseInt(RegExp.$1, 10) >= 31) ||
-    // double check webkit in userAgent just in case we are in a worker
-    (typeof navigator !== 'undefined' && navigator && navigator.userAgent && navigator.userAgent.toLowerCase().match(/applewebkit\/(\d+)/));
-}
-
-/**
- * Map %j to `JSON.stringify()`, since no Web Inspectors do that by default.
- */
-
-exports.formatters.j = function(v) {
-  try {
-    return JSON.stringify(v);
-  } catch (err) {
-    return '[UnexpectedJSONParseError]: ' + err.message;
-  }
-};
-
-
-/**
- * Colorize log arguments if enabled.
- *
- * @api public
- */
-
-function formatArgs(args) {
-  var useColors = this.useColors;
-
-  args[0] = (useColors ? '%c' : '')
-    + this.namespace
-    + (useColors ? ' %c' : ' ')
-    + args[0]
-    + (useColors ? '%c ' : ' ')
-    + '+' + exports.humanize(this.diff);
-
-  if (!useColors) return;
-
-  var c = 'color: ' + this.color;
-  args.splice(1, 0, c, 'color: inherit')
-
-  // the final "%c" is somewhat tricky, because there could be other
-  // arguments passed either before or after the %c, so we need to
-  // figure out the correct index to insert the CSS into
-  var index = 0;
-  var lastC = 0;
-  args[0].replace(/%[a-zA-Z%]/g, function(match) {
-    if ('%%' === match) return;
-    index++;
-    if ('%c' === match) {
-      // we only are interested in the *last* %c
-      // (the user may have provided their own)
-      lastC = index;
-    }
-  });
-
-  args.splice(lastC, 0, c);
-}
-
-/**
- * Invokes `console.log()` when available.
- * No-op when `console.log` is not a "function".
- *
- * @api public
- */
-
-function log() {
-  // this hackery is required for IE8/9, where
-  // the `console.log` function doesn't have 'apply'
-  return 'object' === typeof console
-    && console.log
-    && Function.prototype.apply.call(console.log, console, arguments);
-}
-
-/**
- * Save `namespaces`.
- *
- * @param {String} namespaces
- * @api private
- */
-
-function save(namespaces) {
-  try {
-    if (null == namespaces) {
-      exports.storage.removeItem('debug');
-    } else {
-      exports.storage.debug = namespaces;
-    }
-  } catch(e) {}
-}
-
-/**
- * Load `namespaces`.
- *
- * @return {String} returns the previously persisted debug modes
- * @api private
- */
-
-function load() {
-  try {
-    return exports.storage.debug;
-  } catch(e) {}
-
-  // If debug isn't set in LS, and we're in Electron, try to load $DEBUG
-  if (typeof process !== 'undefined' && 'env' in process) {
-    return process.env.DEBUG;
-  }
-}
-
-/**
- * Enable namespaces listed in `localStorage.debug` initially.
- */
-
-exports.enable(load());
-
-/**
- * Localstorage attempts to return the localstorage.
- *
- * This is necessary because safari throws
- * when a user disables cookies/localstorage
- * and you attempt to access it.
- *
- * @return {LocalStorage}
- * @api private
- */
-
-function localstorage() {
-  try {
-    return window.localStorage;
-  } catch (e) {}
-}
-
-
-/***/ }),
-/* 188 */
-/***/ (function(module, exports, __webpack_require__) {
-
-/**
- * Module dependencies.
- */
-
-var tty = __webpack_require__(67);
-var util = __webpack_require__(0);
-
-/**
- * This is the Node.js implementation of `debug()`.
- *
- * Expose `debug()` as the module.
- */
-
-exports = module.exports = __webpack_require__(97);
-exports.init = init;
-exports.log = log;
-exports.formatArgs = formatArgs;
-exports.save = save;
-exports.load = load;
-exports.useColors = useColors;
-
-/**
- * Colors.
- */
-
-exports.colors = [6, 2, 3, 4, 5, 1];
-
-/**
- * Build up the default `inspectOpts` object from the environment variables.
- *
- *   $ DEBUG_COLORS=no DEBUG_DEPTH=10 DEBUG_SHOW_HIDDEN=enabled node script.js
- */
-
-exports.inspectOpts = Object.keys(process.env).filter(function (key) {
-  return /^debug_/i.test(key);
-}).reduce(function (obj, key) {
-  // camel-case
-  var prop = key
-    .substring(6)
-    .toLowerCase()
-    .replace(/_([a-z])/, function (_, k) { return k.toUpperCase() });
-
-  // coerce string value into JS value
-  var val = process.env[key];
-  if (/^(yes|on|true|enabled)$/i.test(val)) val = true;
-  else if (/^(no|off|false|disabled)$/i.test(val)) val = false;
-  else if (val === 'null') val = null;
-  else val = Number(val);
-
-  obj[prop] = val;
-  return obj;
-}, {});
-
-/**
- * The file descriptor to write the `debug()` calls to.
- * Set the `DEBUG_FD` env variable to override with another value. i.e.:
- *
- *   $ DEBUG_FD=3 node script.js 3>debug.log
- */
-
-var fd = parseInt(process.env.DEBUG_FD, 10) || 2;
-
-if (1 !== fd && 2 !== fd) {
-  util.deprecate(function(){}, 'except for stderr(2) and stdout(1), any other usage of DEBUG_FD is deprecated. Override debug.log if you want to use a different log function (https://git.io/debug_fd)')()
-}
-
-var stream = 1 === fd ? process.stdout :
-             2 === fd ? process.stderr :
-             createWritableStdioStream(fd);
-
-/**
- * Is stdout a TTY? Colored output is enabled when `true`.
- */
-
-function useColors() {
-  return 'colors' in exports.inspectOpts
-    ? Boolean(exports.inspectOpts.colors)
-    : tty.isatty(fd);
-}
-
-/**
- * Map %o to `util.inspect()`, all on a single line.
- */
-
-exports.formatters.o = function(v) {
-  this.inspectOpts.colors = this.useColors;
-  return util.inspect(v, this.inspectOpts)
-    .replace(/\s*\n\s*/g, ' ');
-};
-
-/**
- * Map %o to `util.inspect()`, allowing multiple lines if needed.
- */
-
-exports.formatters.O = function(v) {
-  this.inspectOpts.colors = this.useColors;
-  return util.inspect(v, this.inspectOpts);
-};
-
-/**
- * Adds ANSI color escape codes if enabled.
- *
- * @api public
- */
-
-function formatArgs(args) {
-  var name = this.namespace;
-  var useColors = this.useColors;
-
-  if (useColors) {
-    var c = this.color;
-    var prefix = '  \u001b[3' + c + ';1m' + name + ' ' + '\u001b[0m';
-
-    args[0] = prefix + args[0].split('\n').join('\n' + prefix);
-    args.push('\u001b[3' + c + 'm+' + exports.humanize(this.diff) + '\u001b[0m');
-  } else {
-    args[0] = new Date().toUTCString()
-      + ' ' + name + ' ' + args[0];
-  }
-}
-
-/**
- * Invokes `util.format()` with the specified arguments and writes to `stream`.
- */
-
-function log() {
-  return stream.write(util.format.apply(util, arguments) + '\n');
-}
-
-/**
- * Save `namespaces`.
- *
- * @param {String} namespaces
- * @api private
- */
-
-function save(namespaces) {
-  if (null == namespaces) {
-    // If you set a process.env field to null or undefined, it gets cast to the
-    // string 'null' or 'undefined'. Just delete instead.
-    delete process.env.DEBUG;
-  } else {
-    process.env.DEBUG = namespaces;
-  }
-}
-
-/**
- * Load `namespaces`.
- *
- * @return {String} returns the previously persisted debug modes
- * @api private
- */
-
-function load() {
-  return process.env.DEBUG;
-}
-
-/**
- * Copied from `node/src/node.js`.
- *
- * XXX: It's lame that node doesn't expose this API out-of-the-box. It also
- * relies on the undocumented `tty_wrap.guessHandleType()` which is also lame.
- */
-
-function createWritableStdioStream (fd) {
-  var stream;
-  var tty_wrap = process.binding('tty_wrap');
-
-  // Note stream._type is used for test-module-load-list.js
-
-  switch (tty_wrap.guessHandleType(fd)) {
-    case 'TTY':
-      stream = new tty.WriteStream(fd);
-      stream._type = 'tty';
-
-      // Hack to have stream not keep the event loop alive.
-      // See https://github.com/joyent/node/issues/1726
-      if (stream._handle && stream._handle.unref) {
-        stream._handle.unref();
-      }
-      break;
-
-    case 'FILE':
-      var fs = __webpack_require__(11);
-      stream = new fs.SyncWriteStream(fd, { autoClose: false });
-      stream._type = 'fs';
-      break;
-
-    case 'PIPE':
-    case 'TCP':
-      var net = __webpack_require__(22);
-      stream = new net.Socket({
-        fd: fd,
-        readable: false,
-        writable: true
-      });
-
-      // FIXME Should probably have an option in net.Socket to create a
-      // stream from an existing fd which is writable only. But for now
-      // we'll just add this hack and set the `readable` member to false.
-      // Test: ./node test/fixtures/echo.js < /etc/passwd
-      stream.readable = false;
-      stream.read = null;
-      stream._type = 'pipe';
-
-      // FIXME Hack to have stream not keep the event loop alive.
-      // See https://github.com/joyent/node/issues/1726
-      if (stream._handle && stream._handle.unref) {
-        stream._handle.unref();
-      }
-      break;
-
-    default:
-      // Probably an error on in uv_guess_handle()
-      throw new Error('Implement me. Unknown stream file type!');
-  }
-
-  // For supporting legacy API we put the FD here.
-  stream.fd = fd;
-
-  stream._isStdio = true;
-
-  return stream;
-}
-
-/**
- * Init logic for `debug` instances.
- *
- * Create a new `inspectOpts` object in case `useColors` is set
- * differently for a particular `debug` instance.
- */
-
-function init (debug) {
-  debug.inspectOpts = util._extend({}, exports.inspectOpts);
-}
-
-/**
- * Enable namespaces listed in `process.env.DEBUG` initially.
- */
-
-exports.enable(load());
-
-
-/***/ }),
-/* 189 */
-/***/ (function(module, exports) {
-
-/**
- * Helpers.
- */
-
-var s = 1000
-var m = s * 60
-var h = m * 60
-var d = h * 24
-var y = d * 365.25
-
-/**
- * Parse or format the given `val`.
- *
- * Options:
- *
- *  - `long` verbose formatting [false]
- *
- * @param {String|Number} val
- * @param {Object} options
- * @throws {Error} throw an error if val is not a non-empty string or a number
- * @return {String|Number}
- * @api public
- */
-
-module.exports = function (val, options) {
-  options = options || {}
-  var type = typeof val
-  if (type === 'string' && val.length > 0) {
-    return parse(val)
-  } else if (type === 'number' && isNaN(val) === false) {
-    return options.long ?
-			fmtLong(val) :
-			fmtShort(val)
-  }
-  throw new Error('val is not a non-empty string or a valid number. val=' + JSON.stringify(val))
-}
-
-/**
- * Parse the given `str` and return milliseconds.
- *
- * @param {String} str
- * @return {Number}
- * @api private
- */
-
-function parse(str) {
-  str = String(str)
-  if (str.length > 10000) {
-    return
-  }
-  var match = /^((?:\d+)?\.?\d+) *(milliseconds?|msecs?|ms|seconds?|secs?|s|minutes?|mins?|m|hours?|hrs?|h|days?|d|years?|yrs?|y)?$/i.exec(str)
-  if (!match) {
-    return
-  }
-  var n = parseFloat(match[1])
-  var type = (match[2] || 'ms').toLowerCase()
-  switch (type) {
-    case 'years':
-    case 'year':
-    case 'yrs':
-    case 'yr':
-    case 'y':
-      return n * y
-    case 'days':
-    case 'day':
-    case 'd':
-      return n * d
-    case 'hours':
-    case 'hour':
-    case 'hrs':
-    case 'hr':
-    case 'h':
-      return n * h
-    case 'minutes':
-    case 'minute':
-    case 'mins':
-    case 'min':
-    case 'm':
-      return n * m
-    case 'seconds':
-    case 'second':
-    case 'secs':
-    case 'sec':
-    case 's':
-      return n * s
-    case 'milliseconds':
-    case 'millisecond':
-    case 'msecs':
-    case 'msec':
-    case 'ms':
-      return n
-    default:
-      return undefined
-  }
-}
-
-/**
- * Short format for `ms`.
- *
- * @param {Number} ms
- * @return {String}
- * @api private
- */
-
-function fmtShort(ms) {
-  if (ms >= d) {
-    return Math.round(ms / d) + 'd'
-  }
-  if (ms >= h) {
-    return Math.round(ms / h) + 'h'
-  }
-  if (ms >= m) {
-    return Math.round(ms / m) + 'm'
-  }
-  if (ms >= s) {
-    return Math.round(ms / s) + 's'
-  }
-  return ms + 'ms'
-}
-
-/**
- * Long format for `ms`.
- *
- * @param {Number} ms
- * @return {String}
- * @api private
- */
-
-function fmtLong(ms) {
-  return plural(ms, d, 'day') ||
-    plural(ms, h, 'hour') ||
-    plural(ms, m, 'minute') ||
-    plural(ms, s, 'second') ||
-    ms + ' ms'
-}
-
-/**
- * Pluralization helper.
- */
-
-function plural(ms, n, name) {
-  if (ms < n) {
-    return
-  }
-  if (ms < n * 1.5) {
-    return Math.floor(ms / n) + ' ' + name
-  }
-  return Math.ceil(ms / n) + ' ' + name + 's'
-}
-
-
-/***/ }),
-/* 190 */
+/* 186 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34684,13 +34120,13 @@ function plural(ms, n, name) {
  * @private
  */
 
-var debug = __webpack_require__(192)('finalhandler')
-var encodeUrl = __webpack_require__(36)
-var escapeHtml = __webpack_require__(37)
+var debug = __webpack_require__(19)('finalhandler')
+var encodeUrl = __webpack_require__(35)
+var escapeHtml = __webpack_require__(36)
 var onFinished = __webpack_require__(60)
-var parseUrl = __webpack_require__(24)
+var parseUrl = __webpack_require__(23)
 var statuses = __webpack_require__(48)
-var unpipe = __webpack_require__(285)
+var unpipe = __webpack_require__(273)
 
 /**
  * Module variables.
@@ -34974,625 +34410,16 @@ function setHeaders (res, headers) {
 
 
 /***/ }),
-/* 191 */
-/***/ (function(module, exports, __webpack_require__) {
-
-/**
- * This is the web browser implementation of `debug()`.
- *
- * Expose `debug()` as the module.
- */
-
-exports = module.exports = __webpack_require__(99);
-exports.log = log;
-exports.formatArgs = formatArgs;
-exports.save = save;
-exports.load = load;
-exports.useColors = useColors;
-exports.storage = 'undefined' != typeof chrome
-               && 'undefined' != typeof chrome.storage
-                  ? chrome.storage.local
-                  : localstorage();
-
-/**
- * Colors.
- */
-
-exports.colors = [
-  'lightseagreen',
-  'forestgreen',
-  'goldenrod',
-  'dodgerblue',
-  'darkorchid',
-  'crimson'
-];
-
-/**
- * Currently only WebKit-based Web Inspectors, Firefox >= v31,
- * and the Firebug extension (any Firefox version) are known
- * to support "%c" CSS customizations.
- *
- * TODO: add a `localStorage` variable to explicitly enable/disable colors
- */
-
-function useColors() {
-  // NB: In an Electron preload script, document will be defined but not fully
-  // initialized. Since we know we're in Chrome, we'll just detect this case
-  // explicitly
-  if (typeof window !== 'undefined' && window && typeof window.process !== 'undefined' && window.process.type === 'renderer') {
-    return true;
-  }
-
-  // is webkit? http://stackoverflow.com/a/16459606/376773
-  // document is undefined in react-native: https://github.com/facebook/react-native/pull/1632
-  return (typeof document !== 'undefined' && document && 'WebkitAppearance' in document.documentElement.style) ||
-    // is firebug? http://stackoverflow.com/a/398120/376773
-    (typeof window !== 'undefined' && window && window.console && (console.firebug || (console.exception && console.table))) ||
-    // is firefox >= v31?
-    // https://developer.mozilla.org/en-US/docs/Tools/Web_Console#Styling_messages
-    (typeof navigator !== 'undefined' && navigator && navigator.userAgent && navigator.userAgent.toLowerCase().match(/firefox\/(\d+)/) && parseInt(RegExp.$1, 10) >= 31) ||
-    // double check webkit in userAgent just in case we are in a worker
-    (typeof navigator !== 'undefined' && navigator && navigator.userAgent && navigator.userAgent.toLowerCase().match(/applewebkit\/(\d+)/));
-}
-
-/**
- * Map %j to `JSON.stringify()`, since no Web Inspectors do that by default.
- */
-
-exports.formatters.j = function(v) {
-  try {
-    return JSON.stringify(v);
-  } catch (err) {
-    return '[UnexpectedJSONParseError]: ' + err.message;
-  }
-};
-
-
-/**
- * Colorize log arguments if enabled.
- *
- * @api public
- */
-
-function formatArgs(args) {
-  var useColors = this.useColors;
-
-  args[0] = (useColors ? '%c' : '')
-    + this.namespace
-    + (useColors ? ' %c' : ' ')
-    + args[0]
-    + (useColors ? '%c ' : ' ')
-    + '+' + exports.humanize(this.diff);
-
-  if (!useColors) return;
-
-  var c = 'color: ' + this.color;
-  args.splice(1, 0, c, 'color: inherit')
-
-  // the final "%c" is somewhat tricky, because there could be other
-  // arguments passed either before or after the %c, so we need to
-  // figure out the correct index to insert the CSS into
-  var index = 0;
-  var lastC = 0;
-  args[0].replace(/%[a-zA-Z%]/g, function(match) {
-    if ('%%' === match) return;
-    index++;
-    if ('%c' === match) {
-      // we only are interested in the *last* %c
-      // (the user may have provided their own)
-      lastC = index;
-    }
-  });
-
-  args.splice(lastC, 0, c);
-}
-
-/**
- * Invokes `console.log()` when available.
- * No-op when `console.log` is not a "function".
- *
- * @api public
- */
-
-function log() {
-  // this hackery is required for IE8/9, where
-  // the `console.log` function doesn't have 'apply'
-  return 'object' === typeof console
-    && console.log
-    && Function.prototype.apply.call(console.log, console, arguments);
-}
-
-/**
- * Save `namespaces`.
- *
- * @param {String} namespaces
- * @api private
- */
-
-function save(namespaces) {
-  try {
-    if (null == namespaces) {
-      exports.storage.removeItem('debug');
-    } else {
-      exports.storage.debug = namespaces;
-    }
-  } catch(e) {}
-}
-
-/**
- * Load `namespaces`.
- *
- * @return {String} returns the previously persisted debug modes
- * @api private
- */
-
-function load() {
-  var r;
-  try {
-    r = exports.storage.debug;
-  } catch(e) {}
-
-  // If debug isn't set in LS, and we're in Electron, try to load $DEBUG
-  if (!r && typeof process !== 'undefined' && 'env' in process) {
-    r = process.env.DEBUG;
-  }
-
-  return r;
-}
-
-/**
- * Enable namespaces listed in `localStorage.debug` initially.
- */
-
-exports.enable(load());
-
-/**
- * Localstorage attempts to return the localstorage.
- *
- * This is necessary because safari throws
- * when a user disables cookies/localstorage
- * and you attempt to access it.
- *
- * @return {LocalStorage}
- * @api private
- */
-
-function localstorage() {
-  try {
-    return window.localStorage;
-  } catch (e) {}
-}
-
-
-/***/ }),
-/* 192 */
-/***/ (function(module, exports, __webpack_require__) {
-
-/**
- * Detect Electron renderer process, which is node, but we should
- * treat as a browser.
- */
-
-if (typeof process !== 'undefined' && process.type === 'renderer') {
-  module.exports = __webpack_require__(191);
-} else {
-  module.exports = __webpack_require__(193);
-}
-
-
-/***/ }),
-/* 193 */
-/***/ (function(module, exports, __webpack_require__) {
-
-/**
- * Module dependencies.
- */
-
-var tty = __webpack_require__(67);
-var util = __webpack_require__(0);
-
-/**
- * This is the Node.js implementation of `debug()`.
- *
- * Expose `debug()` as the module.
- */
-
-exports = module.exports = __webpack_require__(99);
-exports.init = init;
-exports.log = log;
-exports.formatArgs = formatArgs;
-exports.save = save;
-exports.load = load;
-exports.useColors = useColors;
-
-/**
- * Colors.
- */
-
-exports.colors = [6, 2, 3, 4, 5, 1];
-
-/**
- * Build up the default `inspectOpts` object from the environment variables.
- *
- *   $ DEBUG_COLORS=no DEBUG_DEPTH=10 DEBUG_SHOW_HIDDEN=enabled node script.js
- */
-
-exports.inspectOpts = Object.keys(process.env).filter(function (key) {
-  return /^debug_/i.test(key);
-}).reduce(function (obj, key) {
-  // camel-case
-  var prop = key
-    .substring(6)
-    .toLowerCase()
-    .replace(/_([a-z])/g, function (_, k) { return k.toUpperCase() });
-
-  // coerce string value into JS value
-  var val = process.env[key];
-  if (/^(yes|on|true|enabled)$/i.test(val)) val = true;
-  else if (/^(no|off|false|disabled)$/i.test(val)) val = false;
-  else if (val === 'null') val = null;
-  else val = Number(val);
-
-  obj[prop] = val;
-  return obj;
-}, {});
-
-/**
- * The file descriptor to write the `debug()` calls to.
- * Set the `DEBUG_FD` env variable to override with another value. i.e.:
- *
- *   $ DEBUG_FD=3 node script.js 3>debug.log
- */
-
-var fd = parseInt(process.env.DEBUG_FD, 10) || 2;
-
-if (1 !== fd && 2 !== fd) {
-  util.deprecate(function(){}, 'except for stderr(2) and stdout(1), any other usage of DEBUG_FD is deprecated. Override debug.log if you want to use a different log function (https://git.io/debug_fd)')()
-}
-
-var stream = 1 === fd ? process.stdout :
-             2 === fd ? process.stderr :
-             createWritableStdioStream(fd);
-
-/**
- * Is stdout a TTY? Colored output is enabled when `true`.
- */
-
-function useColors() {
-  return 'colors' in exports.inspectOpts
-    ? Boolean(exports.inspectOpts.colors)
-    : tty.isatty(fd);
-}
-
-/**
- * Map %o to `util.inspect()`, all on a single line.
- */
-
-exports.formatters.o = function(v) {
-  this.inspectOpts.colors = this.useColors;
-  return util.inspect(v, this.inspectOpts)
-    .replace(/\s*\n\s*/g, ' ');
-};
-
-/**
- * Map %o to `util.inspect()`, allowing multiple lines if needed.
- */
-
-exports.formatters.O = function(v) {
-  this.inspectOpts.colors = this.useColors;
-  return util.inspect(v, this.inspectOpts);
-};
-
-/**
- * Adds ANSI color escape codes if enabled.
- *
- * @api public
- */
-
-function formatArgs(args) {
-  var name = this.namespace;
-  var useColors = this.useColors;
-
-  if (useColors) {
-    var c = this.color;
-    var prefix = '  \u001b[3' + c + ';1m' + name + ' ' + '\u001b[0m';
-
-    args[0] = prefix + args[0].split('\n').join('\n' + prefix);
-    args.push('\u001b[3' + c + 'm+' + exports.humanize(this.diff) + '\u001b[0m');
-  } else {
-    args[0] = new Date().toUTCString()
-      + ' ' + name + ' ' + args[0];
-  }
-}
-
-/**
- * Invokes `util.format()` with the specified arguments and writes to `stream`.
- */
-
-function log() {
-  return stream.write(util.format.apply(util, arguments) + '\n');
-}
-
-/**
- * Save `namespaces`.
- *
- * @param {String} namespaces
- * @api private
- */
-
-function save(namespaces) {
-  if (null == namespaces) {
-    // If you set a process.env field to null or undefined, it gets cast to the
-    // string 'null' or 'undefined'. Just delete instead.
-    delete process.env.DEBUG;
-  } else {
-    process.env.DEBUG = namespaces;
-  }
-}
-
-/**
- * Load `namespaces`.
- *
- * @return {String} returns the previously persisted debug modes
- * @api private
- */
-
-function load() {
-  return process.env.DEBUG;
-}
-
-/**
- * Copied from `node/src/node.js`.
- *
- * XXX: It's lame that node doesn't expose this API out-of-the-box. It also
- * relies on the undocumented `tty_wrap.guessHandleType()` which is also lame.
- */
-
-function createWritableStdioStream (fd) {
-  var stream;
-  var tty_wrap = process.binding('tty_wrap');
-
-  // Note stream._type is used for test-module-load-list.js
-
-  switch (tty_wrap.guessHandleType(fd)) {
-    case 'TTY':
-      stream = new tty.WriteStream(fd);
-      stream._type = 'tty';
-
-      // Hack to have stream not keep the event loop alive.
-      // See https://github.com/joyent/node/issues/1726
-      if (stream._handle && stream._handle.unref) {
-        stream._handle.unref();
-      }
-      break;
-
-    case 'FILE':
-      var fs = __webpack_require__(11);
-      stream = new fs.SyncWriteStream(fd, { autoClose: false });
-      stream._type = 'fs';
-      break;
-
-    case 'PIPE':
-    case 'TCP':
-      var net = __webpack_require__(22);
-      stream = new net.Socket({
-        fd: fd,
-        readable: false,
-        writable: true
-      });
-
-      // FIXME Should probably have an option in net.Socket to create a
-      // stream from an existing fd which is writable only. But for now
-      // we'll just add this hack and set the `readable` member to false.
-      // Test: ./node test/fixtures/echo.js < /etc/passwd
-      stream.readable = false;
-      stream.read = null;
-      stream._type = 'pipe';
-
-      // FIXME Hack to have stream not keep the event loop alive.
-      // See https://github.com/joyent/node/issues/1726
-      if (stream._handle && stream._handle.unref) {
-        stream._handle.unref();
-      }
-      break;
-
-    default:
-      // Probably an error on in uv_guess_handle()
-      throw new Error('Implement me. Unknown stream file type!');
-  }
-
-  // For supporting legacy API we put the FD here.
-  stream.fd = fd;
-
-  stream._isStdio = true;
-
-  return stream;
-}
-
-/**
- * Init logic for `debug` instances.
- *
- * Create a new `inspectOpts` object in case `useColors` is set
- * differently for a particular `debug` instance.
- */
-
-function init (debug) {
-  debug.inspectOpts = util._extend({}, exports.inspectOpts);
-}
-
-/**
- * Enable namespaces listed in `process.env.DEBUG` initially.
- */
-
-exports.enable(load());
-
-
-/***/ }),
-/* 194 */
-/***/ (function(module, exports) {
-
-/**
- * Helpers.
- */
-
-var s = 1000
-var m = s * 60
-var h = m * 60
-var d = h * 24
-var y = d * 365.25
-
-/**
- * Parse or format the given `val`.
- *
- * Options:
- *
- *  - `long` verbose formatting [false]
- *
- * @param {String|Number} val
- * @param {Object} options
- * @throws {Error} throw an error if val is not a non-empty string or a number
- * @return {String|Number}
- * @api public
- */
-
-module.exports = function (val, options) {
-  options = options || {}
-  var type = typeof val
-  if (type === 'string' && val.length > 0) {
-    return parse(val)
-  } else if (type === 'number' && isNaN(val) === false) {
-    return options.long ?
-			fmtLong(val) :
-			fmtShort(val)
-  }
-  throw new Error('val is not a non-empty string or a valid number. val=' + JSON.stringify(val))
-}
-
-/**
- * Parse the given `str` and return milliseconds.
- *
- * @param {String} str
- * @return {Number}
- * @api private
- */
-
-function parse(str) {
-  str = String(str)
-  if (str.length > 10000) {
-    return
-  }
-  var match = /^((?:\d+)?\.?\d+) *(milliseconds?|msecs?|ms|seconds?|secs?|s|minutes?|mins?|m|hours?|hrs?|h|days?|d|years?|yrs?|y)?$/i.exec(str)
-  if (!match) {
-    return
-  }
-  var n = parseFloat(match[1])
-  var type = (match[2] || 'ms').toLowerCase()
-  switch (type) {
-    case 'years':
-    case 'year':
-    case 'yrs':
-    case 'yr':
-    case 'y':
-      return n * y
-    case 'days':
-    case 'day':
-    case 'd':
-      return n * d
-    case 'hours':
-    case 'hour':
-    case 'hrs':
-    case 'hr':
-    case 'h':
-      return n * h
-    case 'minutes':
-    case 'minute':
-    case 'mins':
-    case 'min':
-    case 'm':
-      return n * m
-    case 'seconds':
-    case 'second':
-    case 'secs':
-    case 'sec':
-    case 's':
-      return n * s
-    case 'milliseconds':
-    case 'millisecond':
-    case 'msecs':
-    case 'msec':
-    case 'ms':
-      return n
-    default:
-      return undefined
-  }
-}
-
-/**
- * Short format for `ms`.
- *
- * @param {Number} ms
- * @return {String}
- * @api private
- */
-
-function fmtShort(ms) {
-  if (ms >= d) {
-    return Math.round(ms / d) + 'd'
-  }
-  if (ms >= h) {
-    return Math.round(ms / h) + 'h'
-  }
-  if (ms >= m) {
-    return Math.round(ms / m) + 'm'
-  }
-  if (ms >= s) {
-    return Math.round(ms / s) + 's'
-  }
-  return ms + 'ms'
-}
-
-/**
- * Long format for `ms`.
- *
- * @param {Number} ms
- * @return {String}
- * @api private
- */
-
-function fmtLong(ms) {
-  return plural(ms, d, 'day') ||
-    plural(ms, h, 'hour') ||
-    plural(ms, m, 'minute') ||
-    plural(ms, s, 'second') ||
-    ms + ' ms'
-}
-
-/**
- * Pluralization helper.
- */
-
-function plural(ms, n, name) {
-  if (ms < n) {
-    return
-  }
-  if (ms < n * 1.5) {
-    return Math.floor(ms / n) + ' ' + name
-  }
-  return Math.ceil(ms / n) + ' ' + name + 's'
-}
-
-
-/***/ }),
-/* 195 */
+/* 187 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = ForeverAgent
 ForeverAgent.SSL = ForeverAgentSSL
 
-var util = __webpack_require__(0)
+var util = __webpack_require__(1)
   , Agent = __webpack_require__(9).Agent
-  , net = __webpack_require__(22)
-  , tls = __webpack_require__(123)
+  , net = __webpack_require__(30)
+  , tls = __webpack_require__(120)
   , AgentSSL = __webpack_require__(50).Agent
   
 function getConnectionName(host, port) {  
@@ -35727,19 +34554,19 @@ function createConnectionSSL (port, host, options) {
 
 
 /***/ }),
-/* 196 */
+/* 188 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var CombinedStream = __webpack_require__(87);
-var util = __webpack_require__(0);
+var CombinedStream = __webpack_require__(86);
+var util = __webpack_require__(1);
 var path = __webpack_require__(8);
 var http = __webpack_require__(9);
 var https = __webpack_require__(50);
 var parseUrl = __webpack_require__(7).parse;
-var fs = __webpack_require__(11);
+var fs = __webpack_require__(17);
 var mime = __webpack_require__(43);
-var asynckit = __webpack_require__(161);
-var populate = __webpack_require__(197);
+var asynckit = __webpack_require__(158);
+var populate = __webpack_require__(189);
 
 // Public API
 module.exports = FormData;
@@ -36177,7 +35004,7 @@ FormData.prototype.toString = function () {
 
 
 /***/ }),
-/* 197 */
+/* 189 */
 /***/ (function(module, exports) {
 
 // populates missing values
@@ -36193,7 +35020,7 @@ module.exports = function(dst, src) {
 
 
 /***/ }),
-/* 198 */
+/* 190 */
 /***/ (function(module, exports) {
 
 /*!
@@ -36234,7 +35061,7 @@ function forwarded(req) {
 
 
 /***/ }),
-/* 199 */
+/* 191 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -36268,7 +35095,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 200 */
+/* 192 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -36302,7 +35129,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 201 */
+/* 193 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -36326,7 +35153,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 202 */
+/* 194 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -36359,7 +35186,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 203 */
+/* 195 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -36392,7 +35219,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 204 */
+/* 196 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -36435,7 +35262,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 205 */
+/* 197 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -36459,7 +35286,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 206 */
+/* 198 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -36520,7 +35347,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 207 */
+/* 199 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -36537,7 +35364,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 208 */
+/* 200 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -36561,36 +35388,36 @@ module.exports = {
 };
 
 /***/ }),
-/* 209 */
+/* 201 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 module.exports = {
-  afterRequest: __webpack_require__(199),
-  beforeRequest: __webpack_require__(200),
-  browser: __webpack_require__(201),
-  cache: __webpack_require__(202),
-  content: __webpack_require__(203),
-  cookie: __webpack_require__(204),
-  creator: __webpack_require__(205),
-  entry: __webpack_require__(206),
-  har: __webpack_require__(207),
-  header: __webpack_require__(208),
-  log: __webpack_require__(210),
-  page: __webpack_require__(211),
-  pageTimings: __webpack_require__(212),
-  postData: __webpack_require__(213),
-  query: __webpack_require__(214),
-  request: __webpack_require__(215),
-  response: __webpack_require__(216),
-  timings: __webpack_require__(217)
+  afterRequest: __webpack_require__(191),
+  beforeRequest: __webpack_require__(192),
+  browser: __webpack_require__(193),
+  cache: __webpack_require__(194),
+  content: __webpack_require__(195),
+  cookie: __webpack_require__(196),
+  creator: __webpack_require__(197),
+  entry: __webpack_require__(198),
+  har: __webpack_require__(199),
+  header: __webpack_require__(200),
+  log: __webpack_require__(202),
+  page: __webpack_require__(203),
+  pageTimings: __webpack_require__(204),
+  postData: __webpack_require__(205),
+  query: __webpack_require__(206),
+  request: __webpack_require__(207),
+  response: __webpack_require__(208),
+  timings: __webpack_require__(209)
 }
 
 
 /***/ }),
-/* 210 */
+/* 202 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -36630,7 +35457,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 211 */
+/* 203 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -36666,7 +35493,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 212 */
+/* 204 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -36688,7 +35515,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 213 */
+/* 205 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -36735,7 +35562,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 214 */
+/* 206 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -36759,7 +35586,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 215 */
+/* 207 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -36820,7 +35647,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 216 */
+/* 208 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -36878,7 +35705,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 217 */
+/* 209 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -36924,7 +35751,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 218 */
+/* 210 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36952,7 +35779,7 @@ HARError.prototype = Error.prototype;
 module.exports = exports['default'];
 
 /***/ }),
-/* 219 */
+/* 211 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36981,15 +35808,15 @@ exports.request = request;
 exports.response = response;
 exports.timings = timings;
 
-var _harSchema = __webpack_require__(209);
+var _harSchema = __webpack_require__(201);
 
 var schemas = _interopRequireWildcard(_harSchema);
 
-var _ajv = __webpack_require__(127);
+var _ajv = __webpack_require__(124);
 
 var _ajv2 = _interopRequireDefault(_ajv);
 
-var _error = __webpack_require__(218);
+var _error = __webpack_require__(210);
 
 var _error2 = _interopRequireDefault(_error);
 
@@ -37090,16 +35917,16 @@ function timings(data) {
 }
 
 /***/ }),
-/* 220 */
+/* 212 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Load modules
 
 var Url = __webpack_require__(7);
-var Hoek = __webpack_require__(39);
-var Cryptiles = __webpack_require__(89);
+var Hoek = __webpack_require__(38);
+var Cryptiles = __webpack_require__(88);
 var Crypto = __webpack_require__(55);
-var Utils = __webpack_require__(38);
+var Utils = __webpack_require__(37);
 
 
 // Declare internals
@@ -37465,18 +36292,18 @@ exports.message = function (host, port, message, options) {
 
 
 /***/ }),
-/* 221 */
+/* 213 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Export sub-modules
 
-exports.error = exports.Error = __webpack_require__(34);
-exports.sntp = __webpack_require__(109);
+exports.error = exports.Error = __webpack_require__(33);
+exports.sntp = __webpack_require__(106);
 
-exports.server = __webpack_require__(222);
-exports.client = __webpack_require__(220);
+exports.server = __webpack_require__(214);
+exports.client = __webpack_require__(212);
 exports.crypto = __webpack_require__(55);
-exports.utils = __webpack_require__(38);
+exports.utils = __webpack_require__(37);
 
 exports.uri = {
     authenticate: exports.server.authenticateBewit,
@@ -37486,16 +36313,16 @@ exports.uri = {
 
 
 /***/ }),
-/* 222 */
+/* 214 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Load modules
 
-var Boom = __webpack_require__(34);
-var Hoek = __webpack_require__(39);
-var Cryptiles = __webpack_require__(89);
+var Boom = __webpack_require__(33);
+var Hoek = __webpack_require__(38);
+var Cryptiles = __webpack_require__(88);
 var Crypto = __webpack_require__(55);
-var Utils = __webpack_require__(38);
+var Utils = __webpack_require__(37);
 
 
 // Declare internals
@@ -38040,114 +36867,46 @@ internals.nonceFunc = function (key, nonce, ts, nonceCallback) {
 
 
 /***/ }),
-/* 223 */
+/* 215 */
 /***/ (function(module, exports) {
 
 module.exports = {
-	"_args": [
-		[
-			{
-				"raw": "hawk@~3.1.3",
-				"scope": null,
-				"escapedName": "hawk",
-				"name": "hawk",
-				"rawSpec": "~3.1.3",
-				"spec": ">=3.1.3 <3.2.0",
-				"type": "range"
-			},
-			"/Users/john-lee/Code/Projects/mobx-twitter-example/node_modules/request"
-		]
-	],
-	"_from": "hawk@>=3.1.3 <3.2.0",
-	"_id": "hawk@3.1.3",
-	"_inCache": true,
-	"_location": "/hawk",
-	"_nodeVersion": "5.4.1",
-	"_npmUser": {
-		"name": "hueniverse",
-		"email": "eran@hammer.io"
-	},
-	"_npmVersion": "3.3.12",
-	"_phantomChildren": {},
-	"_requested": {
-		"raw": "hawk@~3.1.3",
-		"scope": null,
-		"escapedName": "hawk",
-		"name": "hawk",
-		"rawSpec": "~3.1.3",
-		"spec": ">=3.1.3 <3.2.0",
-		"type": "range"
-	},
-	"_requiredBy": [
-		"/request"
-	],
-	"_resolved": "https://registry.npmjs.org/hawk/-/hawk-3.1.3.tgz",
-	"_shasum": "078444bd7c1640b0fe540d2c9b73d59678e8e1c4",
-	"_shrinkwrap": null,
-	"_spec": "hawk@~3.1.3",
-	"_where": "/Users/john-lee/Code/Projects/mobx-twitter-example/node_modules/request",
-	"author": {
-		"name": "Eran Hammer",
-		"email": "eran@hammer.io",
-		"url": "http://hueniverse.com"
-	},
-	"browser": "./lib/browser.js",
-	"bugs": {
-		"url": "https://github.com/hueniverse/hawk/issues"
-	},
-	"contributors": [],
-	"dependencies": {
-		"boom": "2.x.x",
-		"cryptiles": "2.x.x",
-		"hoek": "2.x.x",
-		"sntp": "1.x.x"
-	},
+	"name": "hawk",
 	"description": "HTTP Hawk Authentication Scheme",
-	"devDependencies": {
-		"code": "1.x.x",
-		"lab": "5.x.x"
-	},
-	"directories": {},
-	"dist": {
-		"shasum": "078444bd7c1640b0fe540d2c9b73d59678e8e1c4",
-		"tarball": "https://registry.npmjs.org/hawk/-/hawk-3.1.3.tgz"
-	},
-	"engines": {
-		"node": ">=0.10.32"
-	},
-	"gitHead": "2f0b93b34ed9b0ebc865838ef70c6a4035591430",
-	"homepage": "https://github.com/hueniverse/hawk#readme",
+	"version": "3.1.3",
+	"author": "Eran Hammer <eran@hammer.io> (http://hueniverse.com)",
+	"contributors": [],
+	"repository": "git://github.com/hueniverse/hawk",
+	"main": "lib/index.js",
 	"keywords": [
 		"http",
 		"authentication",
 		"scheme",
 		"hawk"
 	],
-	"license": "BSD-3-Clause",
-	"main": "lib/index.js",
-	"maintainers": [
-		{
-			"name": "hueniverse",
-			"email": "eran@hueniverse.com"
-		}
-	],
-	"name": "hawk",
-	"optionalDependencies": {},
-	"readme": "![hawk Logo](https://raw.github.com/hueniverse/hawk/master/images/hawk.png)\r\n\r\n<img align=\"right\" src=\"https://raw.github.com/hueniverse/hawk/master/images/logo.png\" /> **Hawk** is an HTTP authentication scheme using a message authentication code (MAC) algorithm to provide partial\r\nHTTP request cryptographic verification. For more complex use cases such as access delegation, see [Oz](https://github.com/hueniverse/oz).\r\n\r\nCurrent version: **3.x**\r\n\r\nNote: 3.x and 2.x are the same exact protocol as 1.1. The version increments reflect changes in the node API.\r\n\r\n[![Build Status](https://secure.travis-ci.org/hueniverse/hawk.png)](http://travis-ci.org/hueniverse/hawk)\r\n\r\n# Table of Content\r\n\r\n- [**Introduction**](#introduction)\r\n  - [Replay Protection](#replay-protection)\r\n  - [Usage Example](#usage-example)\r\n  - [Protocol Example](#protocol-example)\r\n    - [Payload Validation](#payload-validation)\r\n    - [Response Payload Validation](#response-payload-validation)\r\n  - [Browser Support and Considerations](#browser-support-and-considerations)\r\n<p></p>\r\n- [**Single URI Authorization**](#single-uri-authorization)\r\n  - [Usage Example](#bewit-usage-example)\r\n<p></p>\r\n- [**Security Considerations**](#security-considerations)\r\n  - [MAC Keys Transmission](#mac-keys-transmission)\r\n  - [Confidentiality of Requests](#confidentiality-of-requests)\r\n  - [Spoofing by Counterfeit Servers](#spoofing-by-counterfeit-servers)\r\n  - [Plaintext Storage of Credentials](#plaintext-storage-of-credentials)\r\n  - [Entropy of Keys](#entropy-of-keys)\r\n  - [Coverage Limitations](#coverage-limitations)\r\n  - [Future Time Manipulation](#future-time-manipulation)\r\n  - [Client Clock Poisoning](#client-clock-poisoning)\r\n  - [Bewit Limitations](#bewit-limitations)\r\n  - [Host Header Forgery](#host-header-forgery)\r\n<p></p>\r\n- [**Frequently Asked Questions**](#frequently-asked-questions)\r\n<p></p>\r\n- [**Implementations**](#implementations)\r\n- [**Acknowledgements**](#acknowledgements)\r\n\r\n# Introduction\r\n\r\n**Hawk** is an HTTP authentication scheme providing mechanisms for making authenticated HTTP requests with\r\npartial cryptographic verification of the request and response, covering the HTTP method, request URI, host,\r\nand optionally the request payload.\r\n\r\nSimilar to the HTTP [Digest access authentication schemes](http://www.ietf.org/rfc/rfc2617.txt), **Hawk** uses a set of\r\nclient credentials which include an identifier (e.g. username) and key (e.g. password). Likewise, just as with the Digest scheme,\r\nthe key is never included in authenticated requests. Instead, it is used to calculate a request MAC value which is\r\nincluded in its place.\r\n\r\nHowever, **Hawk** has several differences from Digest. In particular, while both use a nonce to limit the possibility of\r\nreplay attacks, in **Hawk** the client generates the nonce and uses it in combination with a timestamp, leading to less\r\n\"chattiness\" (interaction with the server).\r\n\r\nAlso unlike Digest, this scheme is not intended to protect the key itself (the password in Digest) because\r\nthe client and server must both have access to the key material in the clear.\r\n\r\nThe primary design goals of this scheme are to:\r\n* simplify and improve HTTP authentication for services that are unwilling or unable to deploy TLS for all resources,\r\n* secure credentials against leakage (e.g., when the client uses some form of dynamic configuration to determine where\r\n  to send an authenticated request), and\r\n* avoid the exposure of credentials sent to a malicious server over an unauthenticated secure channel due to client\r\n  failure to validate the server's identity as part of its TLS handshake.\r\n\r\nIn addition, **Hawk** supports a method for granting third-parties temporary access to individual resources using\r\na query parameter called _bewit_ (in falconry, a leather strap used to attach a tracking device to the leg of a hawk).\r\n\r\nThe **Hawk** scheme requires the establishment of a shared symmetric key between the client and the server,\r\nwhich is beyond the scope of this module. Typically, the shared credentials are established via an initial\r\nTLS-protected phase or derived from some other shared confidential information available to both the client\r\nand the server.\r\n\r\n\r\n## Replay Protection\r\n\r\nWithout replay protection, an attacker can use a compromised (but otherwise valid and authenticated) request more \r\nthan once, gaining access to a protected resource. To mitigate this, clients include both a nonce and a timestamp when \r\nmaking requests. This gives the server enough information to prevent replay attacks.\r\n\r\nThe nonce is generated by the client, and is a string unique across all requests with the same timestamp and\r\nkey identifier combination. \r\n\r\nThe timestamp enables the server to restrict the validity period of the credentials where requests occuring afterwards\r\nare rejected. It also removes the need for the server to retain an unbounded number of nonce values for future checks.\r\nBy default, **Hawk** uses a time window of 1 minute to allow for time skew between the client and server (which in\r\npractice translates to a maximum of 2 minutes as the skew can be positive or negative).\r\n\r\nUsing a timestamp requires the client's clock to be in sync with the server's clock. **Hawk** requires both the client\r\nclock and the server clock to use NTP to ensure synchronization. However, given the limitations of some client types\r\n(e.g. browsers) to deploy NTP, the server provides the client with its current time (in seconds precision) in response\r\nto a bad timestamp.\r\n\r\nThere is no expectation that the client will adjust its system clock to match the server (in fact, this would be a\r\npotential attack vector). Instead, the client only uses the server's time to calculate an offset used only\r\nfor communications with that particular server. The protocol rewards clients with synchronized clocks by reducing\r\nthe number of round trips required to authenticate the first request.\r\n\r\n\r\n## Usage Example\r\n\r\nServer code:\r\n\r\n```javascript\r\nvar Http = require('http');\r\nvar Hawk = require('hawk');\r\n\r\n\r\n// Credentials lookup function\r\n\r\nvar credentialsFunc = function (id, callback) {\r\n\r\n    var credentials = {\r\n        key: 'werxhqb98rpaxn39848xrunpaw3489ruxnpa98w4rxn',\r\n        algorithm: 'sha256',\r\n        user: 'Steve'\r\n    };\r\n\r\n    return callback(null, credentials);\r\n};\r\n\r\n// Create HTTP server\r\n\r\nvar handler = function (req, res) {\r\n\r\n    // Authenticate incoming request\r\n\r\n    Hawk.server.authenticate(req, credentialsFunc, {}, function (err, credentials, artifacts) {\r\n\r\n        // Prepare response\r\n\r\n        var payload = (!err ? 'Hello ' + credentials.user + ' ' + artifacts.ext : 'Shoosh!');\r\n        var headers = { 'Content-Type': 'text/plain' };\r\n\r\n        // Generate Server-Authorization response header\r\n\r\n        var header = Hawk.server.header(credentials, artifacts, { payload: payload, contentType: headers['Content-Type'] });\r\n        headers['Server-Authorization'] = header;\r\n\r\n        // Send the response back\r\n\r\n        res.writeHead(!err ? 200 : 401, headers);\r\n        res.end(payload);\r\n    });\r\n};\r\n\r\n// Start server\r\n\r\nHttp.createServer(handler).listen(8000, 'example.com');\r\n```\r\n\r\nClient code:\r\n\r\n```javascript\r\nvar Request = require('request');\r\nvar Hawk = require('hawk');\r\n\r\n\r\n// Client credentials\r\n\r\nvar credentials = {\r\n    id: 'dh37fgj492je',\r\n    key: 'werxhqb98rpaxn39848xrunpaw3489ruxnpa98w4rxn',\r\n    algorithm: 'sha256'\r\n}\r\n\r\n// Request options\r\n\r\nvar requestOptions = {\r\n    uri: 'http://example.com:8000/resource/1?b=1&a=2',\r\n    method: 'GET',\r\n    headers: {}\r\n};\r\n\r\n// Generate Authorization request header\r\n\r\nvar header = Hawk.client.header('http://example.com:8000/resource/1?b=1&a=2', 'GET', { credentials: credentials, ext: 'some-app-data' });\r\nrequestOptions.headers.Authorization = header.field;\r\n\r\n// Send authenticated request\r\n\r\nRequest(requestOptions, function (error, response, body) {\r\n\r\n    // Authenticate the server's response\r\n\r\n    var isValid = Hawk.client.authenticate(response, credentials, header.artifacts, { payload: body });\r\n\r\n    // Output results\r\n\r\n    console.log(response.statusCode + ': ' + body + (isValid ? ' (valid)' : ' (invalid)'));\r\n});\r\n```\r\n\r\n**Hawk** utilized the [**SNTP**](https://github.com/hueniverse/sntp) module for time sync management. By default, the local\r\nmachine time is used. To automatically retrieve and synchronice the clock within the application, use the SNTP 'start()' method.\r\n\r\n```javascript\r\nHawk.sntp.start();\r\n```\r\n\r\n\r\n## Protocol Example\r\n\r\nThe client attempts to access a protected resource without authentication, sending the following HTTP request to\r\nthe resource server:\r\n\r\n```\r\nGET /resource/1?b=1&a=2 HTTP/1.1\r\nHost: example.com:8000\r\n```\r\n\r\nThe resource server returns an authentication challenge.\r\n\r\n```\r\nHTTP/1.1 401 Unauthorized\r\nWWW-Authenticate: Hawk\r\n```\r\n\r\nThe client has previously obtained a set of **Hawk** credentials for accessing resources on the \"http://example.com/\"\r\nserver. The **Hawk** credentials issued to the client include the following attributes:\r\n\r\n* Key identifier: dh37fgj492je\r\n* Key: werxhqb98rpaxn39848xrunpaw3489ruxnpa98w4rxn\r\n* Algorithm: sha256\r\n\r\nThe client generates the authentication header by calculating a timestamp (e.g. the number of seconds since January 1,\r\n1970 00:00:00 GMT), generating a nonce, and constructing the normalized request string (each value followed by a newline\r\ncharacter):\r\n\r\n```\r\nhawk.1.header\r\n1353832234\r\nj4h3g2\r\nGET\r\n/resource/1?b=1&a=2\r\nexample.com\r\n8000\r\n\r\nsome-app-ext-data\r\n\r\n```\r\n\r\nThe request MAC is calculated using HMAC with the specified hash algorithm \"sha256\" and the key over the normalized request string.\r\nThe result is base64-encoded to produce the request MAC:\r\n\r\n```\r\n6R4rV5iE+NPoym+WwjeHzjAGXUtLNIxmo1vpMofpLAE=\r\n```\r\n\r\nThe client includes the **Hawk** key identifier, timestamp, nonce, application specific data, and request MAC with the request using\r\nthe HTTP `Authorization` request header field:\r\n\r\n```\r\nGET /resource/1?b=1&a=2 HTTP/1.1\r\nHost: example.com:8000\r\nAuthorization: Hawk id=\"dh37fgj492je\", ts=\"1353832234\", nonce=\"j4h3g2\", ext=\"some-app-ext-data\", mac=\"6R4rV5iE+NPoym+WwjeHzjAGXUtLNIxmo1vpMofpLAE=\"\r\n```\r\n\r\nThe server validates the request by calculating the request MAC again based on the request received and verifies the validity\r\nand scope of the **Hawk** credentials. If valid, the server responds with the requested resource.\r\n\r\n\r\n### Payload Validation\r\n\r\n**Hawk** provides optional payload validation. When generating the authentication header, the client calculates a payload hash\r\nusing the specified hash algorithm. The hash is calculated over the concatenated value of (each followed by a newline character):\r\n* `hawk.1.payload`\r\n* the content-type in lowercase, without any parameters (e.g. `application/json`)\r\n* the request payload prior to any content encoding (the exact representation requirements should be specified by the server for payloads other than simple single-part ascii to ensure interoperability)\r\n\r\nFor example:\r\n\r\n* Payload: `Thank you for flying Hawk`\r\n* Content Type: `text/plain`\r\n* Hash (sha256): `Yi9LfIIFRtBEPt74PVmbTF/xVAwPn7ub15ePICfgnuY=`\r\n\r\nResults in the following input to the payload hash function (newline terminated values):\r\n\r\n```\r\nhawk.1.payload\r\ntext/plain\r\nThank you for flying Hawk\r\n\r\n```\r\n\r\nWhich produces the following hash value:\r\n\r\n```\r\nYi9LfIIFRtBEPt74PVmbTF/xVAwPn7ub15ePICfgnuY=\r\n```\r\n\r\nThe client constructs the normalized request string (newline terminated values):\r\n\r\n```\r\nhawk.1.header\r\n1353832234\r\nj4h3g2\r\nPOST\r\n/resource/1?a=1&b=2\r\nexample.com\r\n8000\r\nYi9LfIIFRtBEPt74PVmbTF/xVAwPn7ub15ePICfgnuY=\r\nsome-app-ext-data\r\n\r\n```\r\n\r\nThen calculates the request MAC and includes the **Hawk** key identifier, timestamp, nonce, payload hash, application specific data,\r\nand request MAC, with the request using the HTTP `Authorization` request header field:\r\n\r\n```\r\nPOST /resource/1?a=1&b=2 HTTP/1.1\r\nHost: example.com:8000\r\nAuthorization: Hawk id=\"dh37fgj492je\", ts=\"1353832234\", nonce=\"j4h3g2\", hash=\"Yi9LfIIFRtBEPt74PVmbTF/xVAwPn7ub15ePICfgnuY=\", ext=\"some-app-ext-data\", mac=\"aSe1DERmZuRl3pI36/9BdZmnErTw3sNzOOAUlfeKjVw=\"\r\n```\r\n\r\nIt is up to the server if and when it validates the payload for any given request, based solely on it's security policy\r\nand the nature of the data included.\r\n\r\nIf the payload is available at the time of authentication, the server uses the hash value provided by the client to construct\r\nthe normalized string and validates the MAC. If the MAC is valid, the server calculates the payload hash and compares the value\r\nwith the provided payload hash in the header. In many cases, checking the MAC first is faster than calculating the payload hash.\r\n\r\nHowever, if the payload is not available at authentication time (e.g. too large to fit in memory, streamed elsewhere, or processed\r\nat a different stage in the application), the server may choose to defer payload validation for later by retaining the hash value\r\nprovided by the client after validating the MAC.\r\n\r\nIt is important to note that MAC validation does not mean the hash value provided by the client is valid, only that the value\r\nincluded in the header was not modified. Without calculating the payload hash on the server and comparing it to the value provided\r\nby the client, the payload may be modified by an attacker.\r\n\r\n\r\n## Response Payload Validation\r\n\r\n**Hawk** provides partial response payload validation. The server includes the `Server-Authorization` response header which enables the\r\nclient to authenticate the response and ensure it is talking to the right server. **Hawk** defines the HTTP `Server-Authorization` header\r\nas a response header using the exact same syntax as the `Authorization` request header field.\r\n\r\nThe header is contructed using the same process as the client's request header. The server uses the same credentials and other\r\nartifacts provided by the client to constructs the normalized request string. The `ext` and `hash` values are replaced with\r\nnew values based on the server response. The rest as identical to those used by the client.\r\n\r\nThe result MAC digest is included with the optional `hash` and `ext` values:\r\n\r\n```\r\nServer-Authorization: Hawk mac=\"XIJRsMl/4oL+nn+vKoeVZPdCHXB4yJkNnBbTbHFZUYE=\", hash=\"f9cDF/TDm7TkYRLnGwRMfeDzT6LixQVLvrIKhh0vgmM=\", ext=\"response-specific\"\r\n```\r\n\r\n\r\n## Browser Support and Considerations\r\n\r\nA browser script is provided for including using a `<script>` tag in [lib/browser.js](/lib/browser.js). It's also a [component](http://component.io/hueniverse/hawk).\r\n\r\n**Hawk** relies on the _Server-Authorization_ and _WWW-Authenticate_ headers in its response to communicate with the client.\r\nTherefore, in case of CORS requests, it is important to consider sending _Access-Control-Expose-Headers_ with the value\r\n_\"WWW-Authenticate, Server-Authorization\"_ on each response from your server. As explained in the\r\n[specifications](http://www.w3.org/TR/cors/#access-control-expose-headers-response-header), it will indicate that these headers\r\ncan safely be accessed by the client (using getResponseHeader() on the XmlHttpRequest object). Otherwise you will be met with a\r\n[\"simple response header\"](http://www.w3.org/TR/cors/#simple-response-header) which excludes these fields and would prevent the\r\nHawk client from authenticating the requests.You can read more about the why and how in this\r\n[article](http://www.html5rocks.com/en/tutorials/cors/#toc-adding-cors-support-to-the-server)\r\n\r\n\r\n# Single URI Authorization\r\n\r\nThere are cases in which limited and short-term access to a protected resource is granted to a third party which does not\r\nhave access to the shared credentials. For example, displaying a protected image on a web page accessed by anyone. **Hawk**\r\nprovides limited support for such URIs in the form of a _bewit_ - a URI query parameter appended to the request URI which contains\r\nthe necessary credentials to authenticate the request.\r\n\r\nBecause of the significant security risks involved in issuing such access, bewit usage is purposely limited only to GET requests\r\nand for a finite period of time. Both the client and server can issue bewit credentials, however, the server should not use the same\r\ncredentials as the client to maintain clear traceability as to who issued which credentials.\r\n\r\nIn order to simplify implementation, bewit credentials do not support single-use policy and can be replayed multiple times within\r\nthe granted access timeframe. \r\n\r\n\r\n## Bewit Usage Example\r\n\r\nServer code:\r\n\r\n```javascript\r\nvar Http = require('http');\r\nvar Hawk = require('hawk');\r\n\r\n\r\n// Credentials lookup function\r\n\r\nvar credentialsFunc = function (id, callback) {\r\n\r\n    var credentials = {\r\n        key: 'werxhqb98rpaxn39848xrunpaw3489ruxnpa98w4rxn',\r\n        algorithm: 'sha256'\r\n    };\r\n\r\n    return callback(null, credentials);\r\n};\r\n\r\n// Create HTTP server\r\n\r\nvar handler = function (req, res) {\r\n\r\n    Hawk.uri.authenticate(req, credentialsFunc, {}, function (err, credentials, attributes) {\r\n\r\n        res.writeHead(!err ? 200 : 401, { 'Content-Type': 'text/plain' });\r\n        res.end(!err ? 'Access granted' : 'Shoosh!');\r\n    });\r\n};\r\n\r\nHttp.createServer(handler).listen(8000, 'example.com');\r\n```\r\n\r\nBewit code generation:\r\n\r\n```javascript\r\nvar Request = require('request');\r\nvar Hawk = require('hawk');\r\n\r\n\r\n// Client credentials\r\n\r\nvar credentials = {\r\n    id: 'dh37fgj492je',\r\n    key: 'werxhqb98rpaxn39848xrunpaw3489ruxnpa98w4rxn',\r\n    algorithm: 'sha256'\r\n}\r\n\r\n// Generate bewit\r\n\r\nvar duration = 60 * 5;      // 5 Minutes\r\nvar bewit = Hawk.uri.getBewit('http://example.com:8080/resource/1?b=1&a=2', { credentials: credentials, ttlSec: duration, ext: 'some-app-data' });\r\nvar uri = 'http://example.com:8000/resource/1?b=1&a=2' + '&bewit=' + bewit;\r\n```\r\n\r\n\r\n# Security Considerations\r\n\r\nThe greatest sources of security risks are usually found not in **Hawk** but in the policies and procedures surrounding its use.\r\nImplementers are strongly encouraged to assess how this module addresses their security requirements. This section includes\r\nan incomplete list of security considerations that must be reviewed and understood before deploying **Hawk** on the server.\r\nMany of the protections provided in **Hawk** depends on whether and how they are used.\r\n\r\n### MAC Keys Transmission\r\n\r\n**Hawk** does not provide any mechanism for obtaining or transmitting the set of shared credentials required. Any mechanism used\r\nto obtain **Hawk** credentials must ensure that these transmissions are protected using transport-layer mechanisms such as TLS.\r\n\r\n### Confidentiality of Requests\r\n\r\nWhile **Hawk** provides a mechanism for verifying the integrity of HTTP requests, it provides no guarantee of request\r\nconfidentiality. Unless other precautions are taken, eavesdroppers will have full access to the request content. Servers should\r\ncarefully consider the types of data likely to be sent as part of such requests, and employ transport-layer security mechanisms\r\nto protect sensitive resources.\r\n\r\n### Spoofing by Counterfeit Servers\r\n\r\n**Hawk** provides limited verification of the server authenticity. When receiving a response back from the server, the server\r\nmay choose to include a response `Server-Authorization` header which the client can use to verify the response. However, it is up to\r\nthe server to determine when such measure is included, to up to the client to enforce that policy.\r\n\r\nA hostile party could take advantage of this by intercepting the client's requests and returning misleading or otherwise\r\nincorrect responses. Service providers should consider such attacks when developing services using this protocol, and should\r\nrequire transport-layer security for any requests where the authenticity of the resource server or of server responses is an issue.\r\n\r\n### Plaintext Storage of Credentials\r\n\r\nThe **Hawk** key functions the same way passwords do in traditional authentication systems. In order to compute the request MAC,\r\nthe server must have access to the key in plaintext form. This is in contrast, for example, to modern operating systems, which\r\nstore only a one-way hash of user credentials.\r\n\r\nIf an attacker were to gain access to these keys - or worse, to the server's database of all such keys - he or she would be able\r\nto perform any action on behalf of any resource owner. Accordingly, it is critical that servers protect these keys from unauthorized\r\naccess.\r\n\r\n### Entropy of Keys\r\n\r\nUnless a transport-layer security protocol is used, eavesdroppers will have full access to authenticated requests and request\r\nMAC values, and will thus be able to mount offline brute-force attacks to recover the key used. Servers should be careful to\r\nassign keys which are long enough, and random enough, to resist such attacks for at least the length of time that the **Hawk**\r\ncredentials are valid.\r\n\r\nFor example, if the credentials are valid for two weeks, servers should ensure that it is not possible to mount a brute force\r\nattack that recovers the key in less than two weeks. Of course, servers are urged to err on the side of caution, and use the\r\nlongest key reasonable.\r\n\r\nIt is equally important that the pseudo-random number generator (PRNG) used to generate these keys be of sufficiently high\r\nquality. Many PRNG implementations generate number sequences that may appear to be random, but which nevertheless exhibit\r\npatterns or other weaknesses which make cryptanalysis or brute force attacks easier. Implementers should be careful to use\r\ncryptographically secure PRNGs to avoid these problems.\r\n\r\n### Coverage Limitations\r\n\r\nThe request MAC only covers the HTTP `Host` header and optionally the `Content-Type` header. It does not cover any other headers\r\nwhich can often affect how the request body is interpreted by the server. If the server behavior is influenced by the presence\r\nor value of such headers, an attacker can manipulate the request headers without being detected. Implementers should use the\r\n`ext` feature to pass application-specific information via the `Authorization` header which is protected by the request MAC.\r\n\r\nThe response authentication, when performed, only covers the response payload, content-type, and the request information \r\nprovided by the client in it's request (method, resource, timestamp, nonce, etc.). It does not cover the HTTP status code or\r\nany other response header field (e.g. Location) which can affect the client's behaviour.\r\n\r\n### Future Time Manipulation\r\n\r\nThe protocol relies on a clock sync between the client and server. To accomplish this, the server informs the client of its\r\ncurrent time when an invalid timestamp is received.\r\n\r\nIf an attacker is able to manipulate this information and cause the client to use an incorrect time, it would be able to cause\r\nthe client to generate authenticated requests using time in the future. Such requests will fail when sent by the client, and will\r\nnot likely leave a trace on the server (given the common implementation of nonce, if at all enforced). The attacker will then\r\nbe able to replay the request at the correct time without detection.\r\n\r\nThe client must only use the time information provided by the server if:\r\n* it was delivered over a TLS connection and the server identity has been verified, or\r\n* the `tsm` MAC digest calculated using the same client credentials over the timestamp has been verified.\r\n\r\n### Client Clock Poisoning\r\n\r\nWhen receiving a request with a bad timestamp, the server provides the client with its current time. The client must never use\r\nthe time received from the server to adjust its own clock, and must only use it to calculate an offset for communicating with\r\nthat particular server.\r\n\r\n### Bewit Limitations\r\n\r\nSpecial care must be taken when issuing bewit credentials to third parties. Bewit credentials are valid until expiration and cannot\r\nbe revoked or limited without using other means. Whatever resource they grant access to will be completely exposed to anyone with\r\naccess to the bewit credentials which act as bearer credentials for that particular resource. While bewit usage is limited to GET\r\nrequests only and therefore cannot be used to perform transactions or change server state, it can still be used to expose private\r\nand sensitive information.\r\n\r\n### Host Header Forgery\r\n\r\nHawk validates the incoming request MAC against the incoming HTTP Host header. However, unless the optional `host` and `port`\r\noptions are used with `server.authenticate()`, a malicous client can mint new host names pointing to the server's IP address and\r\nuse that to craft an attack by sending a valid request that's meant for another hostname than the one used by the server. Server\r\nimplementors must manually verify that the host header received matches their expectation (or use the options mentioned above).\r\n\r\n# Frequently Asked Questions\r\n\r\n### Where is the protocol specification?\r\n\r\nIf you are looking for some prose explaining how all this works, **this is it**. **Hawk** is being developed as an open source\r\nproject instead of a standard. In other words, the [code](/hueniverse/hawk/tree/master/lib) is the specification. Not sure about\r\nsomething? Open an issue!\r\n\r\n### Is it done?\r\n\r\nAs of version 0.10.0, **Hawk** is feature-complete. However, until this module reaches version 1.0.0 it is considered experimental\r\nand is likely to change. This also means your feedback and contribution are very welcome. Feel free to open issues with questions\r\nand suggestions.\r\n\r\n### Where can I find **Hawk** implementations in other languages?\r\n\r\n**Hawk**'s only reference implementation is provided in JavaScript as a node.js module. However, it has been ported to other languages.\r\nThe full list is maintained [here](https://github.com/hueniverse/hawk/issues?labels=port&state=closed). Please add an issue if you are\r\nworking on another port. A cross-platform test-suite is in the works.\r\n\r\n### Why isn't the algorithm part of the challenge or dynamically negotiated?\r\n\r\nThe algorithm used is closely related to the key issued as different algorithms require different key sizes (and other\r\nrequirements). While some keys can be used for multiple algorithm, the protocol is designed to closely bind the key and algorithm\r\ntogether as part of the issued credentials.\r\n\r\n### Why is Host and Content-Type the only headers covered by the request MAC?\r\n\r\nIt is really hard to include other headers. Headers can be changed by proxies and other intermediaries and there is no\r\nwell-established way to normalize them. Many platforms change the case of header field names and values. The only\r\nstraight-forward solution is to include the headers in some blob (say, base64 encoded JSON) and include that with the request,\r\nan approach taken by JWT and other such formats. However, that design violates the HTTP header boundaries, repeats information,\r\nand introduces other security issues because firewalls will not be aware of these \"hidden\" headers. In addition, any information\r\nrepeated must be compared to the duplicated information in the header and therefore only moves the problem elsewhere.\r\n\r\n### Why not just use HTTP Digest?\r\n\r\nDigest requires pre-negotiation to establish a nonce. This means you can't just make a request - you must first send\r\na protocol handshake to the server. This pattern has become unacceptable for most web services, especially mobile\r\nwhere extra round-trip are costly.\r\n\r\n### Why bother with all this nonce and timestamp business?\r\n\r\n**Hawk** is an attempt to find a reasonable, practical compromise between security and usability. OAuth 1.0 got timestamp\r\nand nonces halfway right but failed when it came to scalability and consistent developer experience. **Hawk** addresses\r\nit by requiring the client to sync its clock, but provides it with tools to accomplish it.\r\n\r\nIn general, replay protection is a matter of application-specific threat model. It is less of an issue on a TLS-protected\r\nsystem where the clients are implemented using best practices and are under the control of the server. Instead of dropping\r\nreplay protection, **Hawk** offers a required time window and an optional nonce verification. Together, it provides developers\r\nwith the ability to decide how to enforce their security policy without impacting the client's implementation.\r\n\r\n### What are `app` and `dlg` in the authorization header and normalized mac string?\r\n\r\nThe original motivation for **Hawk** was to replace the OAuth 1.0 use cases. This included both a simple client-server mode which\r\nthis module is specifically designed for, and a delegated access mode which is being developed separately in\r\n[Oz](https://github.com/hueniverse/oz). In addition to the **Hawk** use cases, Oz requires another attribute: the application id `app`.\r\nThis provides binding between the credentials and the application in a way that prevents an attacker from tricking an application\r\nto use credentials issued to someone else. It also has an optional 'delegated-by' attribute `dlg` which is the application id of the\r\napplication the credentials were directly issued to. The goal of these two additions is to allow Oz to utilize **Hawk** directly,\r\nbut with the additional security of delegated credentials.\r\n\r\n### What is the purpose of the static strings used in each normalized MAC input?\r\n\r\nWhen calculating a hash or MAC, a static prefix (tag) is added. The prefix is used to prevent MAC values from being\r\nused or reused for a purpose other than what they were created for (i.e. prevents switching MAC values between a request,\r\nresponse, and a bewit use cases). It also protects against exploits created after a potential change in how the protocol\r\ncreates the normalized string. For example, if a future version would switch the order of nonce and timestamp, it\r\ncan create an exploit opportunity for cases where the nonce is similar in format to a timestamp.\r\n\r\n### Does **Hawk** have anything to do with OAuth?\r\n\r\nShort answer: no.\r\n\r\n**Hawk** was originally proposed as the OAuth MAC Token specification. However, the OAuth working group in its consistent\r\nincompetence failed to produce a final, usable solution to address one of the most popular use cases of OAuth 1.0 - using it\r\nto authenticate simple client-server transactions (i.e. two-legged). As you can guess, the OAuth working group is still hard\r\nat work to produce more garbage.\r\n\r\n**Hawk** provides a simple HTTP authentication scheme for making client-server requests. It does not address the OAuth use case\r\nof delegating access to a third party. If you are looking for an OAuth alternative, check out [Oz](https://github.com/hueniverse/oz).\r\n\r\n# Implementations\r\n\r\n- [Logibit Hawk in F#/.Net](https://github.com/logibit/logibit.hawk/)\r\n- [Tent Hawk in Ruby](https://github.com/tent/hawk-ruby)\r\n- [Wealdtech in Java](https://github.com/wealdtech/hawk)\r\n- [Kumar's Mohawk in Python](https://github.com/kumar303/mohawk/)\r\n\r\n# Acknowledgements\r\n\r\n**Hawk** is a derivative work of the [HTTP MAC Authentication Scheme](http://tools.ietf.org/html/draft-hammer-oauth-v2-mac-token-05) proposal\r\nco-authored by Ben Adida, Adam Barth, and Eran Hammer, which in turn was based on the OAuth 1.0 community specification.\r\n\r\nSpecial thanks to Ben Laurie for his always insightful feedback and advice.\r\n\r\nThe **Hawk** logo was created by [Chris Carrasco](http://chriscarrasco.com).\r\n",
-	"readmeFilename": "README.md",
-	"repository": {
-		"type": "git",
-		"url": "git://github.com/hueniverse/hawk.git"
+	"engines": {
+		"node": ">=0.10.32"
+	},
+	"browser": "./lib/browser.js",
+	"dependencies": {
+		"hoek": "2.x.x",
+		"boom": "2.x.x",
+		"cryptiles": "2.x.x",
+		"sntp": "1.x.x"
+	},
+	"devDependencies": {
+		"code": "1.x.x",
+		"lab": "5.x.x"
 	},
 	"scripts": {
 		"test": "lab -a code -t 100 -L",
 		"test-cov-html": "lab -a code -r html -o coverage.html"
 	},
-	"version": "3.1.3"
+	"license": "BSD-3-Clause"
 };
 
 /***/ }),
-/* 224 */
+/* 216 */
 /***/ (function(module, exports) {
 
 // Declare internals
@@ -38285,7 +37044,7 @@ internals.safeCharCodes = (function () {
 
 
 /***/ }),
-/* 225 */
+/* 217 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38306,7 +37065,7 @@ internals.safeCharCodes = (function () {
 var deprecate = __webpack_require__(20)('http-errors')
 var setPrototypeOf = __webpack_require__(45)
 var statuses = __webpack_require__(48)
-var inherits = __webpack_require__(230)
+var inherits = __webpack_require__(222)
 
 /**
  * Module exports.
@@ -38552,15 +37311,15 @@ function toIdentifier (str) {
 
 
 /***/ }),
-/* 226 */
+/* 218 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Copyright 2015 Joyent, Inc.
 
-var parser = __webpack_require__(227);
-var signer = __webpack_require__(228);
-var verify = __webpack_require__(229);
-var utils = __webpack_require__(40);
+var parser = __webpack_require__(219);
+var signer = __webpack_require__(220);
+var verify = __webpack_require__(221);
+var utils = __webpack_require__(39);
 
 
 
@@ -38587,14 +37346,14 @@ module.exports = {
 
 
 /***/ }),
-/* 227 */
+/* 219 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Copyright 2012 Joyent, Inc.  All rights reserved.
 
-var assert = __webpack_require__(33);
-var util = __webpack_require__(0);
-var utils = __webpack_require__(40);
+var assert = __webpack_require__(40);
+var util = __webpack_require__(1);
+var utils = __webpack_require__(39);
 
 
 
@@ -38911,20 +37670,20 @@ module.exports = {
 
 
 /***/ }),
-/* 228 */
+/* 220 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Copyright 2012 Joyent, Inc.  All rights reserved.
 
-var assert = __webpack_require__(33);
-var crypto = __webpack_require__(1);
+var assert = __webpack_require__(40);
+var crypto = __webpack_require__(0);
 var http = __webpack_require__(9);
-var util = __webpack_require__(0);
+var util = __webpack_require__(1);
 var sshpk = __webpack_require__(64);
-var jsprim = __webpack_require__(241);
-var utils = __webpack_require__(40);
+var jsprim = __webpack_require__(233);
+var utils = __webpack_require__(39);
 
-var sprintf = __webpack_require__(0).format;
+var sprintf = __webpack_require__(1).format;
 
 var HASH_ALGOS = utils.HASH_ALGOS;
 var PK_ALGOS = utils.PK_ALGOS;
@@ -39316,15 +38075,15 @@ module.exports = {
 
 
 /***/ }),
-/* 229 */
+/* 221 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Copyright 2015 Joyent, Inc.
 
-var assert = __webpack_require__(33);
-var crypto = __webpack_require__(1);
+var assert = __webpack_require__(40);
+var crypto = __webpack_require__(0);
 var sshpk = __webpack_require__(64);
-var utils = __webpack_require__(40);
+var utils = __webpack_require__(39);
 
 var HASH_ALGOS = utils.HASH_ALGOS;
 var PK_ALGOS = utils.PK_ALGOS;
@@ -39410,20 +38169,20 @@ module.exports = {
 
 
 /***/ }),
-/* 230 */
+/* 222 */
 /***/ (function(module, exports, __webpack_require__) {
 
 try {
-  var util = __webpack_require__(0);
+  var util = __webpack_require__(1);
   if (typeof util.inherits !== 'function') throw '';
   module.exports = util.inherits;
 } catch (e) {
-  module.exports = __webpack_require__(231);
+  module.exports = __webpack_require__(223);
 }
 
 
 /***/ }),
-/* 231 */
+/* 223 */
 /***/ (function(module, exports) {
 
 if (typeof Object.create === 'function') {
@@ -39452,7 +38211,7 @@ if (typeof Object.create === 'function') {
 
 
 /***/ }),
-/* 232 */
+/* 224 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(module) {(function() {
@@ -39991,10 +38750,10 @@ if (typeof Object.create === 'function') {
 
 }).call(this);
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(290)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(278)(module)))
 
 /***/ }),
-/* 233 */
+/* 225 */
 /***/ (function(module, exports) {
 
 module.exports      = isTypedArray
@@ -40041,7 +38800,7 @@ function isLooseTypedArray(arr) {
 
 
 /***/ }),
-/* 234 */
+/* 226 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40159,7 +38918,7 @@ module.exports = ns;
 
 
 /***/ }),
-/* 235 */
+/* 227 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40182,8 +38941,8 @@ module.exports = ns;
 var core = __webpack_require__(41);
 var curve255 = __webpack_require__(57);
 var utils = __webpack_require__(42);
-var BigInteger = __webpack_require__(16).BigInteger;
-var crypto = __webpack_require__(1);
+var BigInteger = __webpack_require__(15).BigInteger;
+var crypto = __webpack_require__(0);
 
     /**
      * @exports jodid25519/eddsa
@@ -40739,7 +39498,7 @@ module.exports = ns;
 
 
 /***/ }),
-/* 236 */
+/* 228 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -41019,7 +39778,7 @@ return exports;
 
 
 /***/ }),
-/* 237 */
+/* 229 */
 /***/ (function(module, exports) {
 
 exports = module.exports = stringify
@@ -41052,15 +39811,15 @@ function serializer(replacer, cycleReplacer) {
 
 
 /***/ }),
-/* 238 */
+/* 230 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports.parse = __webpack_require__(239);
-exports.stringify = __webpack_require__(240);
+exports.parse = __webpack_require__(231);
+exports.stringify = __webpack_require__(232);
 
 
 /***/ }),
-/* 239 */
+/* 231 */
 /***/ (function(module, exports) {
 
 var at, // The index of the current character
@@ -41339,7 +40098,7 @@ module.exports = function (source, reviver) {
 
 
 /***/ }),
-/* 240 */
+/* 232 */
 /***/ (function(module, exports) {
 
 var cx = /[\u0000\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g,
@@ -41499,19 +40258,19 @@ module.exports = function (value, replacer, space) {
 
 
 /***/ }),
-/* 241 */
+/* 233 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
  * lib/jsprim.js: utilities for primitive JavaScript types
  */
 
-var mod_assert = __webpack_require__(242);
-var mod_util = __webpack_require__(0);
+var mod_assert = __webpack_require__(2);
+var mod_util = __webpack_require__(1);
 
-var mod_extsprintf = __webpack_require__(98);
-var mod_verror = __webpack_require__(289);
-var mod_jsonschema = __webpack_require__(236);
+var mod_extsprintf = __webpack_require__(97);
+var mod_verror = __webpack_require__(277);
+var mod_jsonschema = __webpack_require__(228);
 
 /*
  * Public interface
@@ -42240,224 +40999,7 @@ function mergeObjects(provided, overrides, defaults)
 
 
 /***/ }),
-/* 242 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// Copyright (c) 2012, Mark Cavage. All rights reserved.
-// Copyright 2015 Joyent, Inc.
-
-var assert = __webpack_require__(18);
-var Stream = __webpack_require__(10).Stream;
-var util = __webpack_require__(0);
-
-
-///--- Globals
-
-/* JSSTYLED */
-var UUID_REGEXP = /^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$/;
-
-
-///--- Internal
-
-function _capitalize(str) {
-    return (str.charAt(0).toUpperCase() + str.slice(1));
-}
-
-function _toss(name, expected, oper, arg, actual) {
-    throw new assert.AssertionError({
-        message: util.format('%s (%s) is required', name, expected),
-        actual: (actual === undefined) ? typeof (arg) : actual(arg),
-        expected: expected,
-        operator: oper || '===',
-        stackStartFunction: _toss.caller
-    });
-}
-
-function _getClass(arg) {
-    return (Object.prototype.toString.call(arg).slice(8, -1));
-}
-
-function noop() {
-    // Why even bother with asserts?
-}
-
-
-///--- Exports
-
-var types = {
-    bool: {
-        check: function (arg) { return typeof (arg) === 'boolean'; }
-    },
-    func: {
-        check: function (arg) { return typeof (arg) === 'function'; }
-    },
-    string: {
-        check: function (arg) { return typeof (arg) === 'string'; }
-    },
-    object: {
-        check: function (arg) {
-            return typeof (arg) === 'object' && arg !== null;
-        }
-    },
-    number: {
-        check: function (arg) {
-            return typeof (arg) === 'number' && !isNaN(arg);
-        }
-    },
-    finite: {
-        check: function (arg) {
-            return typeof (arg) === 'number' && !isNaN(arg) && isFinite(arg);
-        }
-    },
-    buffer: {
-        check: function (arg) { return Buffer.isBuffer(arg); },
-        operator: 'Buffer.isBuffer'
-    },
-    array: {
-        check: function (arg) { return Array.isArray(arg); },
-        operator: 'Array.isArray'
-    },
-    stream: {
-        check: function (arg) { return arg instanceof Stream; },
-        operator: 'instanceof',
-        actual: _getClass
-    },
-    date: {
-        check: function (arg) { return arg instanceof Date; },
-        operator: 'instanceof',
-        actual: _getClass
-    },
-    regexp: {
-        check: function (arg) { return arg instanceof RegExp; },
-        operator: 'instanceof',
-        actual: _getClass
-    },
-    uuid: {
-        check: function (arg) {
-            return typeof (arg) === 'string' && UUID_REGEXP.test(arg);
-        },
-        operator: 'isUUID'
-    }
-};
-
-function _setExports(ndebug) {
-    var keys = Object.keys(types);
-    var out;
-
-    /* re-export standard assert */
-    if (process.env.NODE_NDEBUG) {
-        out = noop;
-    } else {
-        out = function (arg, msg) {
-            if (!arg) {
-                _toss(msg, 'true', arg);
-            }
-        };
-    }
-
-    /* standard checks */
-    keys.forEach(function (k) {
-        if (ndebug) {
-            out[k] = noop;
-            return;
-        }
-        var type = types[k];
-        out[k] = function (arg, msg) {
-            if (!type.check(arg)) {
-                _toss(msg, k, type.operator, arg, type.actual);
-            }
-        };
-    });
-
-    /* optional checks */
-    keys.forEach(function (k) {
-        var name = 'optional' + _capitalize(k);
-        if (ndebug) {
-            out[name] = noop;
-            return;
-        }
-        var type = types[k];
-        out[name] = function (arg, msg) {
-            if (arg === undefined || arg === null) {
-                return;
-            }
-            if (!type.check(arg)) {
-                _toss(msg, k, type.operator, arg, type.actual);
-            }
-        };
-    });
-
-    /* arrayOf checks */
-    keys.forEach(function (k) {
-        var name = 'arrayOf' + _capitalize(k);
-        if (ndebug) {
-            out[name] = noop;
-            return;
-        }
-        var type = types[k];
-        var expected = '[' + k + ']';
-        out[name] = function (arg, msg) {
-            if (!Array.isArray(arg)) {
-                _toss(msg, expected, type.operator, arg, type.actual);
-            }
-            var i;
-            for (i = 0; i < arg.length; i++) {
-                if (!type.check(arg[i])) {
-                    _toss(msg, expected, type.operator, arg, type.actual);
-                }
-            }
-        };
-    });
-
-    /* optionalArrayOf checks */
-    keys.forEach(function (k) {
-        var name = 'optionalArrayOf' + _capitalize(k);
-        if (ndebug) {
-            out[name] = noop;
-            return;
-        }
-        var type = types[k];
-        var expected = '[' + k + ']';
-        out[name] = function (arg, msg) {
-            if (arg === undefined || arg === null) {
-                return;
-            }
-            if (!Array.isArray(arg)) {
-                _toss(msg, expected, type.operator, arg, type.actual);
-            }
-            var i;
-            for (i = 0; i < arg.length; i++) {
-                if (!type.check(arg[i])) {
-                    _toss(msg, expected, type.operator, arg, type.actual);
-                }
-            }
-        };
-    });
-
-    /* re-export built-in assertions */
-    Object.keys(assert).forEach(function (k) {
-        if (k === 'AssertionError') {
-            out[k] = assert[k];
-            return;
-        }
-        if (ndebug) {
-            out[k] = noop;
-            return;
-        }
-        out[k] = assert[k];
-    });
-
-    /* export ourselves (for unit tests _only_) */
-    out._setExports = _setExports;
-
-    return out;
-}
-
-module.exports = _setExports(process.env.NODE_NDEBUG);
-
-
-/***/ }),
-/* 243 */
+/* 234 */
 /***/ (function(module, exports) {
 
 /*!
@@ -42733,7 +41275,7 @@ function splitType(string) {
 
 
 /***/ }),
-/* 244 */
+/* 235 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42800,7 +41342,7 @@ function merge(dest, src, redefine) {
 
 
 /***/ }),
-/* 245 */
+/* 236 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -51501,7 +50043,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 246 */
+/* 237 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*!
@@ -51514,15 +50056,15 @@ module.exports = {
  * Module exports.
  */
 
-module.exports = __webpack_require__(245)
+module.exports = __webpack_require__(236)
 
 
 /***/ }),
-/* 247 */
+/* 238 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var path = __webpack_require__(8);
-var fs = __webpack_require__(11);
+var fs = __webpack_require__(17);
 
 function Mime() {
   // Map of extension -> mime type
@@ -51607,7 +50149,7 @@ Mime.prototype.extension = function(mimeType) {
 var mime = new Mime();
 
 // Define built-in types
-mime.define(__webpack_require__(248));
+mime.define(__webpack_require__(239));
 
 // Default type
 mime.default_type = mime.lookup('bin');
@@ -51632,7 +50174,7 @@ module.exports = mime;
 
 
 /***/ }),
-/* 248 */
+/* 239 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -54223,7 +52765,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 249 */
+/* 240 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54331,16 +52873,16 @@ function loadModule(moduleName) {
   // This uses a switch for static require analysis
   switch (moduleName) {
     case 'charset':
-      module = __webpack_require__(250);
+      module = __webpack_require__(241);
       break;
     case 'encoding':
-      module = __webpack_require__(251);
+      module = __webpack_require__(242);
       break;
     case 'language':
-      module = __webpack_require__(252);
+      module = __webpack_require__(243);
       break;
     case 'mediaType':
-      module = __webpack_require__(253);
+      module = __webpack_require__(244);
       break;
     default:
       throw new Error('Cannot find module \'' + moduleName + '\'');
@@ -54354,7 +52896,7 @@ function loadModule(moduleName) {
 
 
 /***/ }),
-/* 250 */
+/* 241 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54530,7 +53072,7 @@ function isQuality(spec) {
 
 
 /***/ }),
-/* 251 */
+/* 242 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54721,7 +53263,7 @@ function isQuality(spec) {
 
 
 /***/ }),
-/* 252 */
+/* 243 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54907,7 +53449,7 @@ function isQuality(spec) {
 
 
 /***/ }),
-/* 253 */
+/* 244 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55208,10 +53750,10 @@ function splitParameters(str) {
 
 
 /***/ }),
-/* 254 */
+/* 245 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var crypto = __webpack_require__(1)
+var crypto = __webpack_require__(0)
   , qs = __webpack_require__(31)
   ;
 
@@ -55350,7 +53892,7 @@ exports.generateBase = generateBase
 
 
 /***/ }),
-/* 255 */
+/* 246 */
 /***/ (function(module, exports) {
 
 /**
@@ -55485,7 +54027,7 @@ function pathtoRegexp(path, keys, options) {
 
 
 /***/ }),
-/* 256 */
+/* 247 */
 /***/ (function(module, exports) {
 
 // Generated by CoffeeScript 1.7.1
@@ -55523,13 +54065,13 @@ function pathtoRegexp(path, keys, options) {
 
 
 /***/ }),
-/* 257 */
+/* 248 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var utils = __webpack_require__(104);
+var utils = __webpack_require__(103);
 
 var has = Object.prototype.hasOwnProperty;
 
@@ -55697,14 +54239,14 @@ module.exports = function (str, opts) {
 
 
 /***/ }),
-/* 258 */
+/* 249 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var utils = __webpack_require__(104);
-var formats = __webpack_require__(103);
+var utils = __webpack_require__(103);
+var formats = __webpack_require__(102);
 
 var arrayPrefixGenerators = {
     brackets: function brackets(prefix) { // eslint-disable-line func-name-matching
@@ -55911,7 +54453,7 @@ module.exports = function (object, opts) {
 
 
 /***/ }),
-/* 259 */
+/* 250 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55932,7 +54474,7 @@ module.exports = function (object, opts) {
 
 
 var extend                = __webpack_require__(54)
-  , cookies               = __webpack_require__(106)
+  , cookies               = __webpack_require__(105)
   , helpers               = __webpack_require__(61)
 
 var paramsHaveRequestBody = helpers.paramsHaveRequestBody
@@ -56058,7 +54600,7 @@ request.forever = function (agentOptions, optionsArg) {
 // Exports
 
 module.exports = request
-request.Request = __webpack_require__(268)
+request.Request = __webpack_require__(259)
 request.initParams = initParams
 
 // Backwards compatibility for request.debug
@@ -56074,7 +54616,7 @@ Object.defineProperty(request, 'debug', {
 
 
 /***/ }),
-/* 260 */
+/* 251 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56249,7 +54791,7 @@ exports.Auth = Auth
 
 
 /***/ }),
-/* 261 */
+/* 252 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56335,15 +54877,15 @@ module.exports = getProxyFromURI
 
 
 /***/ }),
-/* 262 */
+/* 253 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var fs = __webpack_require__(11)
+var fs = __webpack_require__(17)
 var qs = __webpack_require__(31)
-var validate = __webpack_require__(219)
+var validate = __webpack_require__(211)
 var extend = __webpack_require__(54)
 
 function Har (request) {
@@ -56557,16 +55099,16 @@ exports.Har = Har
 
 
 /***/ }),
-/* 263 */
+/* 254 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var uuid = __webpack_require__(66)
-  , CombinedStream = __webpack_require__(87)
-  , isstream = __webpack_require__(101)
-  , Buffer = __webpack_require__(25).Buffer
+  , CombinedStream = __webpack_require__(86)
+  , isstream = __webpack_require__(99)
+  , Buffer = __webpack_require__(24).Buffer
 
 
 function Multipart (request) {
@@ -56677,7 +55219,7 @@ exports.Multipart = Multipart
 
 
 /***/ }),
-/* 264 */
+/* 255 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56687,9 +55229,9 @@ var url = __webpack_require__(7)
   , qs = __webpack_require__(44)
   , caseless = __webpack_require__(53)
   , uuid = __webpack_require__(66)
-  , oauth = __webpack_require__(254)
-  , crypto = __webpack_require__(1)
-  , Buffer = __webpack_require__(25).Buffer
+  , oauth = __webpack_require__(245)
+  , crypto = __webpack_require__(0)
+  , Buffer = __webpack_require__(24).Buffer
 
 
 function OAuth (request) {
@@ -56832,7 +55374,7 @@ exports.OAuth = OAuth
 
 
 /***/ }),
-/* 265 */
+/* 256 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56890,7 +55432,7 @@ exports.Querystring = Querystring
 
 
 /***/ }),
-/* 266 */
+/* 257 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -57054,14 +55596,14 @@ exports.Redirect = Redirect
 
 
 /***/ }),
-/* 267 */
+/* 258 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var url = __webpack_require__(7)
-  , tunnel = __webpack_require__(281)
+  , tunnel = __webpack_require__(269)
 
 var defaultProxyHeaderWhiteList = [
   'accept',
@@ -57237,7 +55779,7 @@ exports.Tunnel = Tunnel
 
 
 /***/ }),
-/* 268 */
+/* 259 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -57246,33 +55788,33 @@ exports.Tunnel = Tunnel
 var http = __webpack_require__(9)
   , https = __webpack_require__(50)
   , url = __webpack_require__(7)
-  , util = __webpack_require__(0)
+  , util = __webpack_require__(1)
   , stream = __webpack_require__(10)
-  , zlib = __webpack_require__(294)
-  , hawk = __webpack_require__(221)
-  , aws2 = __webpack_require__(165)
-  , aws4 = __webpack_require__(166)
-  , httpSignature = __webpack_require__(226)
+  , zlib = __webpack_require__(283)
+  , hawk = __webpack_require__(213)
+  , aws2 = __webpack_require__(162)
+  , aws4 = __webpack_require__(163)
+  , httpSignature = __webpack_require__(218)
   , mime = __webpack_require__(43)
-  , stringstream = __webpack_require__(277)
+  , stringstream = __webpack_require__(265)
   , caseless = __webpack_require__(53)
-  , ForeverAgent = __webpack_require__(195)
-  , FormData = __webpack_require__(196)
+  , ForeverAgent = __webpack_require__(187)
+  , FormData = __webpack_require__(188)
   , extend = __webpack_require__(54)
-  , isstream = __webpack_require__(101)
-  , isTypedArray = __webpack_require__(233).strict
+  , isstream = __webpack_require__(99)
+  , isTypedArray = __webpack_require__(225).strict
   , helpers = __webpack_require__(61)
-  , cookies = __webpack_require__(106)
-  , getProxyFromURI = __webpack_require__(261)
-  , Querystring = __webpack_require__(265).Querystring
-  , Har = __webpack_require__(262).Har
-  , Auth = __webpack_require__(260).Auth
-  , OAuth = __webpack_require__(264).OAuth
-  , Multipart = __webpack_require__(263).Multipart
-  , Redirect = __webpack_require__(266).Redirect
-  , Tunnel = __webpack_require__(267).Tunnel
-  , now = __webpack_require__(256)
-  , Buffer = __webpack_require__(25).Buffer
+  , cookies = __webpack_require__(105)
+  , getProxyFromURI = __webpack_require__(252)
+  , Querystring = __webpack_require__(256).Querystring
+  , Har = __webpack_require__(253).Har
+  , Auth = __webpack_require__(251).Auth
+  , OAuth = __webpack_require__(255).OAuth
+  , Multipart = __webpack_require__(254).Multipart
+  , Redirect = __webpack_require__(257).Redirect
+  , Tunnel = __webpack_require__(258).Tunnel
+  , now = __webpack_require__(247)
+  , Buffer = __webpack_require__(24).Buffer
 
 var safeStringify = helpers.safeStringify
   , isReadStream = helpers.isReadStream
@@ -58809,458 +57351,7 @@ module.exports = Request
 
 
 /***/ }),
-/* 269 */
-/***/ (function(module, exports, __webpack_require__) {
-
-/**
- * This is the web browser implementation of `debug()`.
- *
- * Expose `debug()` as the module.
- */
-
-exports = module.exports = __webpack_require__(107);
-exports.log = log;
-exports.formatArgs = formatArgs;
-exports.save = save;
-exports.load = load;
-exports.useColors = useColors;
-exports.storage = 'undefined' != typeof chrome
-               && 'undefined' != typeof chrome.storage
-                  ? chrome.storage.local
-                  : localstorage();
-
-/**
- * Colors.
- */
-
-exports.colors = [
-  'lightseagreen',
-  'forestgreen',
-  'goldenrod',
-  'dodgerblue',
-  'darkorchid',
-  'crimson'
-];
-
-/**
- * Currently only WebKit-based Web Inspectors, Firefox >= v31,
- * and the Firebug extension (any Firefox version) are known
- * to support "%c" CSS customizations.
- *
- * TODO: add a `localStorage` variable to explicitly enable/disable colors
- */
-
-function useColors() {
-  // NB: In an Electron preload script, document will be defined but not fully
-  // initialized. Since we know we're in Chrome, we'll just detect this case
-  // explicitly
-  if (typeof window !== 'undefined' && window && typeof window.process !== 'undefined' && window.process.type === 'renderer') {
-    return true;
-  }
-
-  // is webkit? http://stackoverflow.com/a/16459606/376773
-  // document is undefined in react-native: https://github.com/facebook/react-native/pull/1632
-  return (typeof document !== 'undefined' && document && 'WebkitAppearance' in document.documentElement.style) ||
-    // is firebug? http://stackoverflow.com/a/398120/376773
-    (typeof window !== 'undefined' && window && window.console && (console.firebug || (console.exception && console.table))) ||
-    // is firefox >= v31?
-    // https://developer.mozilla.org/en-US/docs/Tools/Web_Console#Styling_messages
-    (typeof navigator !== 'undefined' && navigator && navigator.userAgent && navigator.userAgent.toLowerCase().match(/firefox\/(\d+)/) && parseInt(RegExp.$1, 10) >= 31) ||
-    // double check webkit in userAgent just in case we are in a worker
-    (typeof navigator !== 'undefined' && navigator && navigator.userAgent && navigator.userAgent.toLowerCase().match(/applewebkit\/(\d+)/));
-}
-
-/**
- * Map %j to `JSON.stringify()`, since no Web Inspectors do that by default.
- */
-
-exports.formatters.j = function(v) {
-  try {
-    return JSON.stringify(v);
-  } catch (err) {
-    return '[UnexpectedJSONParseError]: ' + err.message;
-  }
-};
-
-
-/**
- * Colorize log arguments if enabled.
- *
- * @api public
- */
-
-function formatArgs(args) {
-  var useColors = this.useColors;
-
-  args[0] = (useColors ? '%c' : '')
-    + this.namespace
-    + (useColors ? ' %c' : ' ')
-    + args[0]
-    + (useColors ? '%c ' : ' ')
-    + '+' + exports.humanize(this.diff);
-
-  if (!useColors) return;
-
-  var c = 'color: ' + this.color;
-  args.splice(1, 0, c, 'color: inherit')
-
-  // the final "%c" is somewhat tricky, because there could be other
-  // arguments passed either before or after the %c, so we need to
-  // figure out the correct index to insert the CSS into
-  var index = 0;
-  var lastC = 0;
-  args[0].replace(/%[a-zA-Z%]/g, function(match) {
-    if ('%%' === match) return;
-    index++;
-    if ('%c' === match) {
-      // we only are interested in the *last* %c
-      // (the user may have provided their own)
-      lastC = index;
-    }
-  });
-
-  args.splice(lastC, 0, c);
-}
-
-/**
- * Invokes `console.log()` when available.
- * No-op when `console.log` is not a "function".
- *
- * @api public
- */
-
-function log() {
-  // this hackery is required for IE8/9, where
-  // the `console.log` function doesn't have 'apply'
-  return 'object' === typeof console
-    && console.log
-    && Function.prototype.apply.call(console.log, console, arguments);
-}
-
-/**
- * Save `namespaces`.
- *
- * @param {String} namespaces
- * @api private
- */
-
-function save(namespaces) {
-  try {
-    if (null == namespaces) {
-      exports.storage.removeItem('debug');
-    } else {
-      exports.storage.debug = namespaces;
-    }
-  } catch(e) {}
-}
-
-/**
- * Load `namespaces`.
- *
- * @return {String} returns the previously persisted debug modes
- * @api private
- */
-
-function load() {
-  try {
-    return exports.storage.debug;
-  } catch(e) {}
-
-  // If debug isn't set in LS, and we're in Electron, try to load $DEBUG
-  if (typeof process !== 'undefined' && 'env' in process) {
-    return process.env.DEBUG;
-  }
-}
-
-/**
- * Enable namespaces listed in `localStorage.debug` initially.
- */
-
-exports.enable(load());
-
-/**
- * Localstorage attempts to return the localstorage.
- *
- * This is necessary because safari throws
- * when a user disables cookies/localstorage
- * and you attempt to access it.
- *
- * @return {LocalStorage}
- * @api private
- */
-
-function localstorage() {
-  try {
-    return window.localStorage;
-  } catch (e) {}
-}
-
-
-/***/ }),
-/* 270 */
-/***/ (function(module, exports, __webpack_require__) {
-
-/**
- * Detect Electron renderer process, which is node, but we should
- * treat as a browser.
- */
-
-if (typeof process !== 'undefined' && process.type === 'renderer') {
-  module.exports = __webpack_require__(269);
-} else {
-  module.exports = __webpack_require__(271);
-}
-
-
-/***/ }),
-/* 271 */
-/***/ (function(module, exports, __webpack_require__) {
-
-/**
- * Module dependencies.
- */
-
-var tty = __webpack_require__(67);
-var util = __webpack_require__(0);
-
-/**
- * This is the Node.js implementation of `debug()`.
- *
- * Expose `debug()` as the module.
- */
-
-exports = module.exports = __webpack_require__(107);
-exports.init = init;
-exports.log = log;
-exports.formatArgs = formatArgs;
-exports.save = save;
-exports.load = load;
-exports.useColors = useColors;
-
-/**
- * Colors.
- */
-
-exports.colors = [6, 2, 3, 4, 5, 1];
-
-/**
- * Build up the default `inspectOpts` object from the environment variables.
- *
- *   $ DEBUG_COLORS=no DEBUG_DEPTH=10 DEBUG_SHOW_HIDDEN=enabled node script.js
- */
-
-exports.inspectOpts = Object.keys(process.env).filter(function (key) {
-  return /^debug_/i.test(key);
-}).reduce(function (obj, key) {
-  // camel-case
-  var prop = key
-    .substring(6)
-    .toLowerCase()
-    .replace(/_([a-z])/, function (_, k) { return k.toUpperCase() });
-
-  // coerce string value into JS value
-  var val = process.env[key];
-  if (/^(yes|on|true|enabled)$/i.test(val)) val = true;
-  else if (/^(no|off|false|disabled)$/i.test(val)) val = false;
-  else if (val === 'null') val = null;
-  else val = Number(val);
-
-  obj[prop] = val;
-  return obj;
-}, {});
-
-/**
- * The file descriptor to write the `debug()` calls to.
- * Set the `DEBUG_FD` env variable to override with another value. i.e.:
- *
- *   $ DEBUG_FD=3 node script.js 3>debug.log
- */
-
-var fd = parseInt(process.env.DEBUG_FD, 10) || 2;
-
-if (1 !== fd && 2 !== fd) {
-  util.deprecate(function(){}, 'except for stderr(2) and stdout(1), any other usage of DEBUG_FD is deprecated. Override debug.log if you want to use a different log function (https://git.io/debug_fd)')()
-}
-
-var stream = 1 === fd ? process.stdout :
-             2 === fd ? process.stderr :
-             createWritableStdioStream(fd);
-
-/**
- * Is stdout a TTY? Colored output is enabled when `true`.
- */
-
-function useColors() {
-  return 'colors' in exports.inspectOpts
-    ? Boolean(exports.inspectOpts.colors)
-    : tty.isatty(fd);
-}
-
-/**
- * Map %o to `util.inspect()`, all on a single line.
- */
-
-exports.formatters.o = function(v) {
-  this.inspectOpts.colors = this.useColors;
-  return util.inspect(v, this.inspectOpts)
-    .replace(/\s*\n\s*/g, ' ');
-};
-
-/**
- * Map %o to `util.inspect()`, allowing multiple lines if needed.
- */
-
-exports.formatters.O = function(v) {
-  this.inspectOpts.colors = this.useColors;
-  return util.inspect(v, this.inspectOpts);
-};
-
-/**
- * Adds ANSI color escape codes if enabled.
- *
- * @api public
- */
-
-function formatArgs(args) {
-  var name = this.namespace;
-  var useColors = this.useColors;
-
-  if (useColors) {
-    var c = this.color;
-    var prefix = '  \u001b[3' + c + ';1m' + name + ' ' + '\u001b[0m';
-
-    args[0] = prefix + args[0].split('\n').join('\n' + prefix);
-    args.push('\u001b[3' + c + 'm+' + exports.humanize(this.diff) + '\u001b[0m');
-  } else {
-    args[0] = new Date().toUTCString()
-      + ' ' + name + ' ' + args[0];
-  }
-}
-
-/**
- * Invokes `util.format()` with the specified arguments and writes to `stream`.
- */
-
-function log() {
-  return stream.write(util.format.apply(util, arguments) + '\n');
-}
-
-/**
- * Save `namespaces`.
- *
- * @param {String} namespaces
- * @api private
- */
-
-function save(namespaces) {
-  if (null == namespaces) {
-    // If you set a process.env field to null or undefined, it gets cast to the
-    // string 'null' or 'undefined'. Just delete instead.
-    delete process.env.DEBUG;
-  } else {
-    process.env.DEBUG = namespaces;
-  }
-}
-
-/**
- * Load `namespaces`.
- *
- * @return {String} returns the previously persisted debug modes
- * @api private
- */
-
-function load() {
-  return process.env.DEBUG;
-}
-
-/**
- * Copied from `node/src/node.js`.
- *
- * XXX: It's lame that node doesn't expose this API out-of-the-box. It also
- * relies on the undocumented `tty_wrap.guessHandleType()` which is also lame.
- */
-
-function createWritableStdioStream (fd) {
-  var stream;
-  var tty_wrap = process.binding('tty_wrap');
-
-  // Note stream._type is used for test-module-load-list.js
-
-  switch (tty_wrap.guessHandleType(fd)) {
-    case 'TTY':
-      stream = new tty.WriteStream(fd);
-      stream._type = 'tty';
-
-      // Hack to have stream not keep the event loop alive.
-      // See https://github.com/joyent/node/issues/1726
-      if (stream._handle && stream._handle.unref) {
-        stream._handle.unref();
-      }
-      break;
-
-    case 'FILE':
-      var fs = __webpack_require__(11);
-      stream = new fs.SyncWriteStream(fd, { autoClose: false });
-      stream._type = 'fs';
-      break;
-
-    case 'PIPE':
-    case 'TCP':
-      var net = __webpack_require__(22);
-      stream = new net.Socket({
-        fd: fd,
-        readable: false,
-        writable: true
-      });
-
-      // FIXME Should probably have an option in net.Socket to create a
-      // stream from an existing fd which is writable only. But for now
-      // we'll just add this hack and set the `readable` member to false.
-      // Test: ./node test/fixtures/echo.js < /etc/passwd
-      stream.readable = false;
-      stream.read = null;
-      stream._type = 'pipe';
-
-      // FIXME Hack to have stream not keep the event loop alive.
-      // See https://github.com/joyent/node/issues/1726
-      if (stream._handle && stream._handle.unref) {
-        stream._handle.unref();
-      }
-      break;
-
-    default:
-      // Probably an error on in uv_guess_handle()
-      throw new Error('Implement me. Unknown stream file type!');
-  }
-
-  // For supporting legacy API we put the FD here.
-  stream.fd = fd;
-
-  stream._isStdio = true;
-
-  return stream;
-}
-
-/**
- * Init logic for `debug` instances.
- *
- * Create a new `inspectOpts` object in case `useColors` is set
- * differently for a particular `debug` instance.
- */
-
-function init (debug) {
-  debug.inspectOpts = util._extend({}, exports.inspectOpts);
-}
-
-/**
- * Enable namespaces listed in `process.env.DEBUG` initially.
- */
-
-exports.enable(load());
-
-
-/***/ }),
-/* 272 */
+/* 260 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59279,9 +57370,9 @@ exports.enable(load());
  * @private
  */
 
-var encodeUrl = __webpack_require__(36)
-var escapeHtml = __webpack_require__(37)
-var parseUrl = __webpack_require__(24)
+var encodeUrl = __webpack_require__(35)
+var escapeHtml = __webpack_require__(36)
+var parseUrl = __webpack_require__(23)
 var resolve = __webpack_require__(8).resolve
 var send = __webpack_require__(62)
 var url = __webpack_require__(7)
@@ -59476,14 +57567,14 @@ function createRedirectDirectoryListener () {
 
 
 /***/ }),
-/* 273 */
+/* 261 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Load modules
 
-var Dgram = __webpack_require__(291);
-var Dns = __webpack_require__(292);
-var Hoek = __webpack_require__(39);
+var Dgram = __webpack_require__(279);
+var Dns = __webpack_require__(280);
+var Hoek = __webpack_require__(38);
 
 
 // Declare internals
@@ -59894,7 +57985,7 @@ internals.ignore = function () {
 
 
 /***/ }),
-/* 274 */
+/* 262 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Copyright 2017 Joyent, Inc.
@@ -59913,15 +58004,15 @@ module.exports = {
 
 var assert = __webpack_require__(2);
 var SSHBuffer = __webpack_require__(47);
-var crypto = __webpack_require__(1);
+var crypto = __webpack_require__(0);
 var algs = __webpack_require__(4);
 var Key = __webpack_require__(5);
 var PrivateKey = __webpack_require__(6);
-var Identity = __webpack_require__(29);
+var Identity = __webpack_require__(28);
 var rfc4253 = __webpack_require__(21);
-var Signature = __webpack_require__(13);
+var Signature = __webpack_require__(12);
 var utils = __webpack_require__(3);
-var Certificate = __webpack_require__(26);
+var Certificate = __webpack_require__(25);
 
 function verify(cert, key) {
 	/*
@@ -60222,12 +58313,12 @@ function getCertType(key) {
 
 
 /***/ }),
-/* 275 */
+/* 263 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Copyright 2016 Joyent, Inc.
 
-var x509 = __webpack_require__(114);
+var x509 = __webpack_require__(111);
 
 module.exports = {
 	read: read,
@@ -60237,15 +58328,15 @@ module.exports = {
 };
 
 var assert = __webpack_require__(2);
-var asn1 = __webpack_require__(14);
+var asn1 = __webpack_require__(13);
 var algs = __webpack_require__(4);
 var utils = __webpack_require__(3);
 var Key = __webpack_require__(5);
 var PrivateKey = __webpack_require__(6);
-var pem = __webpack_require__(17);
-var Identity = __webpack_require__(29);
-var Signature = __webpack_require__(13);
-var Certificate = __webpack_require__(26);
+var pem = __webpack_require__(16);
+var Identity = __webpack_require__(28);
+var Signature = __webpack_require__(12);
+var Certificate = __webpack_require__(25);
 
 function read(buf, options) {
 	if (typeof (buf) !== 'string') {
@@ -60305,7 +58396,7 @@ function write(cert, options) {
 
 
 /***/ }),
-/* 276 */
+/* 264 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -60375,12 +58466,12 @@ module.exports = {
 };
 
 /***/ }),
-/* 277 */
+/* 265 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var util = __webpack_require__(0)
+var util = __webpack_require__(1)
 var Stream = __webpack_require__(10)
-var StringDecoder = __webpack_require__(293).StringDecoder
+var StringDecoder = __webpack_require__(281).StringDecoder
 
 module.exports = StringStream
 module.exports.AlignedStringDecoder = AlignedStringDecoder
@@ -60483,7 +58574,7 @@ function alignedWrite(buffer) {
 
 
 /***/ }),
-/* 278 */
+/* 266 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60518,17 +58609,17 @@ function alignedWrite(buffer) {
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-var net = __webpack_require__(22);
+var net = __webpack_require__(30);
 var urlParse = __webpack_require__(7).parse;
-var pubsuffix = __webpack_require__(117);
-var Store = __webpack_require__(118).Store;
-var MemoryCookieStore = __webpack_require__(279).MemoryCookieStore;
-var pathMatch = __webpack_require__(115).pathMatch;
-var VERSION = __webpack_require__(280).version;
+var pubsuffix = __webpack_require__(114);
+var Store = __webpack_require__(115).Store;
+var MemoryCookieStore = __webpack_require__(267).MemoryCookieStore;
+var pathMatch = __webpack_require__(112).pathMatch;
+var VERSION = __webpack_require__(268).version;
 
 var punycode;
 try {
-  punycode = __webpack_require__(122);
+  punycode = __webpack_require__(119);
 } catch(e) {
   console.warn("cookie: can't load punycode; won't use punycode for domain normalization");
 }
@@ -61819,14 +59910,14 @@ module.exports = {
   pathMatch: pathMatch,
   getPublicSuffix: pubsuffix.getPublicSuffix,
   cookieCompare: cookieCompare,
-  permuteDomain: __webpack_require__(116).permuteDomain,
+  permuteDomain: __webpack_require__(113).permuteDomain,
   permutePath: permutePath,
   canonicalDomain: canonicalDomain
 };
 
 
 /***/ }),
-/* 279 */
+/* 267 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -61861,10 +59952,10 @@ module.exports = {
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-var Store = __webpack_require__(118).Store;
-var permuteDomain = __webpack_require__(116).permuteDomain;
-var pathMatch = __webpack_require__(115).pathMatch;
-var util = __webpack_require__(0);
+var Store = __webpack_require__(115).Store;
+var permuteDomain = __webpack_require__(113).permuteDomain;
+var pathMatch = __webpack_require__(112).pathMatch;
+var util = __webpack_require__(1);
 
 function MemoryCookieStore() {
   Store.call(this);
@@ -62003,105 +60094,44 @@ MemoryCookieStore.prototype.getAllCookies = function(cb) {
 
 
 /***/ }),
-/* 280 */
+/* 268 */
 /***/ (function(module, exports) {
 
 module.exports = {
-	"_args": [
-		[
-			{
-				"raw": "tough-cookie@~2.3.0",
-				"scope": null,
-				"escapedName": "tough-cookie",
-				"name": "tough-cookie",
-				"rawSpec": "~2.3.0",
-				"spec": ">=2.3.0 <2.4.0",
-				"type": "range"
-			},
-			"/Users/john-lee/Code/Projects/mobx-twitter-example/node_modules/request"
-		]
-	],
-	"_from": "tough-cookie@>=2.3.0 <2.4.0",
-	"_id": "tough-cookie@2.3.2",
-	"_inCache": true,
-	"_location": "/tough-cookie",
-	"_nodeVersion": "7.0.0",
-	"_npmOperationalInternal": {
-		"host": "packages-12-west.internal.npmjs.com",
-		"tmp": "tmp/tough-cookie-2.3.2.tgz_1477415232912_0.6133609430398792"
-	},
-	"_npmUser": {
-		"name": "jstash",
-		"email": "jstash@gmail.com"
-	},
-	"_npmVersion": "3.10.8",
-	"_phantomChildren": {},
-	"_requested": {
-		"raw": "tough-cookie@~2.3.0",
-		"scope": null,
-		"escapedName": "tough-cookie",
-		"name": "tough-cookie",
-		"rawSpec": "~2.3.0",
-		"spec": ">=2.3.0 <2.4.0",
-		"type": "range"
-	},
-	"_requiredBy": [
-		"/request"
-	],
-	"_resolved": "https://registry.npmjs.org/tough-cookie/-/tough-cookie-2.3.2.tgz",
-	"_shasum": "f081f76e4c85720e6c37a5faced737150d84072a",
-	"_shrinkwrap": null,
-	"_spec": "tough-cookie@~2.3.0",
-	"_where": "/Users/john-lee/Code/Projects/mobx-twitter-example/node_modules/request",
 	"author": {
 		"name": "Jeremy Stashewsky",
-		"email": "jstashewsky@salesforce.com"
-	},
-	"bugs": {
-		"url": "https://github.com/salesforce/tough-cookie/issues"
+		"email": "jstashewsky@salesforce.com",
+		"website": "https://github.com/stash"
 	},
 	"contributors": [
 		{
-			"name": "Alexander Savin"
+			"name": "Alexander Savin",
+			"website": "https://github.com/apsavin"
 		},
 		{
-			"name": "Ian Livingstone"
+			"name": "Ian Livingstone",
+			"website": "https://github.com/ianlivingstone"
 		},
 		{
-			"name": "Ivan Nikulin"
+			"name": "Ivan Nikulin",
+			"website": "https://github.com/inikulin"
 		},
 		{
-			"name": "Lalit Kapoor"
+			"name": "Lalit Kapoor",
+			"website": "https://github.com/lalitkapoor"
 		},
 		{
-			"name": "Sam Thompson"
+			"name": "Sam Thompson",
+			"website": "https://github.com/sambthompson"
 		},
 		{
-			"name": "Sebastian Mayr"
+			"name": "Sebastian Mayr",
+			"website": "https://github.com/Sebmaster"
 		}
 	],
-	"dependencies": {
-		"punycode": "^1.4.1"
-	},
+	"license": "BSD-3-Clause",
+	"name": "tough-cookie",
 	"description": "RFC6265 Cookies and Cookie Jar for node.js",
-	"devDependencies": {
-		"async": "^1.4.2",
-		"string.prototype.repeat": "^0.2.0",
-		"vows": "^0.8.1"
-	},
-	"directories": {},
-	"dist": {
-		"shasum": "f081f76e4c85720e6c37a5faced737150d84072a",
-		"tarball": "https://registry.npmjs.org/tough-cookie/-/tough-cookie-2.3.2.tgz"
-	},
-	"engines": {
-		"node": ">=0.8"
-	},
-	"files": [
-		"lib"
-	],
-	"gitHead": "2610df5dc8ef7373a483d509006e5887572a4076",
-	"homepage": "https://github.com/salesforce/tough-cookie",
 	"keywords": [
 		"HTTP",
 		"cookie",
@@ -62112,52 +60142,51 @@ module.exports = {
 		"RFC6265",
 		"RFC2965"
 	],
-	"license": "BSD-3-Clause",
-	"main": "./lib/cookie",
-	"maintainers": [
-		{
-			"name": "awaterma",
-			"email": "awaterma@awaterma.net"
-		},
-		{
-			"name": "jstash",
-			"email": "jstash@gmail.com"
-		},
-		{
-			"name": "nexxy",
-			"email": "emily@contactvibe.com"
-		}
-	],
-	"name": "tough-cookie",
-	"optionalDependencies": {},
-	"readme": "[RFC6265](https://tools.ietf.org/html/rfc6265) Cookies and CookieJar for Node.js\n\n[![npm package](https://nodei.co/npm/tough-cookie.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/tough-cookie/)\n\n[![Build Status](https://travis-ci.org/salesforce/tough-cookie.png?branch=master)](https://travis-ci.org/salesforce/tough-cookie)\n\n# Synopsis\n\n``` javascript\nvar tough = require('tough-cookie');\nvar Cookie = tough.Cookie;\nvar cookie = Cookie.parse(header);\ncookie.value = 'somethingdifferent';\nheader = cookie.toString();\n\nvar cookiejar = new tough.CookieJar();\ncookiejar.setCookie(cookie, 'http://currentdomain.example.com/path', cb);\n// ...\ncookiejar.getCookies('http://example.com/otherpath',function(err,cookies) {\n  res.headers['cookie'] = cookies.join('; ');\n});\n```\n\n# Installation\n\nIt's _so_ easy!\n\n`npm install tough-cookie`\n\nWhy the name?  NPM modules `cookie`, `cookies` and `cookiejar` were already taken.\n\n## Version Support\n\nSupport for versions of node.js will follow that of the [request](https://www.npmjs.com/package/request) module.\n\n# API\n\n## tough\n\nFunctions on the module you get from `require('tough-cookie')`.  All can be used as pure functions and don't need to be \"bound\".\n\n**Note**: prior to 1.0.x, several of these functions took a `strict` parameter. This has since been removed from the API as it was no longer necessary.\n\n### `parseDate(string)`\n\nParse a cookie date string into a `Date`.  Parses according to RFC6265 Section 5.1.1, not `Date.parse()`.\n\n### `formatDate(date)`\n\nFormat a Date into a RFC1123 string (the RFC6265-recommended format).\n\n### `canonicalDomain(str)`\n\nTransforms a domain-name into a canonical domain-name.  The canonical domain-name is a trimmed, lowercased, stripped-of-leading-dot and optionally punycode-encoded domain-name (Section 5.1.2 of RFC6265).  For the most part, this function is idempotent (can be run again on its output without ill effects).\n\n### `domainMatch(str,domStr[,canonicalize=true])`\n\nAnswers \"does this real domain match the domain in a cookie?\".  The `str` is the \"current\" domain-name and the `domStr` is the \"cookie\" domain-name.  Matches according to RFC6265 Section 5.1.3, but it helps to think of it as a \"suffix match\".\n\nThe `canonicalize` parameter will run the other two paramters through `canonicalDomain` or not.\n\n### `defaultPath(path)`\n\nGiven a current request/response path, gives the Path apropriate for storing in a cookie.  This is basically the \"directory\" of a \"file\" in the path, but is specified by Section 5.1.4 of the RFC.\n\nThe `path` parameter MUST be _only_ the pathname part of a URI (i.e. excludes the hostname, query, fragment, etc.).  This is the `.pathname` property of node's `uri.parse()` output.\n\n### `pathMatch(reqPath,cookiePath)`\n\nAnswers \"does the request-path path-match a given cookie-path?\" as per RFC6265 Section 5.1.4.  Returns a boolean.\n\nThis is essentially a prefix-match where `cookiePath` is a prefix of `reqPath`.\n\n### `parse(cookieString[, options])`\n\nalias for `Cookie.parse(cookieString[, options])`\n\n### `fromJSON(string)`\n\nalias for `Cookie.fromJSON(string)`\n\n### `getPublicSuffix(hostname)`\n\nReturns the public suffix of this hostname.  The public suffix is the shortest domain-name upon which a cookie can be set.  Returns `null` if the hostname cannot have cookies set for it.\n\nFor example: `www.example.com` and `www.subdomain.example.com` both have public suffix `example.com`.\n\nFor further information, see http://publicsuffix.org/.  This module derives its list from that site.\n\n### `cookieCompare(a,b)`\n\nFor use with `.sort()`, sorts a list of cookies into the recommended order given in the RFC (Section 5.4 step 2). The sort algorithm is, in order of precedence:\n\n* Longest `.path`\n* oldest `.creation` (which has a 1ms precision, same as `Date`)\n* lowest `.creationIndex` (to get beyond the 1ms precision)\n\n``` javascript\nvar cookies = [ /* unsorted array of Cookie objects */ ];\ncookies = cookies.sort(cookieCompare);\n```\n\n**Note**: Since JavaScript's `Date` is limited to a 1ms precision, cookies within the same milisecond are entirely possible. This is especially true when using the `now` option to `.setCookie()`. The `.creationIndex` property is a per-process global counter, assigned during construction with `new Cookie()`. This preserves the spirit of the RFC sorting: older cookies go first. This works great for `MemoryCookieStore`, since `Set-Cookie` headers are parsed in order, but may not be so great for distributed systems. Sophisticated `Store`s may wish to set this to some other _logical clock_ such that if cookies A and B are created in the same millisecond, but cookie A is created before cookie B, then `A.creationIndex < B.creationIndex`. If you want to alter the global counter, which you probably _shouldn't_ do, it's stored in `Cookie.cookiesCreated`.\n\n### `permuteDomain(domain)`\n\nGenerates a list of all possible domains that `domainMatch()` the parameter.  May be handy for implementing cookie stores.\n\n### `permutePath(path)`\n\nGenerates a list of all possible paths that `pathMatch()` the parameter.  May be handy for implementing cookie stores.\n\n\n## Cookie\n\nExported via `tough.Cookie`.\n\n### `Cookie.parse(cookieString[, options])`\n\nParses a single Cookie or Set-Cookie HTTP header into a `Cookie` object.  Returns `undefined` if the string can't be parsed.\n\nThe options parameter is not required and currently has only one property:\n\n  * _loose_ - boolean - if `true` enable parsing of key-less cookies like `=abc` and `=`, which are not RFC-compliant.\n\nIf options is not an object, it is ignored, which means you can use `Array#map` with it.\n\nHere's how to process the Set-Cookie header(s) on a node HTTP/HTTPS response:\n\n``` javascript\nif (res.headers['set-cookie'] instanceof Array)\n  cookies = res.headers['set-cookie'].map(Cookie.parse);\nelse\n  cookies = [Cookie.parse(res.headers['set-cookie'])];\n```\n\n### Properties\n\nCookie object properties:\n\n  * _key_ - string - the name or key of the cookie (default \"\")\n  * _value_ - string - the value of the cookie (default \"\")\n  * _expires_ - `Date` - if set, the `Expires=` attribute of the cookie (defaults to the string `\"Infinity\"`). See `setExpires()`\n  * _maxAge_ - seconds - if set, the `Max-Age=` attribute _in seconds_ of the cookie.  May also be set to strings `\"Infinity\"` and `\"-Infinity\"` for non-expiry and immediate-expiry, respectively.  See `setMaxAge()`\n  * _domain_ - string - the `Domain=` attribute of the cookie\n  * _path_ - string - the `Path=` of the cookie\n  * _secure_ - boolean - the `Secure` cookie flag\n  * _httpOnly_ - boolean - the `HttpOnly` cookie flag\n  * _extensions_ - `Array` - any unrecognized cookie attributes as strings (even if equal-signs inside)\n  * _creation_ - `Date` - when this cookie was constructed\n  * _creationIndex_ - number - set at construction, used to provide greater sort precision (please see `cookieCompare(a,b)` for a full explanation)\n\nAfter a cookie has been passed through `CookieJar.setCookie()` it will have the following additional attributes:\n\n  * _hostOnly_ - boolean - is this a host-only cookie (i.e. no Domain field was set, but was instead implied)\n  * _pathIsDefault_ - boolean - if true, there was no Path field on the cookie and `defaultPath()` was used to derive one.\n  * _creation_ - `Date` - **modified** from construction to when the cookie was added to the jar\n  * _lastAccessed_ - `Date` - last time the cookie got accessed. Will affect cookie cleaning once implemented.  Using `cookiejar.getCookies(...)` will update this attribute.\n\n### `Cookie([{properties}])`\n\nReceives an options object that can contain any of the above Cookie properties, uses the default for unspecified properties.\n\n### `.toString()`\n\nencode to a Set-Cookie header value.  The Expires cookie field is set using `formatDate()`, but is omitted entirely if `.expires` is `Infinity`.\n\n### `.cookieString()`\n\nencode to a Cookie header value (i.e. the `.key` and `.value` properties joined with '=').\n\n### `.setExpires(String)`\n\nsets the expiry based on a date-string passed through `parseDate()`.  If parseDate returns `null` (i.e. can't parse this date string), `.expires` is set to `\"Infinity\"` (a string) is set.\n\n### `.setMaxAge(number)`\n\nsets the maxAge in seconds.  Coerces `-Infinity` to `\"-Infinity\"` and `Infinity` to `\"Infinity\"` so it JSON serializes correctly.\n\n### `.expiryTime([now=Date.now()])`\n\n### `.expiryDate([now=Date.now()])`\n\nexpiryTime() Computes the absolute unix-epoch milliseconds that this cookie expires. expiryDate() works similarly, except it returns a `Date` object.  Note that in both cases the `now` parameter should be milliseconds.\n\nMax-Age takes precedence over Expires (as per the RFC). The `.creation` attribute -- or, by default, the `now` paramter -- is used to offset the `.maxAge` attribute.\n\nIf Expires (`.expires`) is set, that's returned.\n\nOtherwise, `expiryTime()` returns `Infinity` and `expiryDate()` returns a `Date` object for \"Tue, 19 Jan 2038 03:14:07 GMT\" (latest date that can be expressed by a 32-bit `time_t`; the common limit for most user-agents).\n\n### `.TTL([now=Date.now()])`\n\ncompute the TTL relative to `now` (milliseconds).  The same precedence rules as for `expiryTime`/`expiryDate` apply.\n\nThe \"number\" `Infinity` is returned for cookies without an explicit expiry and `0` is returned if the cookie is expired.  Otherwise a time-to-live in milliseconds is returned.\n\n### `.canonicalizedDoman()`\n\n### `.cdomain()`\n\nreturn the canonicalized `.domain` field.  This is lower-cased and punycode (RFC3490) encoded if the domain has any non-ASCII characters.\n\n### `.toJSON()`\n\nFor convenience in using `JSON.serialize(cookie)`. Returns a plain-old `Object` that can be JSON-serialized.\n\nAny `Date` properties (i.e., `.expires`, `.creation`, and `.lastAccessed`) are exported in ISO format (`.toISOString()`).\n\n**NOTE**: Custom `Cookie` properties will be discarded. In tough-cookie 1.x, since there was no `.toJSON` method explicitly defined, all enumerable properties were captured. If you want a property to be serialized, add the property name to the `Cookie.serializableProperties` Array.\n\n### `Cookie.fromJSON(strOrObj)`\n\nDoes the reverse of `cookie.toJSON()`. If passed a string, will `JSON.parse()` that first.\n\nAny `Date` properties (i.e., `.expires`, `.creation`, and `.lastAccessed`) are parsed via `Date.parse()`, not the tough-cookie `parseDate`, since it's JavaScript/JSON-y timestamps being handled at this layer.\n\nReturns `null` upon JSON parsing error.\n\n### `.clone()`\n\nDoes a deep clone of this cookie, exactly implemented as `Cookie.fromJSON(cookie.toJSON())`.\n\n### `.validate()`\n\nStatus: *IN PROGRESS*. Works for a few things, but is by no means comprehensive.\n\nvalidates cookie attributes for semantic correctness.  Useful for \"lint\" checking any Set-Cookie headers you generate.  For now, it returns a boolean, but eventually could return a reason string -- you can future-proof with this construct:\n\n``` javascript\nif (cookie.validate() === true) {\n  // it's tasty\n} else {\n  // yuck!\n}\n```\n\n\n## CookieJar\n\nExported via `tough.CookieJar`.\n\n### `CookieJar([store],[options])`\n\nSimply use `new CookieJar()`.  If you'd like to use a custom store, pass that to the constructor otherwise a `MemoryCookieStore` will be created and used.\n\nThe `options` object can be omitted and can have the following properties:\n\n  * _rejectPublicSuffixes_ - boolean - default `true` - reject cookies with domains like \"com\" and \"co.uk\"\n  * _looseMode_ - boolean - default `false` - accept malformed cookies like `bar` and `=bar`, which have an implied empty name.\n    This is not in the standard, but is used sometimes on the web and is accepted by (most) browsers.\n\nSince eventually this module would like to support database/remote/etc. CookieJars, continuation passing style is used for CookieJar methods.\n\n### `.setCookie(cookieOrString, currentUrl, [{options},] cb(err,cookie))`\n\nAttempt to set the cookie in the cookie jar.  If the operation fails, an error will be given to the callback `cb`, otherwise the cookie is passed through.  The cookie will have updated `.creation`, `.lastAccessed` and `.hostOnly` properties.\n\nThe `options` object can be omitted and can have the following properties:\n\n  * _http_ - boolean - default `true` - indicates if this is an HTTP or non-HTTP API.  Affects HttpOnly cookies.\n  * _secure_ - boolean - autodetect from url - indicates if this is a \"Secure\" API.  If the currentUrl starts with `https:` or `wss:` then this is defaulted to `true`, otherwise `false`.\n  * _now_ - Date - default `new Date()` - what to use for the creation/access time of cookies\n  * _ignoreError_ - boolean - default `false` - silently ignore things like parse errors and invalid domains.  `Store` errors aren't ignored by this option.\n\nAs per the RFC, the `.hostOnly` property is set if there was no \"Domain=\" parameter in the cookie string (or `.domain` was null on the Cookie object).  The `.domain` property is set to the fully-qualified hostname of `currentUrl` in this case.  Matching this cookie requires an exact hostname match (not a `domainMatch` as per usual).\n\n### `.setCookieSync(cookieOrString, currentUrl, [{options}])`\n\nSynchronous version of `setCookie`; only works with synchronous stores (e.g. the default `MemoryCookieStore`).\n\n### `.getCookies(currentUrl, [{options},] cb(err,cookies))`\n\nRetrieve the list of cookies that can be sent in a Cookie header for the current url.\n\nIf an error is encountered, that's passed as `err` to the callback, otherwise an `Array` of `Cookie` objects is passed.  The array is sorted with `cookieCompare()` unless the `{sort:false}` option is given.\n\nThe `options` object can be omitted and can have the following properties:\n\n  * _http_ - boolean - default `true` - indicates if this is an HTTP or non-HTTP API.  Affects HttpOnly cookies.\n  * _secure_ - boolean - autodetect from url - indicates if this is a \"Secure\" API.  If the currentUrl starts with `https:` or `wss:` then this is defaulted to `true`, otherwise `false`.\n  * _now_ - Date - default `new Date()` - what to use for the creation/access time of cookies\n  * _expire_ - boolean - default `true` - perform expiry-time checking of cookies and asynchronously remove expired cookies from the store.  Using `false` will return expired cookies and **not** remove them from the store (which is useful for replaying Set-Cookie headers, potentially).\n  * _allPaths_ - boolean - default `false` - if `true`, do not scope cookies by path. The default uses RFC-compliant path scoping. **Note**: may not be supported by the underlying store (the default `MemoryCookieStore` supports it).\n\nThe `.lastAccessed` property of the returned cookies will have been updated.\n\n### `.getCookiesSync(currentUrl, [{options}])`\n\nSynchronous version of `getCookies`; only works with synchronous stores (e.g. the default `MemoryCookieStore`).\n\n### `.getCookieString(...)`\n\nAccepts the same options as `.getCookies()` but passes a string suitable for a Cookie header rather than an array to the callback.  Simply maps the `Cookie` array via `.cookieString()`.\n\n### `.getCookieStringSync(...)`\n\nSynchronous version of `getCookieString`; only works with synchronous stores (e.g. the default `MemoryCookieStore`).\n\n### `.getSetCookieStrings(...)`\n\nReturns an array of strings suitable for **Set-Cookie** headers. Accepts the same options as `.getCookies()`.  Simply maps the cookie array via `.toString()`.\n\n### `.getSetCookieStringsSync(...)`\n\nSynchronous version of `getSetCookieStrings`; only works with synchronous stores (e.g. the default `MemoryCookieStore`).\n\n### `.serialize(cb(err,serializedObject))`\n\nSerialize the Jar if the underlying store supports `.getAllCookies`.\n\n**NOTE**: Custom `Cookie` properties will be discarded. If you want a property to be serialized, add the property name to the `Cookie.serializableProperties` Array.\n\nSee [Serialization Format].\n\n### `.serializeSync()`\n\nSync version of .serialize\n\n### `.toJSON()`\n\nAlias of .serializeSync() for the convenience of `JSON.stringify(cookiejar)`.\n\n### `CookieJar.deserialize(serialized, [store], cb(err,object))`\n\nA new Jar is created and the serialized Cookies are added to the underlying store. Each `Cookie` is added via `store.putCookie` in the order in which they appear in the serialization.\n\nThe `store` argument is optional, but should be an instance of `Store`. By default, a new instance of `MemoryCookieStore` is created.\n\nAs a convenience, if `serialized` is a string, it is passed through `JSON.parse` first. If that throws an error, this is passed to the callback.\n\n### `CookieJar.deserializeSync(serialized, [store])`\n\nSync version of `.deserialize`.  _Note_ that the `store` must be synchronous for this to work.\n\n### `CookieJar.fromJSON(string)`\n\nAlias of `.deserializeSync` to provide consistency with `Cookie.fromJSON()`.\n\n### `.clone([store,]cb(err,newJar))`\n\nProduces a deep clone of this jar. Modifications to the original won't affect the clone, and vice versa.\n\nThe `store` argument is optional, but should be an instance of `Store`. By default, a new instance of `MemoryCookieStore` is created. Transferring between store types is supported so long as the source implements `.getAllCookies()` and the destination implements `.putCookie()`.\n\n### `.cloneSync([store])`\n\nSynchronous version of `.clone`, returning a new `CookieJar` instance.\n\nThe `store` argument is optional, but must be a _synchronous_ `Store` instance if specified. If not passed, a new instance of `MemoryCookieStore` is used.\n\nThe _source_ and _destination_ must both be synchronous `Store`s. If one or both stores are asynchronous, use `.clone` instead. Recall that `MemoryCookieStore` supports both synchronous and asynchronous API calls.\n\n## Store\n\nBase class for CookieJar stores. Available as `tough.Store`.\n\n## Store API\n\nThe storage model for each `CookieJar` instance can be replaced with a custom implementation.  The default is `MemoryCookieStore` which can be found in the `lib/memstore.js` file.  The API uses continuation-passing-style to allow for asynchronous stores.\n\nStores should inherit from the base `Store` class, which is available as `require('tough-cookie').Store`.\n\nStores are asynchronous by default, but if `store.synchronous` is set to `true`, then the `*Sync` methods on the of the containing `CookieJar` can be used (however, the continuation-passing style\n\nAll `domain` parameters will have been normalized before calling.\n\nThe Cookie store must have all of the following methods.\n\n### `store.findCookie(domain, path, key, cb(err,cookie))`\n\nRetrieve a cookie with the given domain, path and key (a.k.a. name).  The RFC maintains that exactly one of these cookies should exist in a store.  If the store is using versioning, this means that the latest/newest such cookie should be returned.\n\nCallback takes an error and the resulting `Cookie` object.  If no cookie is found then `null` MUST be passed instead (i.e. not an error).\n\n### `store.findCookies(domain, path, cb(err,cookies))`\n\nLocates cookies matching the given domain and path.  This is most often called in the context of `cookiejar.getCookies()` above.\n\nIf no cookies are found, the callback MUST be passed an empty array.\n\nThe resulting list will be checked for applicability to the current request according to the RFC (domain-match, path-match, http-only-flag, secure-flag, expiry, etc.), so it's OK to use an optimistic search algorithm when implementing this method.  However, the search algorithm used SHOULD try to find cookies that `domainMatch()` the domain and `pathMatch()` the path in order to limit the amount of checking that needs to be done.\n\nAs of version 0.9.12, the `allPaths` option to `cookiejar.getCookies()` above will cause the path here to be `null`.  If the path is `null`, path-matching MUST NOT be performed (i.e. domain-matching only).\n\n### `store.putCookie(cookie, cb(err))`\n\nAdds a new cookie to the store.  The implementation SHOULD replace any existing cookie with the same `.domain`, `.path`, and `.key` properties -- depending on the nature of the implementation, it's possible that between the call to `fetchCookie` and `putCookie` that a duplicate `putCookie` can occur.\n\nThe `cookie` object MUST NOT be modified; the caller will have already updated the `.creation` and `.lastAccessed` properties.\n\nPass an error if the cookie cannot be stored.\n\n### `store.updateCookie(oldCookie, newCookie, cb(err))`\n\nUpdate an existing cookie.  The implementation MUST update the `.value` for a cookie with the same `domain`, `.path` and `.key`.  The implementation SHOULD check that the old value in the store is equivalent to `oldCookie` - how the conflict is resolved is up to the store.\n\nThe `.lastAccessed` property will always be different between the two objects (to the precision possible via JavaScript's clock).  Both `.creation` and `.creationIndex` are guaranteed to be the same.  Stores MAY ignore or defer the `.lastAccessed` change at the cost of affecting how cookies are selected for automatic deletion (e.g., least-recently-used, which is up to the store to implement).\n\nStores may wish to optimize changing the `.value` of the cookie in the store versus storing a new cookie.  If the implementation doesn't define this method a stub that calls `putCookie(newCookie,cb)` will be added to the store object.\n\nThe `newCookie` and `oldCookie` objects MUST NOT be modified.\n\nPass an error if the newCookie cannot be stored.\n\n### `store.removeCookie(domain, path, key, cb(err))`\n\nRemove a cookie from the store (see notes on `findCookie` about the uniqueness constraint).\n\nThe implementation MUST NOT pass an error if the cookie doesn't exist; only pass an error due to the failure to remove an existing cookie.\n\n### `store.removeCookies(domain, path, cb(err))`\n\nRemoves matching cookies from the store.  The `path` parameter is optional, and if missing means all paths in a domain should be removed.\n\nPass an error ONLY if removing any existing cookies failed.\n\n### `store.getAllCookies(cb(err, cookies))`\n\nProduces an `Array` of all cookies during `jar.serialize()`. The items in the array can be true `Cookie` objects or generic `Object`s with the [Serialization Format] data structure.\n\nCookies SHOULD be returned in creation order to preserve sorting via `compareCookies()`. For reference, `MemoryCookieStore` will sort by `.creationIndex` since it uses true `Cookie` objects internally. If you don't return the cookies in creation order, they'll still be sorted by creation time, but this only has a precision of 1ms.  See `compareCookies` for more detail.\n\nPass an error if retrieval fails.\n\n## MemoryCookieStore\n\nInherits from `Store`.\n\nA just-in-memory CookieJar synchronous store implementation, used by default. Despite being a synchronous implementation, it's usable with both the synchronous and asynchronous forms of the `CookieJar` API.\n\n## Community Cookie Stores\n\nThese are some Store implementations authored and maintained by the community. They aren't official and we don't vouch for them but you may be interested to have a look:\n\n- [`db-cookie-store`](https://github.com/JSBizon/db-cookie-store): SQL including SQLite-based databases\n- [`file-cookie-store`](https://github.com/JSBizon/file-cookie-store): Netscape cookie file format on disk\n- [`redis-cookie-store`](https://github.com/benkroeger/redis-cookie-store): Redis\n- [`tough-cookie-filestore`](https://github.com/mitsuru/tough-cookie-filestore): JSON on disk\n- [`tough-cookie-web-storage-store`](https://github.com/exponentjs/tough-cookie-web-storage-store): DOM localStorage and sessionStorage\n\n\n# Serialization Format\n\n**NOTE**: if you want to have custom `Cookie` properties serialized, add the property name to `Cookie.serializableProperties`.\n\n```js\n  {\n    // The version of tough-cookie that serialized this jar.\n    version: 'tough-cookie@1.x.y',\n\n    // add the store type, to make humans happy:\n    storeType: 'MemoryCookieStore',\n\n    // CookieJar configuration:\n    rejectPublicSuffixes: true,\n    // ... future items go here\n\n    // Gets filled from jar.store.getAllCookies():\n    cookies: [\n      {\n        key: 'string',\n        value: 'string',\n        // ...\n        /* other Cookie.serializableProperties go here */\n      }\n    ]\n  }\n```\n\n# Copyright and License\n\n(tl;dr: BSD-3-Clause with some MPL/2.0)\n\n```text\n Copyright (c) 2015, Salesforce.com, Inc.\n All rights reserved.\n\n Redistribution and use in source and binary forms, with or without\n modification, are permitted provided that the following conditions are met:\n\n 1. Redistributions of source code must retain the above copyright notice,\n this list of conditions and the following disclaimer.\n\n 2. Redistributions in binary form must reproduce the above copyright notice,\n this list of conditions and the following disclaimer in the documentation\n and/or other materials provided with the distribution.\n\n 3. Neither the name of Salesforce.com nor the names of its contributors may\n be used to endorse or promote products derived from this software without\n specific prior written permission.\n\n THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\"\n AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE\n IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE\n ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE\n LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR\n CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF\n SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS\n INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN\n CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)\n ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE\n POSSIBILITY OF SUCH DAMAGE.\n```\n\nPortions may be licensed under different licenses (in particular `public_suffix_list.dat` is MPL/2.0); please read that file and the LICENSE file for full details.\n",
-	"readmeFilename": "README.md",
+	"version": "2.3.2",
+	"homepage": "https://github.com/salesforce/tough-cookie",
 	"repository": {
 		"type": "git",
 		"url": "git://github.com/salesforce/tough-cookie.git"
 	},
+	"bugs": {
+		"url": "https://github.com/salesforce/tough-cookie/issues"
+	},
+	"main": "./lib/cookie",
+	"files": [
+		"lib"
+	],
 	"scripts": {
 		"suffixup": "curl -o public_suffix_list.dat https://publicsuffix.org/list/public_suffix_list.dat && ./generate-pubsuffix.js",
 		"test": "vows test/*_test.js"
 	},
-	"version": "2.3.2"
+	"engines": {
+		"node": ">=0.8"
+	},
+	"devDependencies": {
+		"async": "^1.4.2",
+		"string.prototype.repeat": "^0.2.0",
+		"vows": "^0.8.1"
+	},
+	"dependencies": {
+		"punycode": "^1.4.1"
+	}
 };
 
 /***/ }),
-/* 281 */
+/* 269 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var net = __webpack_require__(22)
-  , tls = __webpack_require__(123)
+var net = __webpack_require__(30)
+  , tls = __webpack_require__(120)
   , http = __webpack_require__(9)
   , https = __webpack_require__(50)
-  , events = __webpack_require__(30)
-  , assert = __webpack_require__(18)
-  , util = __webpack_require__(0)
-  , Buffer = __webpack_require__(25).Buffer
+  , events = __webpack_require__(29)
+  , assert = __webpack_require__(22)
+  , util = __webpack_require__(1)
+  , Buffer = __webpack_require__(24).Buffer
   ;
 
 exports.httpOverHttp = httpOverHttp
@@ -62395,7 +60424,7 @@ exports.debug = debug // for test
 
 
 /***/ }),
-/* 282 */
+/* 270 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62413,7 +60442,7 @@ exports.debug = debug // for test
 //   p.receive(data)
 //   ...
 
-var EventEmitter = __webpack_require__(30).EventEmitter;
+var EventEmitter = __webpack_require__(29).EventEmitter;
 
 var Parser = module.exports = function Parser() {
   // Make sure we call our parents constructor
@@ -62473,110 +60502,43 @@ Parser.prototype.receive = function receive(buffer) {
 
 
 /***/ }),
-/* 283 */
+/* 271 */
 /***/ (function(module, exports) {
 
 module.exports = {
-	"_args": [
-		[
-			{
-				"raw": "twitter@^1.7.0",
-				"scope": null,
-				"escapedName": "twitter",
-				"name": "twitter",
-				"rawSpec": "^1.7.0",
-				"spec": ">=1.7.0 <2.0.0",
-				"type": "range"
-			},
-			"/Users/john-lee/Code/Projects/mobx-twitter-example"
-		]
-	],
-	"_from": "twitter@>=1.7.0 <2.0.0",
-	"_id": "twitter@1.7.0",
-	"_inCache": true,
-	"_location": "/twitter",
-	"_nodeVersion": "6.7.0",
-	"_npmOperationalInternal": {
-		"host": "packages-12-west.internal.npmjs.com",
-		"tmp": "tmp/twitter-1.7.0.tgz_1481488298749_0.8963184447493404"
-	},
-	"_npmUser": {
-		"name": "desmondmorris",
-		"email": "hi@desmondmorris.com"
-	},
-	"_npmVersion": "3.10.3",
-	"_phantomChildren": {},
-	"_requested": {
-		"raw": "twitter@^1.7.0",
-		"scope": null,
-		"escapedName": "twitter",
-		"name": "twitter",
-		"rawSpec": "^1.7.0",
-		"spec": ">=1.7.0 <2.0.0",
-		"type": "range"
-	},
-	"_requiredBy": [
-		"/"
-	],
-	"_resolved": "https://registry.npmjs.org/twitter/-/twitter-1.7.0.tgz",
-	"_shasum": "2882e208e0ad83bb226528613561f1dd233ac94b",
-	"_shrinkwrap": null,
-	"_spec": "twitter@^1.7.0",
-	"_where": "/Users/john-lee/Code/Projects/mobx-twitter-example",
-	"author": {
-		"name": "Desmond Morris",
-		"email": "hi@desmondmorris.com"
-	},
-	"bugs": {
-		"url": "https://github.com/desmondmorris/node-twitter/issues"
-	},
-	"dependencies": {
-		"deep-extend": "^0.4.1",
-		"request": "^2.72.0"
-	},
+	"name": "twitter",
+	"version": "1.7.0",
 	"description": "Twitter API client library for node.js",
-	"devDependencies": {
-		"eslint": "^2.10.0",
-		"mocha": "^2.4.5",
-		"nock": "^8.0.0"
-	},
-	"directories": {},
-	"dist": {
-		"shasum": "2882e208e0ad83bb226528613561f1dd233ac94b",
-		"tarball": "https://registry.npmjs.org/twitter/-/twitter-1.7.0.tgz"
-	},
-	"gitHead": "87225a043db8f318fa1a05399638e8f106ea43a9",
-	"homepage": "https://github.com/desmondmorris/node-twitter",
+	"license": "MIT",
 	"keywords": [
 		"twitter",
 		"streaming",
 		"oauth"
 	],
-	"license": "MIT",
-	"main": "./lib/twitter",
-	"maintainers": [
-		{
-			"name": "desmondmorris",
-			"email": "hi@desmondmorris.com"
-		}
-	],
-	"name": "twitter",
-	"optionalDependencies": {},
-	"readme": "# Twitter for Node.js\n\nAn asynchronous client library for the Twitter [REST](https://dev.twitter.com/rest/public) and [Streaming](https://dev.twitter.com/streaming/overview) API's.\n\n[![Build Status](https://travis-ci.org/desmondmorris/node-twitter.svg?branch=master)](https://travis-ci.org/desmondmorris/node-twitter)\n [![NPM](https://nodei.co/npm/twitter.png?mini=true)](https://nodei.co/npm/twitter/)\n\n```javascript\nvar Twitter = require('twitter');\n\nvar client = new Twitter({\n  consumer_key: '',\n  consumer_secret: '',\n  access_token_key: '',\n  access_token_secret: ''\n});\n\nvar params = {screen_name: 'nodejs'};\nclient.get('statuses/user_timeline', params, function(error, tweets, response) {\n  if (!error) {\n    console.log(tweets);\n  }\n});\n```\n\n## Installation\n\n`npm install twitter`\n\n## Quick Start\n\nYou will need valid Twitter developer credentials in the form of a set of consumer and access tokens/keys.  You can get these [here](https://apps.twitter.com/).  Do not forgot to adjust your permissions - most POST request require write permissions.\n\n```javascript\nvar Twitter = require('twitter');\n```\n\n## For User based authentication:\n\n```javascript\nvar client = new Twitter({\n  consumer_key: '',\n  consumer_secret: '',\n  access_token_key: '',\n  access_token_secret: ''\n});\n```\n\nAdd your credentials accordingly.  I would use environment variables to keep your private info safe.  So something like:\n\n```javascript\nvar client = new Twitter({\n  consumer_key: process.env.TWITTER_CONSUMER_KEY,\n  consumer_secret: process.env.TWITTER_CONSUMER_SECRET,\n  access_token_key: process.env.TWITTER_ACCESS_TOKEN_KEY,\n  access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET\n});\n```\n## For Application Only based authentication:\n\nYou will need to fetch a bearer token from Twitter as documented [Here](https://dev.twitter.com/oauth/application-only), once you have it you can use it as follows.\n\n```javascript\nvar client = new Twitter({\n  consumer_key: '',\n  consumer_secret: '',\n  bearer_token: ''\n});\n```\n\nAdd your credentials accordingly.  I would use environment variables to keep your private info safe.  So something like:\n\n```javascript\nvar client = new Twitter({\n  consumer_key: process.env.TWITTER_CONSUMER_KEY,\n  consumer_secret: process.env.TWITTER_CONSUMER_SECRET,\n  bearer_token: process.env.TWITTER_BEARER_TOKEN\n});\n```\n\nNB - You will not have access to all endpoints whilst using Application Only authentication, but you will have access to higher API limits.\n\n## Requests\n\nYou now have the ability to make GET and POST requests against the API via the convenience methods.\n\n```javascript\nclient.get(path, params, callback);\nclient.post(path, params, callback);\nclient.stream(path, params, callback);\n```\n\n## REST API\n\nYou simply need to pass the endpoint and parameters to one of convenience methods.  Take a look at the [documentation site](https://dev.twitter.com/rest/public) to reference available endpoints.\n\nExample, lets get a [list of favorites](https://dev.twitter.com/rest/reference/get/favorites/list):\n\n```javascript\nclient.get('favorites/list', function(error, tweets, response) {\n  if(error) throw error;\n  console.log(tweets);  // The favorites.\n  console.log(response);  // Raw response object.\n});\n```\n\nHow about an example that passes parameters?  Let's  [tweet something](https://dev.twitter.com/rest/reference/post/statuses/update):\n\n```javascript\nclient.post('statuses/update', {status: 'I Love Twitter'},  function(error, tweet, response) {\n  if(error) throw error;\n  console.log(tweet);  // Tweet body.\n  console.log(response);  // Raw response object.\n});\n```\n\n### Promises\n\nThe REST API convenience methods will also return Promises if:\n\n1.  A callback is omitted\n2.  Promise's are available.\n\nIf those two conditions are met, the above example becomes:\n\n```javascript\nclient.post('statuses/update', {status: 'I Love Twitter'})\n  .then(function (tweet) {\n    console.log(tweet);\n  })\n  .catch(function (error) {\n    throw error;\n  })\n```\n\nNote, the raw `response` object returned by the Request module is not passed through\nthe fulfilled promise.  If you require this, please use the callback pattern.\n\n## Streaming API\n\nUsing the `stream` convenience method, you to open and manipulate data via a stream piped directly from one of the streaming API's. Let's see who is talking about javascript:\n\n```javascript\nvar stream = client.stream('statuses/filter', {track: 'javascript'});\nstream.on('data', function(event) {\n  console.log(event && event.text);\n});\n\nstream.on('error', function(error) {\n  throw error;\n});\n\n// You can also get the stream in a callback if you prefer.\nclient.stream('statuses/filter', {track: 'javascript'}, function(stream) {\n  stream.on('data', function(event) {\n    console.log(event && event.text);\n  });\n\n  stream.on('error', function(error) {\n    throw error;\n  });\n});\n```\n\n**Note** twitter stream several types of events, see [the docs](https://dev.twitter.com/streaming/overview/messages-types) for more info. There is no canonical way of detecting tweets versus other messages, but some users have had success with the following strategy.\n\n```javascript\n_ = require('lodash')\nconst isTweet = _.conforms({\n  contributors: _.isObject,\n  id_str: _.isString,\n  text: _.isString,\n})\n```\n\n## Examples\n\n* [Tweet](https://github.com/desmondmorris/node-twitter/tree/master/examples#tweet)\n* [Search](https://github.com/desmondmorris/node-twitter/tree/master/examples#search)\n* [Streams](https://github.com/desmondmorris/node-twitter/tree/master/examples#streams)\n* [Proxy](https://github.com/desmondmorris/node-twitter/tree/master/examples#proxy)\n* [Media](https://github.com/desmondmorris/node-twitter/tree/master/examples#media)\n* [Chunked Media](https://github.com/desmondmorris/node-twitter/tree/master/examples#chunked-media)\n\n## Contributors\n\nOriginally authored by  [@technoweenie](http://github.com/technoweenie)\n and maintained by [@jdub](http://github.com/jdub)\n\nCurrently maintained by [@desmondmorris](http://github.com/desmondmorris)\n\n[And we cannot forget the community](https://github.com/desmondmorris/node-twitter/graphs/contributors)\n",
-	"readmeFilename": "README.md",
+	"homepage": "https://github.com/desmondmorris/node-twitter",
+	"author": "Desmond Morris <hi@desmondmorris.com>",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/desmondmorris/node-twitter.git"
+		"url": "https://github.com/desmondmorris/node-twitter"
 	},
 	"scripts": {
-		"lint": "eslint test/*.js lib/*.js",
-		"test": "npm run lint && mocha"
+		"test": "npm run lint && mocha",
+		"lint": "./node_modules/.bin/eslint test/*.js lib/*.js"
 	},
-	"version": "1.7.0"
+	"dependencies": {
+		"deep-extend": "^0.4.1",
+		"request": "^2.72.0"
+	},
+	"devDependencies": {
+		"eslint": "^2.10.0",
+		"mocha": "^2.4.5",
+		"nock": "^8.0.0"
+	},
+	"main": "./lib/twitter"
 };
 
 /***/ }),
-/* 284 */
+/* 272 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62594,7 +60556,7 @@ module.exports = {
  * @private
  */
 
-var typer = __webpack_require__(243)
+var typer = __webpack_require__(234)
 var mime = __webpack_require__(43)
 
 /**
@@ -62845,7 +60807,7 @@ function tryNormalizeType (value) {
 
 
 /***/ }),
-/* 285 */
+/* 273 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62921,14 +60883,14 @@ function unpipe(stream) {
 
 
 /***/ }),
-/* 286 */
+/* 274 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Unique ID creation requires a high quality random # generator.  We feature
 // detect to determine the best RNG source, normalizing to a function that
 // returns 128-bits of randomness, since that's what's usually required
-var rng = __webpack_require__(120);
-var bytesToUuid = __webpack_require__(119);
+var rng = __webpack_require__(117);
+var bytesToUuid = __webpack_require__(116);
 
 // **`v1()` - Generate time-based UUID**
 //
@@ -63030,11 +60992,11 @@ module.exports = v1;
 
 
 /***/ }),
-/* 287 */
+/* 275 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var rng = __webpack_require__(120);
-var bytesToUuid = __webpack_require__(119);
+var rng = __webpack_require__(117);
+var bytesToUuid = __webpack_require__(116);
 
 function v4(options, buf, offset) {
   var i = buf && offset || 0;
@@ -63065,7 +61027,7 @@ module.exports = v4;
 
 
 /***/ }),
-/* 288 */
+/* 276 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63203,17 +61165,17 @@ function vary (res, field) {
 
 
 /***/ }),
-/* 289 */
+/* 277 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
  * verror.js: richer JavaScript errors
  */
 
-var mod_assert = __webpack_require__(18);
-var mod_util = __webpack_require__(0);
+var mod_assert = __webpack_require__(22);
+var mod_util = __webpack_require__(1);
 
-var mod_extsprintf = __webpack_require__(98);
+var mod_extsprintf = __webpack_require__(97);
 
 /*
  * Public interface
@@ -63366,7 +61328,7 @@ WError.prototype.cause = function we_cause(c)
 
 
 /***/ }),
-/* 290 */
+/* 278 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -63394,25 +61356,31 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 291 */
+/* 279 */
 /***/ (function(module, exports) {
 
 module.exports = require("dgram");
 
 /***/ }),
-/* 292 */
+/* 280 */
 /***/ (function(module, exports) {
 
 module.exports = require("dns");
 
 /***/ }),
-/* 293 */
+/* 281 */
 /***/ (function(module, exports) {
 
 module.exports = require("string_decoder");
 
 /***/ }),
-/* 294 */
+/* 282 */
+/***/ (function(module, exports) {
+
+module.exports = require("tty");
+
+/***/ }),
+/* 283 */
 /***/ (function(module, exports) {
 
 module.exports = require("zlib");
